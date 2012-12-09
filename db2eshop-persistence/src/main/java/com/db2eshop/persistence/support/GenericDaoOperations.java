@@ -5,16 +5,16 @@ import java.util.List;
 
 /**
  * The generic interface for data access operations onto ORM side
- *
+ * 
  * @author Denis Neuling (denisneuling@gmail.com)
  * @param <T>
- *
+ * 
  */
 public interface GenericDaoOperations<T> {
 
 	/**
 	 * Removes the given entity from the hibernate cache
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param t
 	 *            the entity to remove from the cache
@@ -24,7 +24,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Retrieves a list of entities with the concerned value of the concerned
 	 * field
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param field
 	 *            the field to evaluate
@@ -37,7 +37,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Retrieves the serializable entities with the concerned id from the
 	 * concerned table
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param id
 	 *            the serializable id of the entity
@@ -47,7 +47,7 @@ public interface GenericDaoOperations<T> {
 
 	/**
 	 * Retrieves an entitiy with the concerned value of the concerned field
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param field
 	 *            the field to evaluate
@@ -59,14 +59,14 @@ public interface GenericDaoOperations<T> {
 
 	/**
 	 * Flushes the hibernate Session
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 */
 	public void flush();
 
 	/**
 	 * Merges a given entity
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param t
 	 *            the entity to merge
@@ -76,7 +76,7 @@ public interface GenericDaoOperations<T> {
 
 	/**
 	 * Persist a given entity
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param t
 	 *            the entity to persist
@@ -85,7 +85,7 @@ public interface GenericDaoOperations<T> {
 
 	/**
 	 * Refreshs a given entity all over the persistence context
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param t
 	 *            the entity to refresh
@@ -94,7 +94,7 @@ public interface GenericDaoOperations<T> {
 
 	/**
 	 * Counts all rows of the associated entity
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @return count the count of rows
 	 */
@@ -102,25 +102,27 @@ public interface GenericDaoOperations<T> {
 
 	/**
 	 * Sets the entity to readonly mode at the current persistence context
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param readOnly
 	 *            the boolean value of readonly
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public void setReadOnly(T entity, boolean readOnly);
 
 	/**
 	 * Validates the entity
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public void validate(T entity);
-	
+
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2;
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param field1
 	 *            the field to look for a given
@@ -132,12 +134,13 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public List<T> findBy(String field1, String field2, Object value1, Object value2);
+	public List<T> findBy(String field1, String field2, Object value1,
+			Object value2);
 
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2
 	 * AND field3 = value3;
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param field1
 	 *            the field to look for a given
@@ -153,12 +156,13 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public List<T> findBy(String field1, String field2, String field3, Object value1, Object value2, Object value3);
+	public List<T> findBy(String field1, String field2, String field3,
+			Object value1, Object value2, Object value3);
 
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2;
 	 * but unique!
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param field1
 	 *            the field to look for a given
@@ -170,12 +174,13 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public T findUniqueBy(String field1, String field2, Object value1, Object value2);
+	public T findUniqueBy(String field1, String field2, Object value1,
+			Object value2);
 
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2
 	 * AND field3 = value3; but unique!
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param field1
 	 *            the field to look for a given
@@ -191,5 +196,6 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public T findUniqueBy(String field1, String field2, String field3, Object value1, Object value2, Object value3);
+	public T findUniqueBy(String field1, String field2, String field3,
+			Object value1, Object value2, Object value3);
 }

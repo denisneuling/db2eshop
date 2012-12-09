@@ -7,25 +7,26 @@ import java.util.List;
 /**
  * The generic interface for create-, update-, and delete- operations onto ORM
  * side
- *
+ * 
  * @author Denis Neuling (denisneuling@gmail.com)
- *
+ * 
  */
 public interface GenericDaoCrudOperations<T> {
 
 	/**
 	 * Deletes the serializable entity with type t from the table which is
 	 * associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public void delete(T entity);
 
 	/**
 	 * Deletes all serializable entities with type t from the table which is
 	 * associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 */
 	public void deleteAll();
@@ -33,7 +34,7 @@ public interface GenericDaoCrudOperations<T> {
 	/**
 	 * Retrieves all serializable entities with type t from the table which is
 	 * associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @return ts all retrievable typed entities with type t
 	 */
@@ -42,42 +43,46 @@ public interface GenericDaoCrudOperations<T> {
 	/**
 	 * Saves the serializable entity with type t at the table which is
 	 * associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @return id the serializable id of the just inserted entity
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public Serializable save(T entity);
 
 	/**
 	 * Saves a collection of entites
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entities a {@link java.util.Collection} object.
+	 * @param entities
+	 *            a {@link java.util.Collection} object.
 	 */
 	public void saveAll(Collection<T> entities);
 
 	/**
 	 * Saves a collection of entites
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entities a T object.
+	 * @param entities
+	 *            a T object.
 	 */
 	public void saveAll(T... entities);
 
 	/**
 	 * Saves or updates the serializable entity with type t at the table which
 	 * is associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public void saveOrUpdate(T entity);
 
 	/**
 	 * Saves or updates a collection of typed entities to the table which is
 	 * associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param ts
 	 *            the collection of entities to process
@@ -87,7 +92,7 @@ public interface GenericDaoCrudOperations<T> {
 	/**
 	 * Saves or updates a collection of typed entities to the table which is
 	 * associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
 	 * @param ts
 	 *            the bunch of entities which are given by the overloaded method
@@ -97,25 +102,28 @@ public interface GenericDaoCrudOperations<T> {
 	/**
 	 * Updates the serializable entity with type t at the table which is
 	 * associated with the concerning type
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public void update(T entity);
 
 	/**
 	 * Updates all given entities
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entities a {@link java.util.Collection} object.
+	 * @param entities
+	 *            a {@link java.util.Collection} object.
 	 */
 	public void updateAll(Collection<T> entities);
 
 	/**
 	 * Updates all given entities
-	 *
+	 * 
 	 * @author Denis Neuling <dn@cloudcontrol.de>
-	 * @param entities a T object.
+	 * @param entities
+	 *            a T object.
 	 */
 	public void updateAll(T... entities);
 }

@@ -19,16 +19,19 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import com.db2eshop.models.support.AbstractModel;
 import com.db2eshop.persistence.exception.ValidationException;
 
-
 /**
- * <p>Abstract AbstractDao class.</p>
- *
- * @author Denis Nuling (denisneuling@gmail.com)
- *
+ * <p>
+ * Abstract AbstractDao class.
+ * </p>
+ * 
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
  */
 @SuppressWarnings({ "unchecked" })
 @Component
-public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateDaoSupport implements GenericDaoCrudOperations<T>, GenericDaoOperations<T> {
+public abstract class AbstractDao<T extends AbstractModel<T>> extends
+		HibernateDaoSupport implements GenericDaoCrudOperations<T>,
+		GenericDaoOperations<T> {
 	protected final Log log = LogFactory.getLog(getClass());
 
 	@Autowired
@@ -37,16 +40,22 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	protected Class<T> clazz;
 
 	/**
-	 * <p>Constructor for AbstractDao.</p>
+	 * <p>
+	 * Constructor for AbstractDao.
+	 * </p>
 	 */
 	public AbstractDao() {
 	}
 
 	/**
-	 * <p>Constructor for AbstractDao.</p>
-	 *
-	 * @param sessionFactory a {@link org.hibernate.SessionFactory} object.
-	 * @param clazz a {@link java.lang.Class} object.
+	 * <p>
+	 * Constructor for AbstractDao.
+	 * </p>
+	 * 
+	 * @param sessionFactory
+	 *            a {@link org.hibernate.SessionFactory} object.
+	 * @param clazz
+	 *            a {@link java.lang.Class} object.
 	 */
 	public AbstractDao(SessionFactory sessionFactory, Class<T> clazz) {
 		this.setSessionFactory(sessionFactory);
@@ -54,9 +63,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>delete.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * delete.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 */
 	public void delete(T entity) {
 		log.debug("Deleting " + entity.getClass());
@@ -65,26 +77,34 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>deleteAll.</p>
+	 * <p>
+	 * deleteAll.
+	 * </p>
 	 */
 	public void deleteAll() {
 		log.debug("Deleting all of " + this.clazz.getClass());
 
-		this.getHibernateTemplate().deleteAll(this.getHibernateTemplate().loadAll(this.clazz));
+		this.getHibernateTemplate().deleteAll(
+				this.getHibernateTemplate().loadAll(this.clazz));
 	}
 
 	/**
-	 * <p>evict.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * evict.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 */
 	public void evict(T entity) {
 		this.getHibernateTemplate().evict(entity);
 	}
 
 	/**
-	 * <p>findAll.</p>
-	 *
+	 * <p>
+	 * findAll.
+	 * </p>
+	 * 
 	 * @return a {@link java.util.List} object.
 	 */
 	public List<T> findAll() {
@@ -95,23 +115,35 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 
 	/** {@inheritDoc} */
 	public List<T> findBy(String field, Object value) {
-		log.debug("Finding by " + field + " = " + value.toString() + " of " + this.clazz.getClass());
+		log.debug("Finding by " + field + " = " + value.toString() + " of "
+				+ this.clazz.getClass());
 
-		return this.getHibernateTemplate().find("from " + this.clazz.getName() + " where " + field + "=?", value);
+		return this.getHibernateTemplate().find(
+				"from " + this.clazz.getName() + " where " + field + "=?",
+				value);
 	}
 
 	/** {@inheritDoc} */
-	public List<T> findBy(String field1, String field2, Object value1, Object value2) {
-		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getClass());
+	public List<T> findBy(String field1, String field2, Object value1,
+			Object value2) {
+		log.debug("Finding by " + field1 + " = " + value1.toString() + " and "
+				+ field2 + " = " + value2.toString() + " of "
+				+ this.clazz.getClass());
 
-		return this.getHibernateTemplate().find("from " + this.clazz.getName() + " where " + field1 + "=? and " + field2 + "=?", value1, value2);
+		return this.getHibernateTemplate().find(
+				"from " + this.clazz.getName() + " where " + field1 + "=? and "
+						+ field2 + "=?", value1, value2);
 	}
 
 	/** {@inheritDoc} */
-	public List<T> findBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
-		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getClass());
+	public List<T> findBy(String field1, String field2, String field3,
+			Object value1, Object value2, Object value3) {
+		log.debug("Finding by " + field1 + " = " + value1.toString() + " and "
+				+ field2 + " = " + value2.toString() + " and " + field3 + " = "
+				+ value3.toString() + "of " + this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field1 + "=? " + "and " + field2 + "=? " + "and " + field3 + "=?";
+		String query = "from " + this.clazz.getName() + " " + "where " + field1
+				+ "=? " + "and " + field2 + "=? " + "and " + field3 + "=?";
 		return this.getHibernateTemplate().find(query, value1, value2, value3);
 	}
 
@@ -124,9 +156,11 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 
 	/** {@inheritDoc} */
 	public T findUniqueBy(String field, Object value) {
-		log.debug("Finding unique by " + field + " = " + value.toString() + " of " + this.clazz.getClass());
+		log.debug("Finding unique by " + field + " = " + value.toString()
+				+ " of " + this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field + "=?";
+		String query = "from " + this.clazz.getName() + " " + "where " + field
+				+ "=?";
 
 		List<T> entities = this.getHibernateTemplate().find(query, value);
 
@@ -140,41 +174,56 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
-	public T findUniqueBy(String field1, String field2, Object value1, Object value2) {
-		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getClass());
+	public T findUniqueBy(String field1, String field2, Object value1,
+			Object value2) {
+		log.debug("Finding unique by " + field1 + " = " + value1.toString()
+				+ " and " + field2 + " = " + value2.toString() + " of "
+				+ this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field1 + "=? " + "and " + field2 + "=?";
+		String query = "from " + this.clazz.getName() + " " + "where " + field1
+				+ "=? " + "and " + field2 + "=?";
 
-		List<T> entities = this.getHibernateTemplate().find(query, value1, value2);
+		List<T> entities = this.getHibernateTemplate().find(query, value1,
+				value2);
 
 		if (entities == null || entities.size() == 0) {
 			return null;
 		} else if (entities.size() == 1) {
 			return entities.get(0);
 		} else {
-			throw new RuntimeException("The field " + field1 + " or " + field2 + " is not unique");
+			throw new RuntimeException("The field " + field1 + " or " + field2
+					+ " is not unique");
 		}
 	}
 
 	/** {@inheritDoc} */
-	public T findUniqueBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
-		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getClass());
+	public T findUniqueBy(String field1, String field2, String field3,
+			Object value1, Object value2, Object value3) {
+		log.debug("Finding unique by " + field1 + " = " + value1.toString()
+				+ " and " + field2 + " = " + value2.toString() + " and "
+				+ field3 + " = " + value3.toString() + "of "
+				+ this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field1 + "=? " + "and " + field2 + "=? " + "and " + field3 + "=? ";
+		String query = "from " + this.clazz.getName() + " " + "where " + field1
+				+ "=? " + "and " + field2 + "=? " + "and " + field3 + "=? ";
 
-		List<T> entities = this.getHibernateTemplate().find(query, value1, value2, value3);
+		List<T> entities = this.getHibernateTemplate().find(query, value1,
+				value2, value3);
 
 		if (entities == null || entities.size() == 0) {
 			return null;
 		} else if (entities.size() == 1) {
 			return entities.get(0);
 		} else {
-			throw new RuntimeException("The field " + field1 + " or " + field2 + " is not unique");
+			throw new RuntimeException("The field " + field1 + " or " + field2
+					+ " is not unique");
 		}
 	}
 
 	/**
-	 * <p>flush.</p>
+	 * <p>
+	 * flush.
+	 * </p>
 	 */
 	public void flush() {
 		log.debug("Flushing Hibernate Session");
@@ -183,9 +232,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>merge.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * merge.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 * @return a T object.
 	 */
 	public T merge(T entity) {
@@ -193,26 +245,34 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>persist.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * persist.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 */
 	public void persist(T entity) {
 		this.getHibernateTemplate().persist(entity);
 	}
 
 	/**
-	 * <p>refresh.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * refresh.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 */
 	public void refresh(T entity) {
 		this.getHibernateTemplate().refresh(entity);
 	}
 
 	/**
-	 * <p>rowCount.</p>
-	 *
+	 * <p>
+	 * rowCount.
+	 * </p>
+	 * 
 	 * @return a int.
 	 */
 	public int rowCount() {
@@ -220,9 +280,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>save.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * save.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 * @return a {@link java.io.Serializable} object.
 	 */
 	public Serializable save(T entity) {
@@ -247,9 +310,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>saveAll.</p>
-	 *
-	 * @param entities a T object.
+	 * <p>
+	 * saveAll.
+	 * </p>
+	 * 
+	 * @param entities
+	 *            a T object.
 	 */
 	public void saveAll(T... entities) {
 		log.debug("Saving Collection of untyped Entities");
@@ -267,9 +333,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * @return
 	 */
 	/**
-	 * <p>saveAndFlush.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * saveAndFlush.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 * @return a {@link java.io.Serializable} object.
 	 */
 	@Lazy(value = false)
@@ -280,9 +349,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>saveOrUpdate.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * saveOrUpdate.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 */
 	public void saveOrUpdate(T entity) {
 		log.debug("Saving or updating " + entity.getClass());
@@ -297,15 +369,18 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		log.debug("Saving or updating collection");
 
 		for (T entity : ts) {
-//			this.validate(entity);
+			// this.validate(entity);
 			this.getHibernateTemplate().saveOrUpdate(entity);
 		}
 	}
 
 	/**
-	 * <p>saveOrUpdateAll.</p>
-	 *
-	 * @param ts a T object.
+	 * <p>
+	 * saveOrUpdateAll.
+	 * </p>
+	 * 
+	 * @param ts
+	 *            a T object.
 	 */
 	public void saveOrUpdateAll(T... ts) {
 		log.debug("Saving or updating collection");
@@ -318,15 +393,19 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 
 	/** {@inheritDoc} */
 	public void setReadOnly(T t, boolean readOnly) {
-		log.debug((readOnly ? "S" : "Uns") + "etting " + this.clazz.getClass() + " readonly");
+		log.debug((readOnly ? "S" : "Uns") + "etting " + this.clazz.getClass()
+				+ " readonly");
 
 		this.getSession().setReadOnly(t, readOnly);
 	}
 
 	/**
-	 * <p>update.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * update.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 */
 	public void update(T entity) {
 		log.debug("Updating " + entity.getClass());
@@ -347,9 +426,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>updateAll.</p>
-	 *
-	 * @param entities a T object.
+	 * <p>
+	 * updateAll.
+	 * </p>
+	 * 
+	 * @param entities
+	 *            a T object.
 	 */
 	public void updateAll(T... entities) {
 		log.debug("Saving Collection of " + this.clazz.getClass());
@@ -361,17 +443,21 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>validate.</p>
-	 *
-	 * @param entity a T object.
+	 * <p>
+	 * validate.
+	 * </p>
+	 * 
+	 * @param entity
+	 *            a T object.
 	 */
 	public void validate(T entity) {
 		log.debug("Validating " + entity.getClass());
 
-		Set<ConstraintViolation<T>> constraintViolations = this.validator.validate(entity);
+		Set<ConstraintViolation<T>> constraintViolations = this.validator
+				.validate(entity);
 		if (constraintViolations.size() > 0) {
 			throw new ValidationException(constraintViolations);
 		}
 	}
-	
+
 }

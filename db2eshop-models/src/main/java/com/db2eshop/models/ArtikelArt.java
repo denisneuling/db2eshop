@@ -1,15 +1,17 @@
-package com.db2eshop.models.support;
+package com.db2eshop.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.db2eshop.models.support.AbstractModel;
+
 @Entity
 /**
  * <p>ArtikelArt class.</p>
  *
- * @author Denis Nuling (denisneuling@gmail.com)
+ * @author Denis Neuling (denisneuling@gmail.com)
  *
  */
 public class ArtikelArt extends AbstractModel<ArtikelArt> {
@@ -18,16 +20,18 @@ public class ArtikelArt extends AbstractModel<ArtikelArt> {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Column
 	private String name;
-	
+
 	/**
-	 * <p>Constructor for ArtikelArt.</p>
+	 * <p>
+	 * Constructor for ArtikelArt.
+	 * </p>
 	 */
-	public ArtikelArt(){
+	public ArtikelArt() {
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public Long getId() {
@@ -41,8 +45,10 @@ public class ArtikelArt extends AbstractModel<ArtikelArt> {
 	}
 
 	/**
-	 * <p>Getter for the field <code>name</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>name</code>.
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -50,9 +56,12 @@ public class ArtikelArt extends AbstractModel<ArtikelArt> {
 	}
 
 	/**
-	 * <p>Setter for the field <code>name</code>.</p>
-	 *
-	 * @param name a {@link java.lang.String} object.
+	 * <p>
+	 * Setter for the field <code>name</code>.
+	 * </p>
+	 * 
+	 * @param name
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setName(String name) {
 		this.name = name;

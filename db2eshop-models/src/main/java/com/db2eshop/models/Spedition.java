@@ -1,4 +1,4 @@
-package com.db2eshop.models.support;
+package com.db2eshop.models;
 
 import java.io.Serializable;
 
@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.db2eshop.models.support.AbstractModel;
+
 @Entity
 /**
  * <p>Spedition class.</p>
  *
- * @author Denis Nuling (denisneuling@gmail.com)
+ * @author Denis Neuling (denisneuling@gmail.com)
  *
  */
 public class Spedition extends AbstractModel<Spedition> implements Serializable {
@@ -20,22 +22,26 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Column
 	private String name;
-	
+
 	@Column
 	private String telefonNummer;
 
 	/**
-	 * <p>Constructor for Spedition.</p>
+	 * <p>
+	 * Constructor for Spedition.
+	 * </p>
 	 */
-	public Spedition(){
+	public Spedition() {
 	}
-	
+
 	/**
-	 * <p>Getter for the field <code>name</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>name</code>.
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -43,17 +49,22 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	}
 
 	/**
-	 * <p>Setter for the field <code>name</code>.</p>
-	 *
-	 * @param name a {@link java.lang.String} object.
+	 * <p>
+	 * Setter for the field <code>name</code>.
+	 * </p>
+	 * 
+	 * @param name
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * <p>Getter for the field <code>telefonNummer</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>telefonNummer</code>.
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getTelefonNummer() {
@@ -61,9 +72,12 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	}
 
 	/**
-	 * <p>Setter for the field <code>telefonNummer</code>.</p>
-	 *
-	 * @param telefonNummer a {@link java.lang.String} object.
+	 * <p>
+	 * Setter for the field <code>telefonNummer</code>.
+	 * </p>
+	 * 
+	 * @param telefonNummer
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setTelefonNummer(String telefonNummer) {
 		this.telefonNummer = telefonNummer;

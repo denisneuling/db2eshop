@@ -3,12 +3,15 @@ package com.db2eshop.models.support;
 import java.io.Serializable;
 
 /**
- * <p>Abstract AbstractModel class.</p>
- *
- * @author Denis Nuling (denisneuling@gmail.com)
- *
+ * <p>
+ * Abstract AbstractModel class.
+ * </p>
+ * 
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
  */
-public abstract class AbstractModel<T extends AbstractModel<T>> implements Serializable {
+public abstract class AbstractModel<T extends AbstractModel<T>> implements
+		Serializable {
 	private static final long serialVersionUID = 2375311756226868202L;
 
 	protected Class<T> clazz;
@@ -38,8 +41,10 @@ public abstract class AbstractModel<T extends AbstractModel<T>> implements Seria
 	}
 
 	/**
-	 * <p>getId.</p>
-	 *
+	 * <p>
+	 * getId.
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.Long} object.
 	 */
 	public abstract Long getId();
@@ -54,9 +59,12 @@ public abstract class AbstractModel<T extends AbstractModel<T>> implements Seria
 	}
 
 	/**
-	 * <p>setId.</p>
-	 *
-	 * @param id a {@link java.lang.Long} object.
+	 * <p>
+	 * setId.
+	 * </p>
+	 * 
+	 * @param id
+	 *            a {@link java.lang.Long} object.
 	 */
 	public abstract void setId(Long id);
 

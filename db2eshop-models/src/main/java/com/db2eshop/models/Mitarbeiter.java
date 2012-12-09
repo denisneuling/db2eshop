@@ -1,4 +1,4 @@
-package com.db2eshop.models.support;
+package com.db2eshop.models;
 
 import java.io.Serializable;
 
@@ -7,14 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.db2eshop.models.support.AbstractModel;
+
 @Entity
 /**
  * <p>Mitarbeiter class.</p>
  *
- * @author Denis Nuling (denisneuling@gmail.com)
+ * @author Denis Neuling (denisneuling@gmail.com)
  *
  */
-public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializable{
+public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements
+		Serializable {
 	private static final long serialVersionUID = 8135335874077911975L;
 
 	@Id
@@ -23,16 +26,18 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 
 	@Column
 	private String name;
-	
+
 	@Column
 	private String vorname;
-	
+
 	/**
-	 * <p>Constructor for Mitarbeiter.</p>
+	 * <p>
+	 * Constructor for Mitarbeiter.
+	 * </p>
 	 */
-	public Mitarbeiter(){
+	public Mitarbeiter() {
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public Long getId() {
@@ -46,8 +51,10 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	}
 
 	/**
-	 * <p>Getter for the field <code>name</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>name</code>.
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -55,17 +62,22 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	}
 
 	/**
-	 * <p>Setter for the field <code>name</code>.</p>
-	 *
-	 * @param name a {@link java.lang.String} object.
+	 * <p>
+	 * Setter for the field <code>name</code>.
+	 * </p>
+	 * 
+	 * @param name
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * <p>Getter for the field <code>vorname</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>vorname</code>.
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getVorname() {
@@ -73,9 +85,12 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	}
 
 	/**
-	 * <p>Setter for the field <code>vorname</code>.</p>
-	 *
-	 * @param vorname a {@link java.lang.String} object.
+	 * <p>
+	 * Setter for the field <code>vorname</code>.
+	 * </p>
+	 * 
+	 * @param vorname
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setVorname(String vorname) {
 		this.vorname = vorname;
