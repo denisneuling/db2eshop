@@ -20,6 +20,12 @@ import com.db2eshop.models.support.AbstractModel;
 import com.db2eshop.persistence.exception.ValidationException;
 
 
+/**
+ * <p>Abstract AbstractDao class.</p>
+ *
+ * @author Denis Nuling (denisneuling@gmail.com)
+ *
+ */
 @SuppressWarnings({ "unchecked" })
 @Component
 public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateDaoSupport implements GenericDaoCrudOperations<T>, GenericDaoOperations<T> {
@@ -30,48 +36,78 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 
 	protected Class<T> clazz;
 
+	/**
+	 * <p>Constructor for AbstractDao.</p>
+	 */
 	public AbstractDao() {
 	}
 
+	/**
+	 * <p>Constructor for AbstractDao.</p>
+	 *
+	 * @param sessionFactory a {@link org.hibernate.SessionFactory} object.
+	 * @param clazz a {@link java.lang.Class} object.
+	 */
 	public AbstractDao(SessionFactory sessionFactory, Class<T> clazz) {
 		this.setSessionFactory(sessionFactory);
 		this.clazz = clazz;
 	}
 
+	/**
+	 * <p>delete.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void delete(T entity) {
 		log.debug("Deleting " + entity.getClass());
 
 		this.getHibernateTemplate().delete(entity);
 	}
 
+	/**
+	 * <p>deleteAll.</p>
+	 */
 	public void deleteAll() {
 		log.debug("Deleting all of " + this.clazz.getClass());
 
 		this.getHibernateTemplate().deleteAll(this.getHibernateTemplate().loadAll(this.clazz));
 	}
 
+	/**
+	 * <p>evict.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void evict(T entity) {
 		this.getHibernateTemplate().evict(entity);
 	}
 
+	/**
+	 * <p>findAll.</p>
+	 *
+	 * @return a {@link java.util.List} object.
+	 */
 	public List<T> findAll() {
 		log.debug("Loading all Rows of " + this.clazz.getClass());
 
 		return this.getHibernateTemplate().loadAll(this.clazz);
 	}
 
+	/** {@inheritDoc} */
 	public List<T> findBy(String field, Object value) {
 		log.debug("Finding by " + field + " = " + value.toString() + " of " + this.clazz.getClass());
 
 		return this.getHibernateTemplate().find("from " + this.clazz.getName() + " where " + field + "=?", value);
 	}
 
+	/** {@inheritDoc} */
 	public List<T> findBy(String field1, String field2, Object value1, Object value2) {
 		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getClass());
 
 		return this.getHibernateTemplate().find("from " + this.clazz.getName() + " where " + field1 + "=? and " + field2 + "=?", value1, value2);
 	}
 
+	/** {@inheritDoc} */
 	public List<T> findBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
 		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getClass());
 
@@ -79,12 +115,14 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		return this.getHibernateTemplate().find(query, value1, value2, value3);
 	}
 
+	/** {@inheritDoc} */
 	public T findById(Serializable id) {
 		log.debug("Loading " + this.clazz.getClass() + " by ID");
 
 		return ((T) this.getHibernateTemplate().load(this.clazz, id));
 	}
 
+	/** {@inheritDoc} */
 	public T findUniqueBy(String field, Object value) {
 		log.debug("Finding unique by " + field + " = " + value.toString() + " of " + this.clazz.getClass());
 
@@ -101,6 +139,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/** {@inheritDoc} */
 	public T findUniqueBy(String field1, String field2, Object value1, Object value2) {
 		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getClass());
 
@@ -117,6 +156,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/** {@inheritDoc} */
 	public T findUniqueBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
 		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getClass());
 
@@ -133,28 +173,58 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/**
+	 * <p>flush.</p>
+	 */
 	public void flush() {
 		log.debug("Flushing Hibernate Session");
 
 		this.getHibernateTemplate().flush();
 	}
 
+	/**
+	 * <p>merge.</p>
+	 *
+	 * @param entity a T object.
+	 * @return a T object.
+	 */
 	public T merge(T entity) {
 		return this.getHibernateTemplate().merge(entity);
 	}
 
+	/**
+	 * <p>persist.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void persist(T entity) {
 		this.getHibernateTemplate().persist(entity);
 	}
 
+	/**
+	 * <p>refresh.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void refresh(T entity) {
 		this.getHibernateTemplate().refresh(entity);
 	}
 
+	/**
+	 * <p>rowCount.</p>
+	 *
+	 * @return a int.
+	 */
 	public int rowCount() {
 		return this.findAll().size();
 	}
 
+	/**
+	 * <p>save.</p>
+	 *
+	 * @param entity a T object.
+	 * @return a {@link java.io.Serializable} object.
+	 */
 	public Serializable save(T entity) {
 		log.debug("Saving " + entity.getClass());
 
@@ -167,6 +237,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		return id;
 	}
 
+	/** {@inheritDoc} */
 	public void saveAll(Collection<T> ts) {
 		log.debug("Saving Collection of " + this.clazz.getClass());
 
@@ -175,6 +246,11 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/**
+	 * <p>saveAll.</p>
+	 *
+	 * @param entities a T object.
+	 */
 	public void saveAll(T... entities) {
 		log.debug("Saving Collection of untyped Entities");
 
@@ -190,6 +266,12 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * 
 	 * @return
 	 */
+	/**
+	 * <p>saveAndFlush.</p>
+	 *
+	 * @param entity a T object.
+	 * @return a {@link java.io.Serializable} object.
+	 */
 	@Lazy(value = false)
 	public Serializable saveAndFlush(T entity) {
 		Serializable id = this.save(entity);
@@ -197,6 +279,11 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		return id;
 	}
 
+	/**
+	 * <p>saveOrUpdate.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void saveOrUpdate(T entity) {
 		log.debug("Saving or updating " + entity.getClass());
 
@@ -205,6 +292,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		this.refresh(entity);
 	}
 
+	/** {@inheritDoc} */
 	public void saveOrUpdateAll(Collection<T> ts) {
 		log.debug("Saving or updating collection");
 
@@ -214,6 +302,11 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/**
+	 * <p>saveOrUpdateAll.</p>
+	 *
+	 * @param ts a T object.
+	 */
 	public void saveOrUpdateAll(T... ts) {
 		log.debug("Saving or updating collection");
 
@@ -223,12 +316,18 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/** {@inheritDoc} */
 	public void setReadOnly(T t, boolean readOnly) {
 		log.debug((readOnly ? "S" : "Uns") + "etting " + this.clazz.getClass() + " readonly");
 
 		this.getSession().setReadOnly(t, readOnly);
 	}
 
+	/**
+	 * <p>update.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void update(T entity) {
 		log.debug("Updating " + entity.getClass());
 
@@ -237,6 +336,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		this.refresh(entity);
 	}
 
+	/** {@inheritDoc} */
 	public void updateAll(Collection<T> entities) {
 		log.debug("Saving Collection of " + this.clazz.getClass());
 
@@ -246,6 +346,11 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/**
+	 * <p>updateAll.</p>
+	 *
+	 * @param entities a T object.
+	 */
 	public void updateAll(T... entities) {
 		log.debug("Saving Collection of " + this.clazz.getClass());
 
@@ -255,6 +360,11 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
+	/**
+	 * <p>validate.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void validate(T entity) {
 		log.debug("Validating " + entity.getClass());
 

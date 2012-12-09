@@ -5,7 +5,8 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 
 /**
- * 
+ * <p>ValidationException class.</p>
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
  *
  */
@@ -21,6 +22,12 @@ public class ValidationException extends RuntimeException {
 		return message;
 	}
 
+	/**
+	 * <p>Constructor for ValidationException.</p>
+	 *
+	 * @param contraintViolations a {@link java.util.Set} object.
+	 * @param <T> a T object.
+	 */
 	public <T> ValidationException(Set<ConstraintViolation<T>> contraintViolations) {
 		super(createMessage(contraintViolations));
 	}

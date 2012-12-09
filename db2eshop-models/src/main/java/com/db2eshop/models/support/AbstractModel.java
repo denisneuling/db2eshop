@@ -2,11 +2,18 @@ package com.db2eshop.models.support;
 
 import java.io.Serializable;
 
+/**
+ * <p>Abstract AbstractModel class.</p>
+ *
+ * @author Denis Nuling (denisneuling@gmail.com)
+ *
+ */
 public abstract class AbstractModel<T extends AbstractModel<T>> implements Serializable {
 	private static final long serialVersionUID = 2375311756226868202L;
 
 	protected Class<T> clazz;
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -30,8 +37,14 @@ public abstract class AbstractModel<T extends AbstractModel<T>> implements Seria
 		return true;
 	}
 
+	/**
+	 * <p>getId.</p>
+	 *
+	 * @return a {@link java.lang.Long} object.
+	 */
 	public abstract Long getId();
 
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -40,6 +53,11 @@ public abstract class AbstractModel<T extends AbstractModel<T>> implements Seria
 		return result;
 	}
 
+	/**
+	 * <p>setId.</p>
+	 *
+	 * @param id a {@link java.lang.Long} object.
+	 */
 	public abstract void setId(Long id);
 
 }
