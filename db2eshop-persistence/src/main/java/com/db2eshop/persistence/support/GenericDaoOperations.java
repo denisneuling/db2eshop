@@ -15,7 +15,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Removes the given entity from the hibernate cache
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param t
 	 *            the entity to remove from the cache
 	 */
@@ -25,7 +25,7 @@ public interface GenericDaoOperations<T> {
 	 * Retrieves a list of entities with the concerned value of the concerned
 	 * field
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param field
 	 *            the field to evaluate
 	 * @param value
@@ -38,7 +38,7 @@ public interface GenericDaoOperations<T> {
 	 * Retrieves the serializable entities with the concerned id from the
 	 * concerned table
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param id
 	 *            the serializable id of the entity
 	 * @return t the entity which was retrieved
@@ -48,7 +48,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Retrieves an entitiy with the concerned value of the concerned field
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param field
 	 *            the field to evaluate
 	 * @param value
@@ -60,14 +60,14 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Flushes the hibernate Session
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 */
 	public void flush();
 
 	/**
 	 * Merges a given entity
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param t
 	 *            the entity to merge
 	 * @return entity the merged entity
@@ -77,7 +77,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Persist a given entity
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param t
 	 *            the entity to persist
 	 */
@@ -86,7 +86,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Refreshs a given entity all over the persistence context
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param t
 	 *            the entity to refresh
 	 */
@@ -95,7 +95,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Counts all rows of the associated entity
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @return count the count of rows
 	 */
 	public int rowCount();
@@ -103,7 +103,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Sets the entity to readonly mode at the current persistence context
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param readOnly
 	 *            the boolean value of readonly
 	 * @param entity
@@ -114,7 +114,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * Validates the entity
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param entity
 	 *            a T object.
 	 */
@@ -123,7 +123,7 @@ public interface GenericDaoOperations<T> {
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2;
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param field1
 	 *            the field to look for a given
 	 * @param field2
@@ -141,7 +141,7 @@ public interface GenericDaoOperations<T> {
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2
 	 * AND field3 = value3;
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param field1
 	 *            the field to look for a given
 	 * @param field2
@@ -163,7 +163,7 @@ public interface GenericDaoOperations<T> {
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2;
 	 * but unique!
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param field1
 	 *            the field to look for a given
 	 * @param field2
@@ -181,7 +181,7 @@ public interface GenericDaoOperations<T> {
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2
 	 * AND field3 = value3; but unique!
 	 * 
-	 * @author Denis Neuling <dn@cloudcontrol.de>
+	 * 
 	 * @param field1
 	 *            the field to look for a given
 	 * @param field2
