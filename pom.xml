@@ -13,6 +13,7 @@
 	<module>db2eshop-models</module>
 	<module>db2eshop-gui</module>
 	<module>db2eshop-governance</module>
+	<module>db2eshop-annotations</module>
 	</modules>
 
 	<properties>
