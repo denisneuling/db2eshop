@@ -15,13 +15,10 @@ import javax.validation.ConstraintViolation;
 public class ValidationException extends RuntimeException {
 	private static final long serialVersionUID = -4971115570135519005L;
 
-	private static <T> String createMessage(
-			Set<ConstraintViolation<T>> contraintViolations) {
+	private static <T> String createMessage(Set<ConstraintViolation<T>> contraintViolations) {
 		String message = "Invalid Bean found[\r\n";
 		for (ConstraintViolation<?> violation : contraintViolations) {
-			message += "\t" + violation.getLeafBean() + "#"
-					+ violation.getPropertyPath() + " "
-					+ violation.getMessage() + ",\r\n";
+			message += "\t" + violation.getLeafBean() + "#" + violation.getPropertyPath() + " " + violation.getMessage() + ",\r\n";
 		}
 		message += "]";
 		return message;
@@ -37,8 +34,7 @@ public class ValidationException extends RuntimeException {
 	 * @param <T>
 	 *            a T object.
 	 */
-	public <T> ValidationException(
-			Set<ConstraintViolation<T>> contraintViolations) {
+	public <T> ValidationException(Set<ConstraintViolation<T>> contraintViolations) {
 		super(createMessage(contraintViolations));
 	}
 

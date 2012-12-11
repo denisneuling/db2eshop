@@ -10,8 +10,7 @@ import java.io.Serializable;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public abstract class AbstractModel<T extends AbstractModel<T>> implements
-		Serializable {
+public abstract class AbstractModel<T extends AbstractModel<T>> implements Serializable {
 	private static final long serialVersionUID = 2375311756226868202L;
 
 	protected Class<T> clazz;

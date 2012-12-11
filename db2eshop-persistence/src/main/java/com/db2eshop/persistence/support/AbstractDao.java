@@ -29,9 +29,7 @@ import com.db2eshop.persistence.exception.ValidationException;
  */
 @SuppressWarnings({ "unchecked" })
 @Component
-public abstract class AbstractDao<T extends AbstractModel<T>> extends
-		HibernateDaoSupport implements GenericDaoCrudOperations<T>,
-		GenericDaoOperations<T> {
+public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateDaoSupport implements GenericDaoCrudOperations<T>, GenericDaoOperations<T> {
 	protected final Log log = LogFactory.getLog(getClass());
 
 	@Autowired
@@ -84,8 +82,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends
 	public void deleteAll() {
 		log.debug("Deleting all of " + this.clazz.getClass());
 
-		this.getHibernateTemplate().deleteAll(
-				this.getHibernateTemplate().loadAll(this.clazz));
+		this.getHibernateTemplate().deleteAll(this.getHibernateTemplate().loadAll(this.clazz));
 	}
 
 	/**
@@ -115,35 +112,23 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends
 
 	/** {@inheritDoc} */
 	public List<T> findBy(String field, Object value) {
-		log.debug("Finding by " + field + " = " + value.toString() + " of "
-				+ this.clazz.getClass());
+		log.debug("Finding by " + field + " = " + value.toString() + " of " + this.clazz.getClass());
 
-		return this.getHibernateTemplate().find(
-				"from " + this.clazz.getName() + " where " + field + "=?",
-				value);
+		return this.getHibernateTemplate().find("from " + this.clazz.getName() + " where " + field + "=?", value);
 	}
 
 	/** {@inheritDoc} */
-	public List<T> findBy(String field1, String field2, Object value1,
-			Object value2) {
-		log.debug("Finding by " + field1 + " = " + value1.toString() + " and "
-				+ field2 + " = " + value2.toString() + " of "
-				+ this.clazz.getClass());
+	public List<T> findBy(String field1, String field2, Object value1, Object value2) {
+		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getClass());
 
-		return this.getHibernateTemplate().find(
-				"from " + this.clazz.getName() + " where " + field1 + "=? and "
-						+ field2 + "=?", value1, value2);
+		return this.getHibernateTemplate().find("from " + this.clazz.getName() + " where " + field1 + "=? and " + field2 + "=?", value1, value2);
 	}
 
 	/** {@inheritDoc} */
-	public List<T> findBy(String field1, String field2, String field3,
-			Object value1, Object value2, Object value3) {
-		log.debug("Finding by " + field1 + " = " + value1.toString() + " and "
-				+ field2 + " = " + value2.toString() + " and " + field3 + " = "
-				+ value3.toString() + "of " + this.clazz.getClass());
+	public List<T> findBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
+		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field1
-				+ "=? " + "and " + field2 + "=? " + "and " + field3 + "=?";
+		String query = "from " + this.clazz.getName() + " " + "where " + field1 + "=? " + "and " + field2 + "=? " + "and " + field3 + "=?";
 		return this.getHibernateTemplate().find(query, value1, value2, value3);
 	}
 
@@ -156,11 +141,9 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends
 
 	/** {@inheritDoc} */
 	public T findUniqueBy(String field, Object value) {
-		log.debug("Finding unique by " + field + " = " + value.toString()
-				+ " of " + this.clazz.getClass());
+		log.debug("Finding unique by " + field + " = " + value.toString() + " of " + this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field
-				+ "=?";
+		String query = "from " + this.clazz.getName() + " " + "where " + field + "=?";
 
 		List<T> entities = this.getHibernateTemplate().find(query, value);
 
@@ -174,49 +157,36 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends
 	}
 
 	/** {@inheritDoc} */
-	public T findUniqueBy(String field1, String field2, Object value1,
-			Object value2) {
-		log.debug("Finding unique by " + field1 + " = " + value1.toString()
-				+ " and " + field2 + " = " + value2.toString() + " of "
-				+ this.clazz.getClass());
+	public T findUniqueBy(String field1, String field2, Object value1, Object value2) {
+		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field1
-				+ "=? " + "and " + field2 + "=?";
+		String query = "from " + this.clazz.getName() + " " + "where " + field1 + "=? " + "and " + field2 + "=?";
 
-		List<T> entities = this.getHibernateTemplate().find(query, value1,
-				value2);
+		List<T> entities = this.getHibernateTemplate().find(query, value1, value2);
 
 		if (entities == null || entities.size() == 0) {
 			return null;
 		} else if (entities.size() == 1) {
 			return entities.get(0);
 		} else {
-			throw new RuntimeException("The field " + field1 + " or " + field2
-					+ " is not unique");
+			throw new RuntimeException("The field " + field1 + " or " + field2 + " is not unique");
 		}
 	}
 
 	/** {@inheritDoc} */
-	public T findUniqueBy(String field1, String field2, String field3,
-			Object value1, Object value2, Object value3) {
-		log.debug("Finding unique by " + field1 + " = " + value1.toString()
-				+ " and " + field2 + " = " + value2.toString() + " and "
-				+ field3 + " = " + value3.toString() + "of "
-				+ this.clazz.getClass());
+	public T findUniqueBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
+		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getClass());
 
-		String query = "from " + this.clazz.getName() + " " + "where " + field1
-				+ "=? " + "and " + field2 + "=? " + "and " + field3 + "=? ";
+		String query = "from " + this.clazz.getName() + " " + "where " + field1 + "=? " + "and " + field2 + "=? " + "and " + field3 + "=? ";
 
-		List<T> entities = this.getHibernateTemplate().find(query, value1,
-				value2, value3);
+		List<T> entities = this.getHibernateTemplate().find(query, value1, value2, value3);
 
 		if (entities == null || entities.size() == 0) {
 			return null;
 		} else if (entities.size() == 1) {
 			return entities.get(0);
 		} else {
-			throw new RuntimeException("The field " + field1 + " or " + field2
-					+ " is not unique");
+			throw new RuntimeException("The field " + field1 + " or " + field2 + " is not unique");
 		}
 	}
 
@@ -393,8 +363,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends
 
 	/** {@inheritDoc} */
 	public void setReadOnly(T t, boolean readOnly) {
-		log.debug((readOnly ? "S" : "Uns") + "etting " + this.clazz.getClass()
-				+ " readonly");
+		log.debug((readOnly ? "S" : "Uns") + "etting " + this.clazz.getClass() + " readonly");
 
 		this.getSession().setReadOnly(t, readOnly);
 	}
@@ -453,8 +422,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends
 	public void validate(T entity) {
 		log.debug("Validating " + entity.getClass());
 
-		Set<ConstraintViolation<T>> constraintViolations = this.validator
-				.validate(entity);
+		Set<ConstraintViolation<T>> constraintViolations = this.validator.validate(entity);
 		if (constraintViolations.size() > 0) {
 			throw new ValidationException(constraintViolations);
 		}

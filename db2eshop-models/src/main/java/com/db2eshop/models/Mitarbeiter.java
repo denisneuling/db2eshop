@@ -16,8 +16,7 @@ import com.db2eshop.models.support.AbstractModel;
  * @author Denis Neuling (denisneuling@gmail.com)
  *
  */
-public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements
-		Serializable {
+public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializable {
 	private static final long serialVersionUID = 8135335874077911975L;
 
 	@Id

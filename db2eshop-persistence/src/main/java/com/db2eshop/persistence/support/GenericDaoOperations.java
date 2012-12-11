@@ -134,8 +134,7 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public List<T> findBy(String field1, String field2, Object value1,
-			Object value2);
+	public List<T> findBy(String field1, String field2, Object value1, Object value2);
 
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2
@@ -156,8 +155,7 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public List<T> findBy(String field1, String field2, String field3,
-			Object value1, Object value2, Object value3);
+	public List<T> findBy(String field1, String field2, String field3, Object value1, Object value2, Object value3);
 
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2;
@@ -174,8 +172,7 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public T findUniqueBy(String field1, String field2, Object value1,
-			Object value2);
+	public T findUniqueBy(String field1, String field2, Object value1, Object value2);
 
 	/**
 	 * SELECT * from <code><T></code> WHERE field1 = value1 AND field2 = value2
@@ -196,6 +193,5 @@ public interface GenericDaoOperations<T> {
 	 *            the value to look for at a given field
 	 * @return list the list of results by that query
 	 */
-	public T findUniqueBy(String field1, String field2, String field3,
-			Object value1, Object value2, Object value3);
+	public T findUniqueBy(String field1, String field2, String field3, Object value1, Object value2, Object value3);
 }
