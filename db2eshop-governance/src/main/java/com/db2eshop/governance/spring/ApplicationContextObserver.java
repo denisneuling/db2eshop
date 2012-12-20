@@ -11,6 +11,8 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.db2eshop.governance.spring.event.ContextEvent;
+
 @SuppressWarnings("rawtypes")
 public class ApplicationContextObserver extends Observable implements BeanPostProcessor, ApplicationContextAware, ApplicationListener {
 
@@ -35,6 +37,10 @@ public class ApplicationContextObserver extends Observable implements BeanPostPr
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		log.info(String.format("On %s Bean {%s} initialized.", applicationContext.getDisplayName(), beanName));
+		
+		this.setChanged();
+		this.notifyObservers(new ContextEvent(beanName));
+		
 		return bean;
 	}
 
@@ -45,11 +51,9 @@ public class ApplicationContextObserver extends Observable implements BeanPostPr
 
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
-		log.info("###############################" + event.getClass().getName() + "###############################");
-
 		if (event instanceof ContextRefreshedEvent) {
 			this.setChanged();
-			this.notifyObservers();
+			this.notifyObservers(new ContextEvent(ContextEvent.State.FINISHED));
 			refreshed = true;
 		}
 	}

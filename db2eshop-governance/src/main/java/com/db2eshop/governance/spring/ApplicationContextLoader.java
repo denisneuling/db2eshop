@@ -20,16 +20,12 @@ public class ApplicationContextLoader {
 	private ApplicationContextLoader() {
 		applicationContext = new ClassPathXmlApplicationContext(classpathConfigurationLocation);
 	}
-
+	
 	public ApplicationContext getApplicationContext() {
 		return applicationContext;
 	}
 
 	public void setApplicationContext(ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
-	}
-
-	public static void main(String[] args) {
-		ApplicationContextLoader.getInstance();
 	}
 }
