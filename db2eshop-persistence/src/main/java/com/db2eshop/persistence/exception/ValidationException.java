@@ -8,9 +8,9 @@ import javax.validation.ConstraintViolation;
  * <p>
  * ValidationException class.
  * </p>
- * 
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class ValidationException extends RuntimeException {
 	private static final long serialVersionUID = -4971115570135519005L;
@@ -28,7 +28,7 @@ public class ValidationException extends RuntimeException {
 	 * <p>
 	 * Constructor for ValidationException.
 	 * </p>
-	 * 
+	 *
 	 * @param contraintViolations
 	 *            a {@link java.util.Set} object.
 	 * @param <T>

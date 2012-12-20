@@ -12,7 +12,7 @@ import com.db2eshop.models.support.AbstractModel;
  * <p>Artikel class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- *
+ * @version $Id: $Id
  */
 public class Artikel extends AbstractModel<Artikel> {
 	private static final long serialVersionUID = 6709110157288379399L;
@@ -54,7 +54,7 @@ public class Artikel extends AbstractModel<Artikel> {
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -65,7 +65,7 @@ public class Artikel extends AbstractModel<Artikel> {
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
@@ -77,7 +77,7 @@ public class Artikel extends AbstractModel<Artikel> {
 	 * <p>
 	 * Getter for the field <code>anzahl</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a int.
 	 */
 	public int getAnzahl() {
@@ -88,7 +88,7 @@ public class Artikel extends AbstractModel<Artikel> {
 	 * <p>
 	 * Setter for the field <code>anzahl</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param anzahl
 	 *            a int.
 	 */
@@ -100,7 +100,7 @@ public class Artikel extends AbstractModel<Artikel> {
 	 * <p>
 	 * Getter for the field <code>beschreibung</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getBeschreibung() {
@@ -111,7 +111,7 @@ public class Artikel extends AbstractModel<Artikel> {
 	 * <p>
 	 * Setter for the field <code>beschreibung</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param beschreibung
 	 *            a {@link java.lang.String} object.
 	 */

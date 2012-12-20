@@ -9,6 +9,12 @@ import com.db2eshop.governance.spring.ApplicationContextLoader;
 import com.db2eshop.governance.spring.ApplicationContextObserver;
 import com.db2eshop.governance.spring.event.ContextEvent;
 
+/**
+ * <p>Launcher class.</p>
+ *
+ * @author ska
+ * @version $Id: $Id
+ */
 public class Launcher implements Observer {
 
 	private final Logger log = Logger.getLogger(this.getClass());
@@ -17,9 +23,17 @@ public class Launcher implements Observer {
 
 	private ApplicationContextLoader applicationContextLoader = ApplicationContextLoader.getInstance();
 
+	/**
+	 * <p>Constructor for Launcher.</p>
+	 */
 	public Launcher() {
 	}
 
+	/**
+	 * <p>main.</p>
+	 *
+	 * @param args an array of {@link java.lang.String} objects.
+	 */
 	public static void main(String[] args) {
 		Launcher launcher = new Launcher();
 		launcher.start();
@@ -34,6 +48,7 @@ public class Launcher implements Observer {
 		}
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof ContextEvent) {

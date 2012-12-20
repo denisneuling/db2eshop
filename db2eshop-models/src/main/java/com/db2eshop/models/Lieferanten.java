@@ -14,7 +14,7 @@ import com.db2eshop.models.support.AbstractModel;
  * <p>Lieferanten class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- *
+ * @version $Id: $Id
  */
 public class Lieferanten extends AbstractModel<Lieferanten> implements Serializable {
 	private static final long serialVersionUID = -1171168614829706963L;
@@ -53,7 +53,7 @@ public class Lieferanten extends AbstractModel<Lieferanten> implements Serializa
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -64,7 +64,7 @@ public class Lieferanten extends AbstractModel<Lieferanten> implements Serializa
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
@@ -76,7 +76,7 @@ public class Lieferanten extends AbstractModel<Lieferanten> implements Serializa
 	 * <p>
 	 * Getter for the field <code>telefon</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getTelefon() {
@@ -87,7 +87,7 @@ public class Lieferanten extends AbstractModel<Lieferanten> implements Serializa
 	 * <p>
 	 * Setter for the field <code>telefon</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param telefon
 	 *            a {@link java.lang.String} object.
 	 */

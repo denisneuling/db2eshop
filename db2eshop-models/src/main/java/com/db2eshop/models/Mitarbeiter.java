@@ -14,7 +14,7 @@ import com.db2eshop.models.support.AbstractModel;
  * <p>Mitarbeiter class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- *
+ * @version $Id: $Id
  */
 public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializable {
 	private static final long serialVersionUID = 8135335874077911975L;
@@ -53,7 +53,7 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -64,7 +64,7 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
@@ -76,7 +76,7 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	 * <p>
 	 * Getter for the field <code>vorname</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getVorname() {
@@ -87,7 +87,7 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	 * <p>
 	 * Setter for the field <code>vorname</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param vorname
 	 *            a {@link java.lang.String} object.
 	 */

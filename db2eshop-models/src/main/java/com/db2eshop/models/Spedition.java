@@ -14,7 +14,7 @@ import com.db2eshop.models.support.AbstractModel;
  * <p>Spedition class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- *
+ * @version $Id: $Id
  */
 public class Spedition extends AbstractModel<Spedition> implements Serializable {
 	private static final long serialVersionUID = 5226154843133542099L;
@@ -41,7 +41,7 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -52,7 +52,7 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
@@ -64,7 +64,7 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	 * <p>
 	 * Getter for the field <code>telefonNummer</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getTelefonNummer() {
@@ -75,7 +75,7 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	 * <p>
 	 * Setter for the field <code>telefonNummer</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param telefonNummer
 	 *            a {@link java.lang.String} object.
 	 */

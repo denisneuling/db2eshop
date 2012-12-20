@@ -6,9 +6,9 @@ import java.io.Serializable;
  * <p>
  * Abstract AbstractModel class.
  * </p>
- * 
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public abstract class AbstractModel<T extends AbstractModel<T>> implements Serializable {
 	private static final long serialVersionUID = 2375311756226868202L;
@@ -43,7 +43,7 @@ public abstract class AbstractModel<T extends AbstractModel<T>> implements Seria
 	 * <p>
 	 * getId.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.Long} object.
 	 */
 	public abstract Long getId();
@@ -61,7 +61,7 @@ public abstract class AbstractModel<T extends AbstractModel<T>> implements Seria
 	 * <p>
 	 * setId.
 	 * </p>
-	 * 
+	 *
 	 * @param id
 	 *            a {@link java.lang.Long} object.
 	 */

@@ -12,7 +12,7 @@ import com.db2eshop.persistence.support.AbstractDao;
  * <p>LieferantenDao class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- *
+ * @version $Id: $Id
  */
 public class LieferantenDao extends AbstractDao<Lieferanten> {
 
@@ -20,7 +20,7 @@ public class LieferantenDao extends AbstractDao<Lieferanten> {
 	 * <p>
 	 * Constructor for LieferantenDao.
 	 * </p>
-	 * 
+	 *
 	 * @param sessionFactory
 	 *            a {@link org.hibernate.SessionFactory} object.
 	 */

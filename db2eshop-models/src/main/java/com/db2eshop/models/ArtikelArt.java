@@ -12,7 +12,7 @@ import com.db2eshop.models.support.AbstractModel;
  * <p>ArtikelArt class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- *
+ * @version $Id: $Id
  */
 public class ArtikelArt extends AbstractModel<ArtikelArt> {
 	private static final long serialVersionUID = -9004421460842418357L;
@@ -48,7 +48,7 @@ public class ArtikelArt extends AbstractModel<ArtikelArt> {
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -59,7 +59,7 @@ public class ArtikelArt extends AbstractModel<ArtikelArt> {
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
