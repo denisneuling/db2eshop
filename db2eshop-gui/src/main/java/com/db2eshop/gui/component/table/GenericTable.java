@@ -1,15 +1,15 @@
 package com.db2eshop.gui.component.table;
 
-import javax.swing.table.AbstractTableModel;
+import javax.swing.JTable;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 @Component
-public abstract class GenericTable extends AbstractTableModel implements InitializingBean{
+public abstract class GenericTable extends JTable implements InitializingBean{
 	private static final long serialVersionUID = 1180747329897017816L;
 
-	private volatile String tableName;
+	private volatile String tableName = this.getClass().getSimpleName();
 	
 	public String getTableName(){
 		return tableName;

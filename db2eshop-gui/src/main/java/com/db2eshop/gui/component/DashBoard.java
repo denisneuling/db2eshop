@@ -19,14 +19,13 @@ public class DashBoard extends Container implements InitializingBean {
 	private EntityTabbedPane entityTabbedPane;
 	
 	public DashBoard() {
-		setLayout(new MigLayout("", "[grow]", "[]5[]"));
-		setMinimumSize(new Dimension(400,400));
-		
-		add(entityTabbedPane);
+		setLayout(new MigLayout(""));
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		add(entityTabbedPane);
+		
 		this.repaint();
 		this.setVisible(true);
 	}

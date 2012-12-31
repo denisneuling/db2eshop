@@ -1,5 +1,6 @@
 package com.db2eshop.gui;
 
+import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -39,7 +40,8 @@ public class MainFrame extends JFrame implements WindowListener,InitializingBean
 
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setResizable(false);
+		setMinimumSize(new Dimension(800, 600));
+//		setResizable(false);
 		addWindowListener(this);
 	}
 	
@@ -69,7 +71,7 @@ public class MainFrame extends JFrame implements WindowListener,InitializingBean
 		MigLayout layout = new MigLayout();
 		
 		this.getContentPane().setLayout(layout);
-		this.getContentPane().add(dashBoard, "north, grow");
+		this.getContentPane().add(dashBoard, "grow, push");
 		
 		this.pack();
 		this.setVisible(true);

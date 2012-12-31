@@ -1,5 +1,7 @@
 package com.db2eshop.gui.component.tab;
 
+import javax.swing.JScrollPane;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,5 +19,8 @@ public class LieferantenTab extends AbstractEntityTab{
 		return lieferantenTable.getTableName();
 	}
 	
-	
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		this.add(new JScrollPane(lieferantenTable), "grow, push");
+	}
 }
