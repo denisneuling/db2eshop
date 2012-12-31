@@ -1,6 +1,7 @@
 package com.db2eshop.gui;
 
 import javax.swing.JFrame;
+import net.miginfocom.swing.MigLayout;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,4 +30,5 @@ public class MainFrame extends JFrame {
 		lieferantenDao.findBy("name", "addresse", name , addresse);
 	}
 
+	setLayout(new MigLayout("", "[grow]", "[]5[]"));
 }
