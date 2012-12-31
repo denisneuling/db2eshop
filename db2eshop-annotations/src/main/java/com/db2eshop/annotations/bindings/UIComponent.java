@@ -12,9 +12,9 @@ import java.lang.annotation.Target;
  * @version $Id: $Id
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 public @interface UIComponent {
 
-	Class<java.awt.Component> value();
+	Class<?> value();
 
 }
