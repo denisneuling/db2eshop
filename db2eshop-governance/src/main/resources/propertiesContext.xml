@@ -16,9 +16,10 @@
 		<property name="locations">
 			<list>
 				<value>classpath*:config/datasource.properties</value>
+				<value>classpath*:config/datasource.${user.name}.properties</value>
 			</list>
 		</property>
-		<property name="ignoreResourceNotFound" value="false" />
+		<property name="ignoreResourceNotFound" value="true" />
 	</bean>
 
 </beans>
