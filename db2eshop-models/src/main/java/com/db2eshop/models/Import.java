@@ -19,7 +19,7 @@ import com.db2eshop.models.support.AbstractModel;
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-public class Import extends AbstractModel<Import> implements Serializable{
+public class Import extends AbstractModel<Import> implements Serializable {
 	private static final long serialVersionUID = -8663449394006905708L;
 
 	@Id
@@ -28,7 +28,7 @@ public class Import extends AbstractModel<Import> implements Serializable{
 
 	@Column
 	private int count;
-	
+
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
@@ -53,7 +53,7 @@ public class Import extends AbstractModel<Import> implements Serializable{
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+
 	public int getDate() {
 		return count;
 	}

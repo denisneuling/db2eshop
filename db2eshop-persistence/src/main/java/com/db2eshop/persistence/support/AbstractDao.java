@@ -27,8 +27,8 @@ import com.db2eshop.persistence.exception.ValidationException;
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-@SuppressWarnings({ "unchecked" })
 @Component
+@SuppressWarnings({ "unchecked" })
 public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateDaoSupport implements GenericDaoCrudOperations<T>, GenericDaoOperations<T> {
 	protected final Log log = LogFactory.getLog(getClass());
 

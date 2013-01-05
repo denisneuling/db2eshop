@@ -54,4 +54,4 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-</beans>	
+</beans>

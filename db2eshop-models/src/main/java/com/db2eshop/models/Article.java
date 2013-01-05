@@ -29,7 +29,7 @@ public class Article extends AbstractModel<Article> {
 
 	@Column
 	private String description;
-	
+
 	@Column
 	private ArticleType articleType;
 
@@ -41,10 +41,12 @@ public class Article extends AbstractModel<Article> {
 	public Article() {
 	}
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

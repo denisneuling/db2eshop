@@ -41,7 +41,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 *
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -52,7 +52,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 *
+	 * 
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
@@ -64,7 +64,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	 * <p>
 	 * Getter for the field <code>telephoneNummer</code>.
 	 * </p>
-	 *
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getTelephone() {
@@ -75,7 +75,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	 * <p>
 	 * Setter for the field <code>telephoneNummer</code>.
 	 * </p>
-	 *
+	 * 
 	 * @param telephoneNummer
 	 *            a {@link java.lang.String} object.
 	 */

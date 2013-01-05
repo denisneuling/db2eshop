@@ -18,7 +18,7 @@ import com.db2eshop.models.support.AbstractModel;
  */
 public class Supplier extends AbstractModel<Supplier> implements Serializable {
 	private static final long serialVersionUID = -6602792748963845414L;
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -53,7 +53,7 @@ public class Supplier extends AbstractModel<Supplier> implements Serializable {
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 *
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -64,7 +64,7 @@ public class Supplier extends AbstractModel<Supplier> implements Serializable {
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 *
+	 * 
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
@@ -76,7 +76,7 @@ public class Supplier extends AbstractModel<Supplier> implements Serializable {
 	 * <p>
 	 * Getter for the field <code>telephone</code>.
 	 * </p>
-	 *
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getTelephone() {
@@ -87,7 +87,7 @@ public class Supplier extends AbstractModel<Supplier> implements Serializable {
 	 * <p>
 	 * Setter for the field <code>telephone</code>.
 	 * </p>
-	 *
+	 * 
 	 * @param telephone
 	 *            a {@link java.lang.String} object.
 	 */
