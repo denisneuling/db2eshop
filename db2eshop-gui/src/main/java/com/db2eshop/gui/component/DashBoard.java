@@ -1,7 +1,6 @@
 package com.db2eshop.gui.component;
 
 import java.awt.Container;
-import java.awt.Dimension;
 
 import net.miginfocom.swing.MigLayout;
 
