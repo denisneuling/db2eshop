@@ -15,7 +15,7 @@ import com.db2eshop.models.support.AbstractModel;
  * @version $Id: $Id
  */
 public class Article extends AbstractModel<Article> {
-	private static final long serialVersionUID = 6709110157288379399L;
+	private static final long serialVersionUID = -3958701112789778500L;
 
 	@Id
 	@GeneratedValue
@@ -29,6 +29,9 @@ public class Article extends AbstractModel<Article> {
 
 	@Column
 	private String description;
+	
+	@Column
+	private ArticleType articleType;
 
 	/**
 	 * <p>
@@ -38,84 +41,36 @@ public class Article extends AbstractModel<Article> {
 	public Article() {
 	}
 
-	/** {@inheritDoc} */
-	@Override
 	public Long getId() {
 		return id;
 	}
 
-	/** {@inheritDoc} */
-	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @param name
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>count</code>.
-	 * </p>
-	 *
-	 * @return a int.
-	 */
 	public int getCount() {
 		return count;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>count</code>.
-	 * </p>
-	 *
-	 * @param count
-	 *            a int.
-	 */
 	public void setCount(int count) {
 		this.count = count;
 	}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>description</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getDescription() {
 		return description;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>description</code>.
-	 * </p>
-	 *
-	 * @param description
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }

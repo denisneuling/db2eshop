@@ -17,7 +17,7 @@ import com.db2eshop.models.support.AbstractModel;
  * @version $Id: $Id
  */
 public class Shipping extends AbstractModel<Shipping> implements Serializable {
-	private static final long serialVersionUID = 5226154843133542099L;
+	private static final long serialVersionUID = 5311617211485240660L;
 
 	@Id
 	@GeneratedValue

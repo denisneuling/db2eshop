@@ -1,5 +1,7 @@
 package com.db2eshop.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +16,8 @@ import com.db2eshop.models.support.AbstractModel;
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-public class Customer extends AbstractModel<Customer> {
-	private static final long serialVersionUID = ;
+public class Customer extends AbstractModel<Customer> implements Serializable{
+	private static final long serialVersionUID = 2121359969444535875L;
 
 	@Id
 	@GeneratedValue
@@ -34,13 +36,13 @@ public class Customer extends AbstractModel<Customer> {
 	private String telephone;
 	
 	@Column
-	private String first_name;
+	private String preName;
 
 	@Column
 	private String birthday;
 	
 	@Column
-	private String zip_code;
+	private String zipCode;
 	
 	@Column
 	private String street;
@@ -53,199 +55,74 @@ public class Customer extends AbstractModel<Customer> {
 	public Customer() {
 	}
 
-	/** {@inheritDoc} */
-	@Override
 	public Long getId() {
 		return id;
 	}
 
-	/** {@inheritDoc} */
-	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @param first_name
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	/**
-	 * <p>
-	 * Getter for the field <code>first_name</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getFirst_Name() {
-		return first_name;
-	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>first_name</code>.
-	 * </p>
-	 *
-	 * @param name
-	 *            a {@link java.lang.String} object.
-	 */
-	public void setFirst_Name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	/**
-	 * <p>
-	 * Getter for the field <code>count</code>.
-	 * </p>
-	 *
-	 * @return a int.
-	 */
 	public int getCount() {
 		return count;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>count</code>.
-	 * </p>
-	 *
-	 * @param count
-	 *            a int.
-	 */
 	public void setCount(int count) {
 		this.count = count;
 	}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>city</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getCity() {
 		return city;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>city</code>.
-	 * </p>
-	 *
-	 * @param city
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-	/**
-	 * <p>
-	 * Getter for the field <code>telephone</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+
 	public String getTelephone() {
 		return telephone;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>telephone</code>.
-	 * </p>
-	 *
-	 * @param telephone
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	
-	/**
-	 * <p>
-	 * Getter for the field <code>birthday</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+
+	public String getPreName() {
+		return preName;
+	}
+
+	public void setPreName(String preName) {
+		this.preName = preName;
+	}
+
 	public String getBirthday() {
 		return birthday;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>birthday</code>.
-	 * </p>
-	 *
-	 * @param birthday
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>zip_code</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getZip_Code() {
-		return zip_code;
+	public String getZipCode() {
+		return zipCode;
 	}
-	
-	/**
-	 * <p>
-	 * Setter for the field <code>zip_code</code>.
-	 * </p>
-	 *
-	 * @param zip_code
-	 *            a {@link java.lang.String} object.
-	 */
-	public void setZip_Code(String zip_code) {
-		this.zip_code = zip_code;
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
-	
-	/**
-	 * <p>
-	 * Getter for the field <code>street</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+
 	public String getStreet() {
 		return street;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>street</code>.
-	 * </p>
-	 *
-	 * @param street
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setStreet(String street) {
 		this.street = street;
 	}

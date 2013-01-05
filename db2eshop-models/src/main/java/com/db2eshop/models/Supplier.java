@@ -17,8 +17,8 @@ import com.db2eshop.models.support.AbstractModel;
  * @version $Id: $Id
  */
 public class Supplier extends AbstractModel<Supplier> implements Serializable {
-	private static final long serialVersionUID = -1171168614829706963L;
-
+	private static final long serialVersionUID = -6602792748963845414L;
+	
 	@Id
 	@GeneratedValue
 	private Long id;

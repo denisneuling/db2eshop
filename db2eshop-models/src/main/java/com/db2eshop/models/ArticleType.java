@@ -15,7 +15,7 @@ import com.db2eshop.models.support.AbstractModel;
  * @version $Id: $Id
  */
 public class ArticleType extends AbstractModel<ArticleType> {
-	private static final long serialVersionUID = -9004421460842418357L;
+	private static final long serialVersionUID = 2387929026098277701L;
 
 	@Id
 	@GeneratedValue
