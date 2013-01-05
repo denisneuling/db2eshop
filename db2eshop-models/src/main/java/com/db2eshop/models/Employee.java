@@ -11,12 +11,12 @@ import com.db2eshop.models.support.AbstractModel;
 
 @Entity
 /**
- * <p>Mitarbeiter class.</p>
+ * <p>Employee class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializable {
+public class Employee extends AbstractModel<Employee> implements Serializable {
 	private static final long serialVersionUID = 8135335874077911975L;
 
 	@Id
@@ -27,14 +27,14 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	private String name;
 
 	@Column
-	private String vorname;
+	private String first_name;
 
 	/**
 	 * <p>
-	 * Constructor for Mitarbeiter.
+	 * Constructor for Employee.
 	 * </p>
 	 */
-	public Mitarbeiter() {
+	public Employee() {
 	}
 
 	/** {@inheritDoc} */
@@ -79,19 +79,19 @@ public class Mitarbeiter extends AbstractModel<Mitarbeiter> implements Serializa
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
-	public String getVorname() {
-		return vorname;
+	public String getFirst_Name() {
+		return first_name;
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>vorname</code>.
+	 * Setter for the field <code>first_name</code>.
 	 * </p>
 	 *
 	 * @param vorname
 	 *            a {@link java.lang.String} object.
 	 */
-	public void setVorname(String vorname) {
-		this.vorname = vorname;
+	public void setVorname(String first_name) {
+		this.first_name = first_name;
 	}
 }

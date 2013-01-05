@@ -1,7 +1,5 @@
 package com.db2eshop.models;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,13 +9,13 @@ import com.db2eshop.models.support.AbstractModel;
 
 @Entity
 /**
- * <p>Lieferanten class.</p>
+ * <p>Article class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-public class Lieferanten extends AbstractModel<Lieferanten> implements Serializable {
-	private static final long serialVersionUID = -1171168614829706963L;
+public class Article extends AbstractModel<Article> {
+	private static final long serialVersionUID = 6709110157288379399L;
 
 	@Id
 	@GeneratedValue
@@ -27,14 +25,17 @@ public class Lieferanten extends AbstractModel<Lieferanten> implements Serializa
 	private String name;
 
 	@Column
-	private String telefon;
+	private int count;
+
+	@Column
+	private String description;
 
 	/**
 	 * <p>
-	 * Constructor for Lieferanten.
+	 * Constructor for Article.
 	 * </p>
 	 */
-	public Lieferanten() {
+	public Article() {
 	}
 
 	/** {@inheritDoc} */
@@ -74,24 +75,47 @@ public class Lieferanten extends AbstractModel<Lieferanten> implements Serializa
 
 	/**
 	 * <p>
-	 * Getter for the field <code>telefon</code>.
+	 * Getter for the field <code>count</code>.
 	 * </p>
 	 *
-	 * @return a {@link java.lang.String} object.
+	 * @return a int.
 	 */
-	public String getTelefon() {
-		return telefon;
+	public int getCount() {
+		return count;
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>telefon</code>.
+	 * Setter for the field <code>count</code>.
 	 * </p>
 	 *
-	 * @param telefon
+	 * @param count
+	 *            a int.
+	 */
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	/**
+	 * <p>
+	 * Getter for the field <code>description</code>.
+	 * </p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <p>
+	 * Setter for the field <code>description</code>.
+	 * </p>
+	 *
+	 * @param description
 	 *            a {@link java.lang.String} object.
 	 */
-	public void setTelefon(String telefon) {
-		this.telefon = telefon;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

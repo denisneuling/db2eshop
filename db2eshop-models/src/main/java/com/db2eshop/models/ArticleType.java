@@ -9,12 +9,12 @@ import com.db2eshop.models.support.AbstractModel;
 
 @Entity
 /**
- * <p>ArtikelArt class.</p>
+ * <p>ArticleType class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-public class ArtikelArt extends AbstractModel<ArtikelArt> {
+public class ArticleType extends AbstractModel<ArticleType> {
 	private static final long serialVersionUID = -9004421460842418357L;
 
 	@Id
@@ -26,10 +26,10 @@ public class ArtikelArt extends AbstractModel<ArtikelArt> {
 
 	/**
 	 * <p>
-	 * Constructor for ArtikelArt.
+	 * Constructor for ArticleType.
 	 * </p>
 	 */
-	public ArtikelArt() {
+	public ArticleType() {
 	}
 
 	/** {@inheritDoc} */

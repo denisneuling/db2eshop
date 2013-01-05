@@ -11,12 +11,12 @@ import com.db2eshop.models.support.AbstractModel;
 
 @Entity
 /**
- * <p>Spedition class.</p>
+ * <p>Shipping class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-public class Spedition extends AbstractModel<Spedition> implements Serializable {
+public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	private static final long serialVersionUID = 5226154843133542099L;
 
 	@Id
@@ -27,14 +27,14 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 	private String name;
 
 	@Column
-	private String telefonNummer;
+	private String telephone;
 
 	/**
 	 * <p>
-	 * Constructor for Spedition.
+	 * Constructor for Shipping.
 	 * </p>
 	 */
-	public Spedition() {
+	public Shipping() {
 	}
 
 	/**
@@ -62,25 +62,25 @@ public class Spedition extends AbstractModel<Spedition> implements Serializable 
 
 	/**
 	 * <p>
-	 * Getter for the field <code>telefonNummer</code>.
+	 * Getter for the field <code>telephoneNummer</code>.
 	 * </p>
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
-	public String getTelefonNummer() {
-		return telefonNummer;
+	public String getTelephone() {
+		return telephone;
 	}
 
 	/**
 	 * <p>
-	 * Setter for the field <code>telefonNummer</code>.
+	 * Setter for the field <code>telephoneNummer</code>.
 	 * </p>
 	 *
-	 * @param telefonNummer
+	 * @param telephoneNummer
 	 *            a {@link java.lang.String} object.
 	 */
-	public void setTelefonNummer(String telefonNummer) {
-		this.telefonNummer = telefonNummer;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 	/** {@inheritDoc} */
