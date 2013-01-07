@@ -16,6 +16,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.db2eshop.gui.component.DashBoard;
+import com.db2eshop.gui.component.adapter.MainFrameAdapter;
 import com.db2eshop.gui.menu.MenuPanel;
 
 /**
@@ -41,8 +42,9 @@ public class MainFrame extends JFrame implements WindowListener,InitializingBean
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setMinimumSize(new Dimension(800, 600));
-//		setResizable(false);
 		addWindowListener(this);
+		
+		addComponentListener(new MainFrameAdapter(this));
 	}
 	
 	/**
@@ -68,7 +70,7 @@ public class MainFrame extends JFrame implements WindowListener,InitializingBean
 	public void afterPropertiesSet() throws Exception {
 		setJMenuBar(menuPanel);
 		
-		MigLayout layout = new MigLayout();
+		MigLayout layout = new MigLayout("fill");
 		
 		this.getContentPane().setLayout(layout);
 		this.getContentPane().add(dashBoard, "grow, push");

@@ -21,9 +21,9 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	private MigLayout layout;
 	
 	private volatile boolean ready = false;
-	private JPanel contentPane = new JPanel();
-	private JButton confirmButton;
-	private JButton cancelButton;
+	protected JPanel contentPane = new JPanel();
+	protected JButton confirmButton;
+	protected JButton cancelButton;
 	
 	public ConfirmCancelDialog(){
 		layout = new MigLayout("fill");
@@ -32,6 +32,7 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 		
 		setLayout(layout);
 		contentPane = new JPanel();
+		contentPane.setLayout(new MigLayout("fill"));
 		add(contentPane, "wrap");
 		
 		JPanel buttonPane = new JPanel();

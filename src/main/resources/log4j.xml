@@ -9,11 +9,16 @@
 		</layout>
 	</appender>
 
+	<logger name="org.hibernate.type">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+
 	<logger name="org.hibernate.SQL">
 		<level value="INFO" />
 		<appender-ref ref="console" />
 	</logger>
-	
+
 	<logger name="org.hibernate">
 		<level value="INFO" />
 		<appender-ref ref="console" />

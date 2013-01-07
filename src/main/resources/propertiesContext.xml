@@ -15,6 +15,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
+				<value>classpath*:config/gui.properties</value>
 				<value>classpath*:config/datasource.properties</value>
 				<value>classpath*:config/datasource.${user.name}.properties</value>
 			</list>

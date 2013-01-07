@@ -8,12 +8,14 @@
 
 	<name>${project.artifactId}</name>
 
+	<packaging>jar</packaging>
+
 	<properties>
 		<source.plugin.version>2.1.2</source.plugin.version>
 		<javadoc.plugin.version>2.7</javadoc.plugin.version>
 		<jdk.version>1.6</jdk.version>
 		<encoding>UTF-8</encoding>
-		<runner.clazz>com.db2eshop.gui.Launcher</runner.clazz>
+		<runner.clazz>com.db2eshop.launcher.Launcher</runner.clazz>
 	</properties>
 
 	<build>
@@ -133,40 +135,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>3.2.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>3.2.0.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.5.4</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>3.1.0.BUILD-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>3.2.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>3.2.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.6.5.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -200,9 +170,13 @@
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
 			<version>1.0.2</version>
+			<scope>provided</scope>
 		</dependency>
-
-
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
 
 		<dependency>
 			<groupId>postgresql</groupId>
@@ -210,17 +184,6 @@
 			<version>9.1-901-1.jdbc4</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>3.2.0.RELEASE</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
@@ -264,10 +227,10 @@
 		</dependency>
 
 		<!-- standalone support -->
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>2.7.1</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.cxf</groupId> -->
+		<!-- <artifactId>cxf-rt-frontend-jaxws</artifactId> -->
+		<!-- <version>2.7.1</version> -->
+		<!-- </dependency> -->
 	</dependencies>
 </project>

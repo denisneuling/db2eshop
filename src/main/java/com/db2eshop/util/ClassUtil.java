@@ -27,7 +27,7 @@ public class ClassUtil {
 		}
 		return value;
 	}
-
+	
 	public static <T> List<Field> getAnnotatedFields(Class<?> clazz, Class<? extends Annotation> annotationClass) {
 		List<Field> annotatedFields = new LinkedList<Field>();
 		Field[] allFields = getAllDeclaredFields(clazz);
@@ -84,5 +84,15 @@ public class ClassUtil {
 		} catch (IllegalAccessException e) {
 		}
 		return value;
+	}
+	
+	public static <T> T newInstance(Class<T> clazz){
+		try {
+			return clazz.newInstance();
+		} catch (InstantiationException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

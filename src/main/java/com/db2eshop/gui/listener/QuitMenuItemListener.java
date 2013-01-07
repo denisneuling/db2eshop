@@ -2,6 +2,7 @@ package com.db2eshop.gui.listener;
 
 import java.awt.event.ActionEvent;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +10,7 @@ import com.db2eshop.gui.MainFrame;
 
 @Component
 public class QuitMenuItemListener  extends BaseMenuItemListener {
+	protected Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
 	private MainFrame mainFrame;
@@ -16,6 +18,8 @@ public class QuitMenuItemListener  extends BaseMenuItemListener {
 	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		log.debug(e);
+		
 		mainFrame.setVisible(false);
 		mainFrame.dispose();
 		

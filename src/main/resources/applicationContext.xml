@@ -11,19 +11,33 @@
                                                 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
                                                 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-	<bean id="applicationContextObserver" class="com.db2eshop.governance.spring.ApplicationContextObserver" factory-method="getInstance" />
-	
+	<bean id="applicationContextObserver"
+		class="com.db2eshop.governance.spring.ApplicationContextObserver"
+		factory-method="getInstance" />
+
 	<import resource="propertiesContext.xml" />
+
+	<aop:aspectj-autoproxy />
+
+<!-- 	<bean id="validator" -->
+<!-- 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" /> -->
+
 	<import resource="datasourceContext.xml" />
-	
+
 	<context:annotation-config />
 	<context:component-scan base-package="com.db2eshop.*" />
 	<context:spring-configured />
 
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<!-- <bean id="validator" -->
+	<!-- class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" 
+		/> -->
+	<!-- <bean id="txManager" -->
+	<!-- class="org.springframework.orm.hibernate3.HibernateTransactionManager"> -->
+	<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
+	<!-- </bean> -->
 
-	<tx:annotation-driven proxy-target-class="false" />
-	<aop:aspectj-autoproxy/>
-	
+	<!-- <tx:annotation-driven /> -->
+	<!-- <tx:annotation-driven proxy-target-class="false" /> -->
+	<!-- <aop:aspectj-autoproxy /> -->
+
 </beans>
