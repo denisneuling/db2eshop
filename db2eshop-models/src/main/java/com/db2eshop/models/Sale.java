@@ -1,13 +1,11 @@
 package com.db2eshop.models;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import com.db2eshop.models.support.AbstractModel;
 
@@ -28,8 +26,8 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	@Column
 	private int count;
 
-	@ManyToOne
-	private List<Article> articles;
+//	@ManyToOne
+//	private Set<Article> articles;
 
 	@Column
 	private Customer customer;
@@ -58,13 +56,13 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 		this.count = count;
 	}
 
-	public List<Article> getArticles() {
-		return articles;
-	}
-
-	public void setArticles(List<Article> articles) {
-		this.articles = articles;
-	}
+//	public Set<Article> getArticles() {
+//		return articles;
+//	}
+//
+//	public void setArticles(Set<Article> articles) {
+//		this.articles = articles;
+//	}
 
 	public Customer getCustomer() {
 		return customer;

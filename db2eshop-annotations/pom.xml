@@ -6,4 +6,5 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>db2eshop-annotations</artifactId>
+  <name>${project.artifactId}</name>
 </project>

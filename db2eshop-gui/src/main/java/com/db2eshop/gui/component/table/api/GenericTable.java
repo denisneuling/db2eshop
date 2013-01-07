@@ -1,4 +1,4 @@
-package com.db2eshop.gui.component.table;
+package com.db2eshop.gui.component.table.api;
 
 import javax.swing.JTable;
 

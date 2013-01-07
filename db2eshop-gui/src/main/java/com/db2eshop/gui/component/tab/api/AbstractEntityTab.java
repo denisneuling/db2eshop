@@ -1,4 +1,4 @@
-package com.db2eshop.gui.component.tab;
+package com.db2eshop.gui.component.tab.api;
 
 import javax.swing.JPanel;
 
