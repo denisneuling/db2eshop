@@ -1,3 +1,2 @@
 #!/bin/bash
-mvn clean install eclipse:eclipse: assembly:single 
-#&& java -cp target/connectfour-0.0.1-SNAPSHOT-jar-with-dependencies.jar -jar target/connectfour-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+mvn clean install eclipse:eclipse && chmod +x target/db2eshop-0.0.1-SNAPSHOT-executable.jar
