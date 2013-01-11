@@ -10,36 +10,48 @@ import com.db2eshop.model.Article;
 import com.db2eshop.persistence.ArticleDao;
 
 @Service
+/**
+ * <p>ArticleServiceImpl class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class ArticleServiceImpl implements ArticleService{
 
 	@Autowired
 	private ArticleDao articeDao;
 	
+	/** {@inheritDoc} */
 	@Override
 	public List<Article> loadEntireTable() {
 		return articeDao.findAll();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public Article getById(Long id) {
 		return 	articeDao.findById(id);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void update(Article entity) {
 		articeDao.update(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void save(Article entity) {
 		articeDao.saveOrUpdate(entity);		
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void delete(Article entity) {
 		articeDao.delete(entity);		
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void refresh(Article entity) {
 		articeDao.refresh(entity);

@@ -9,15 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+/**
+ * <p>DashBoard class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class DashBoard extends JPanel implements InitializingBean {
 	private static final long serialVersionUID = 6816890195017278060L;
 
 	@Autowired
 	private EntityTabbedPane entityTabbedPane;
 	
+	/**
+	 * <p>Constructor for DashBoard.</p>
+	 */
 	public DashBoard() {
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		setLayout(new MigLayout("fill"));

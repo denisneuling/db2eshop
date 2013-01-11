@@ -6,6 +6,12 @@ import com.db2eshop.governance.service.model.api.CrudService;
 import com.db2eshop.model.ArticleType;
 
 @Transactional
+/**
+ * <p>ArticleTypeService interface.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public interface ArticleTypeService extends CrudService<ArticleType>{
 
 }

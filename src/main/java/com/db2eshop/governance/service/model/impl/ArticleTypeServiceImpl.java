@@ -10,36 +10,48 @@ import com.db2eshop.model.ArticleType;
 import com.db2eshop.persistence.ArticleTypeDao;
 
 @Service
+/**
+ * <p>ArticleTypeServiceImpl class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class ArticleTypeServiceImpl implements ArticleTypeService {
 
 	@Autowired
 	private ArticleTypeDao articleTypeDao;
 	
+	/** {@inheritDoc} */
 	@Override
 	public List<ArticleType> loadEntireTable() {
 		return articleTypeDao.findAll();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public ArticleType getById(Long id) {
 		return articleTypeDao.findById(id);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void update(ArticleType entity) {
 		articleTypeDao.update(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void save(ArticleType entity) {
 		articleTypeDao.saveOrUpdate(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void delete(ArticleType entity) {
 		articleTypeDao.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void refresh(ArticleType entity) {
 		articleTypeDao.refresh(entity);

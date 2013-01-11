@@ -10,6 +10,12 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.governance.service.gui.SettingsService;
 
 @Component
+/**
+ * <p>SettingsDialog class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class SettingsDialog extends ConfirmCancelDialog implements InitializingBean{
 	private static final long serialVersionUID = -8952902211592950640L;
 
@@ -19,16 +25,19 @@ public class SettingsDialog extends ConfirmCancelDialog implements InitializingB
 	@Autowired
 	private SettingsService settingsService;
 	
+	/** {@inheritDoc} */
 	@Override
 	public void onConfirm() {
 		
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onCancel() {
 		
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		this.setTitle(title);

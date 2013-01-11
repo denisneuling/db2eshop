@@ -14,7 +14,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Employee class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class Employee extends AbstractModel<Employee> implements Serializable {
 	private static final long serialVersionUID = 4080090521960388810L;
@@ -49,22 +49,43 @@ public class Employee extends AbstractModel<Employee> implements Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>name</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * <p>Setter for the field <code>name</code>.</p>
+	 *
+	 * @param name a {@link java.lang.String} object.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * <p>Getter for the field <code>firstName</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
+	/**
+	 * <p>Setter for the field <code>firstName</code>.</p>
+	 *
+	 * @param firstName a {@link java.lang.String} object.
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -75,6 +96,7 @@ public class Employee extends AbstractModel<Employee> implements Serializable {
 		return result;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -102,6 +124,7 @@ public class Employee extends AbstractModel<Employee> implements Serializable {
 		return true;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", firstName=" + firstName + "]";

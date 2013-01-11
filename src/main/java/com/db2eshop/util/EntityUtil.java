@@ -16,9 +16,21 @@ import org.apache.log4j.Logger;
 import com.db2eshop.annotations.bindings.UIHide;
 import com.db2eshop.model.support.AbstractModel;
 
+/**
+ * <p>EntityUtil class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class EntityUtil {
 	private static Logger log = Logger.getRootLogger();
 
+	/**
+	 * <p>getRowMeta.</p>
+	 *
+	 * @param entity a {@link java.lang.Class} object.
+	 * @return a {@link java.util.Map} object.
+	 */
 	public static Map<String, Annotation[]> getRowMeta(Class<?> entity) {
 		Map<String, Annotation[]> entityMeta = new HashMap<String, Annotation[]>();
 		if (entity != null) {
@@ -36,6 +48,12 @@ public class EntityUtil {
 		return entityMeta;
 	}
 
+	/**
+	 * <p>getRowMeta.</p>
+	 *
+	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @return a {@link java.util.Map} object.
+	 */
 	public static Map<String, Annotation[]> getRowMeta(AbstractModel<?> entity) {
 		Class<?> entityClass = null;
 		if (entity != null) {
@@ -44,6 +62,12 @@ public class EntityUtil {
 		return getRowMeta(entityClass);
 	}
 
+	/**
+	 * <p>asTableModel.</p>
+	 *
+	 * @param entityClazz a {@link java.lang.Class} object.
+	 * @return a {@link javax.swing.table.DefaultTableModel} object.
+	 */
 	public static DefaultTableModel asTableModel(Class<?> entityClazz) {
 		if (entityClazz == null) {
 			return null;

@@ -14,7 +14,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Customer class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class Customer extends AbstractModel<Customer> implements Serializable {
 	private static final long serialVersionUID = 2121359969444535875L;
@@ -55,80 +55,163 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	public Customer() {
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public Long getId() {
 		return id;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>name</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * <p>Setter for the field <code>name</code>.</p>
+	 *
+	 * @param name a {@link java.lang.String} object.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * <p>Getter for the field <code>count</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getCount() {
 		return count;
 	}
 
+	/**
+	 * <p>Setter for the field <code>count</code>.</p>
+	 *
+	 * @param count a int.
+	 */
 	public void setCount(int count) {
 		this.count = count;
 	}
 
+	/**
+	 * <p>Getter for the field <code>city</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * <p>Setter for the field <code>city</code>.</p>
+	 *
+	 * @param city a {@link java.lang.String} object.
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * <p>Getter for the field <code>telephone</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getTelephone() {
 		return telephone;
 	}
 
+	/**
+	 * <p>Setter for the field <code>telephone</code>.</p>
+	 *
+	 * @param telephone a {@link java.lang.String} object.
+	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
+	/**
+	 * <p>Getter for the field <code>preName</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getPreName() {
 		return preName;
 	}
 
+	/**
+	 * <p>Setter for the field <code>preName</code>.</p>
+	 *
+	 * @param preName a {@link java.lang.String} object.
+	 */
 	public void setPreName(String preName) {
 		this.preName = preName;
 	}
 
+	/**
+	 * <p>Getter for the field <code>birthday</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getBirthday() {
 		return birthday;
 	}
 
+	/**
+	 * <p>Setter for the field <code>birthday</code>.</p>
+	 *
+	 * @param birthday a {@link java.lang.String} object.
+	 */
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
+	/**
+	 * <p>Getter for the field <code>zipCode</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getZipCode() {
 		return zipCode;
 	}
 
+	/**
+	 * <p>Setter for the field <code>zipCode</code>.</p>
+	 *
+	 * @param zipCode a {@link java.lang.String} object.
+	 */
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
+	/**
+	 * <p>Getter for the field <code>street</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getStreet() {
 		return street;
 	}
 
+	/**
+	 * <p>Setter for the field <code>street</code>.</p>
+	 *
+	 * @param street a {@link java.lang.String} object.
+	 */
 	public void setStreet(String street) {
 		this.street = street;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,6 +228,7 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		return result;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -199,6 +283,7 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		return true;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", count=" + count + ", city=" + city + ", telephone=" + telephone + ", preName=" + preName + ", birthday=" + birthday + ", zipCode=" + zipCode + ", street=" + street + "]";

@@ -8,8 +8,19 @@ import com.db2eshop.model.Article;
 import com.db2eshop.persistence.support.AbstractDao;
 
 @Repository
+/**
+ * <p>ArticleDao class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class ArticleDao extends AbstractDao<Article> {
 
+	/**
+	 * <p>Constructor for ArticleDao.</p>
+	 *
+	 * @param sessionFactory a {@link org.hibernate.SessionFactory} object.
+	 */
 	@Autowired
 	public ArticleDao(SessionFactory sessionFactory) {
 		super(sessionFactory, Article.class);

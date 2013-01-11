@@ -8,8 +8,19 @@ import com.db2eshop.model.Sale;
 import com.db2eshop.persistence.support.AbstractDao;
 
 @Repository
+/**
+ * <p>SaleDao class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class SaleDao extends AbstractDao<Sale> {
 
+	/**
+	 * <p>Constructor for SaleDao.</p>
+	 *
+	 * @param sessionFactory a {@link org.hibernate.SessionFactory} object.
+	 */
 	@Autowired
 	public SaleDao(SessionFactory sessionFactory) {
 		super(sessionFactory, Sale.class);

@@ -6,6 +6,12 @@ import com.db2eshop.governance.service.model.api.CrudService;
 import com.db2eshop.model.Supplier;
 
 @Transactional
+/**
+ * <p>SupplierService interface.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public interface SupplierService extends CrudService<Supplier>{
 
 }

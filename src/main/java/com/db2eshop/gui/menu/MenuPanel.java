@@ -15,6 +15,12 @@ import com.db2eshop.gui.listener.QuitMenuItemListener;
 import com.db2eshop.gui.listener.SettingsMenuItemListener;
 
 @Component
+/**
+ * <p>MenuPanel class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class MenuPanel extends JMenuBar implements InitializingBean {
 	private static final long serialVersionUID = -8033351688374778735L;
 	protected Logger log = Logger.getLogger(this.getClass());

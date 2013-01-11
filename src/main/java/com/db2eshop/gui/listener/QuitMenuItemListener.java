@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.gui.MainFrame;
 
 @Component
+/**
+ * <p>QuitMenuItemListener class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class QuitMenuItemListener  extends BaseMenuItemListener {
 	protected Logger log = Logger.getLogger(this.getClass());
 

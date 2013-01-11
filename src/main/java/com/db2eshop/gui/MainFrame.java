@@ -22,8 +22,8 @@ import com.db2eshop.gui.menu.MenuPanel;
 /**
  * <p>MainFrame class.</p>
  *
- * @author ska
- * @version $Id: $Id
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
  */
 @Component
 public class MainFrame extends JFrame implements WindowListener,InitializingBean{
@@ -39,6 +39,9 @@ public class MainFrame extends JFrame implements WindowListener,InitializingBean
 	@Autowired
 	private DashBoard dashBoard;
 
+	/**
+	 * <p>Constructor for MainFrame.</p>
+	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setMinimumSize(new Dimension(800, 600));

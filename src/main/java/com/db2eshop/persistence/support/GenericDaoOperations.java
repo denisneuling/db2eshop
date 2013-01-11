@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @param <T>
- * @version $Id: $Id
+ * 
  */
 public interface GenericDaoOperations<T> {
 

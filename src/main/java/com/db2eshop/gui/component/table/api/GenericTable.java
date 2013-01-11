@@ -1,6 +1,5 @@
 package com.db2eshop.gui.component.table.api;
 
-import java.awt.event.MouseListener;
 import java.util.Set;
 
 import javax.swing.JTable;
@@ -15,7 +14,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import com.db2eshop.exception.NotImplementedException;
 import com.db2eshop.gui.component.table.listener.TableEntityModelListener;
+import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.util.ClassUtil;
 import com.db2eshop.util.EntityUtil;
@@ -23,32 +24,44 @@ import com.db2eshop.util.UIForUtil;
 import com.db2eshop.util.ctx.TableValueEntityResolver;
 
 @Component
+/**
+ * <p>Abstract GenericTable class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public abstract class GenericTable<T extends AbstractModel<T>> extends JTable implements InitializingBean, ApplicationListener<ApplicationEvent> {
 	private static final long serialVersionUID = 1180747329897017816L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
-	private Class<T> entityClazz;
-	private volatile String tableName = this.getClass().getSimpleName();
+	protected Class<T> entityClazz;
+	
+	protected TableEntityModelListener<T> tableEntityModelListener;
 	protected String[] columnNames;
-
+	
+	protected volatile String tableName = this.getClass().getSimpleName();
+	protected volatile boolean ready = false;
+	
+	@Autowired
+	protected ErrorDialog errorDialog;
+	
 	@Autowired
 	protected TableValueEntityResolver tableValueEntityResolver;
 
-	private volatile boolean ready = false;
-
-	private TableEntityModelListener<T> tableEntityModelListener;
-
+	/**
+	 * <p>Getter for the field <code>tableName</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getTableName() {
 		return tableName;
 	}
 
-	public GenericTable() {
-	}
-
-	protected MouseListener getMouseListener() {
-		return null;
-	};
-
+	/**
+	 * <p>rowChanged.</p>
+	 *
+	 * @param row a int.
+	 */
 	@SuppressWarnings("unchecked")
 	public void rowChanged(int row) {
 		Object[] values = this.getRowAt(row);
@@ -70,16 +83,43 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		}
 	}
 
+	/**
+	 * <p>getRowAt.</p>
+	 *
+	 * @param row a int.
+	 * @return an array of {@link java.lang.Object} objects.
+	 */
 	public Object[] getRowAt(int row) {
 		Object[] result = new Object[columnNames.length];
 
 		for (int column = 0; column < columnNames.length; column++) {
-			result[column] = this.getModel().getValueAt(row, column);
+			Object columnValue = this.getModel().getValueAt(row, column);
+			result[column] = columnValue;
 		}
 
 		return result;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public T getEntityAtRow(int row) {
+		Object[] values = getRowAt(row);
+		T entity = null;
+		if(values[0] == null){
+			entity = ClassUtil.newInstance(entityClazz);
+		}else{
+			Long id = (Long) values[0];
+			entity = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
+		}
+		return mixin(values, entity);
+	}
 
+	/**
+	 * <p>mixin.</p>
+	 *
+	 * @param values an array of {@link java.lang.Object} objects.
+	 * @param oldEntity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @return a T object.
+	 */
 	@SuppressWarnings("unchecked")
 	protected T mixin(Object[] values, AbstractModel<T> oldEntity) {
 		if (values.length != columnNames.length) {
@@ -93,6 +133,7 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		return (T) oldEntity;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
@@ -107,17 +148,47 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 				this.setRowSorter(sorter);
 			}
 		}
-
-		this.addMouseListener(getMouseListener());
-
 		tableEntityModelListener = new TableEntityModelListener<T>(this);
 		this.getModel().addTableModelListener(tableEntityModelListener);
 	}
 	
+	/**
+	 * <p>addRow.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	protected void addRow(T entity){
 		((DefaultTableModel)getModel()).addRow(asTableData(entity));
 	}
+	
+	@SuppressWarnings("unchecked")
+	public void removeRow(int row){
+		Object[] values = this.getRowAt(row);
+		T removeAble = null; 
+		if(values[0] == null){
+			removeAble = ClassUtil.newInstance(entityClazz);
+		}else{
+			Long id = (Long) values[0];
+			removeAble = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
+		}
+		
+		try{
+			onRowRemove(removeAble);
+			((DefaultTableModel)getModel()).removeRow(row);
+		}catch(Exception e){
+			onError(e);
+		}
+	}
+	public void removeRow(T entity){
+		throw new NotImplementedException();
+	}
 
+	/**
+	 * <p>asTableData.</p>
+	 *
+	 * @param entity a T object.
+	 * @return an array of {@link java.lang.Object} objects.
+	 */
 	protected Object[] asTableData(T entity) {
 		if (entity == null) {
 			throw new RuntimeException("Entity cannot be null");
@@ -146,6 +217,7 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		return data;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public final void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof ContextRefreshedEvent) {
@@ -154,12 +226,33 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		}
 	}
 
+	/** {@inheritDoc} */
 	public boolean isCellEditable(int row, int column) {
 		return column != 0;
 	}
 	
+	/**
+	 * <p>onApplicationReady.</p>
+	 */
 	public abstract void onApplicationReady();
 
+	/**
+	 * <p>onRowChange.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public abstract void onRowChange(T entity);
+	
+	public abstract void onRowRemove(T entity);
+	
+	public abstract void onRowAdd(T entity);
+	
+	public void onError(Exception e){
+		errorDialog.notifyError(e);
+	}
+	
+	public Class<T> getEntityClazz(){
+		return entityClazz;
+	}
 
 }

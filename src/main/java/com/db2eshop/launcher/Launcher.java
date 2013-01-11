@@ -5,8 +5,8 @@ import com.db2eshop.governance.spring.ApplicationContextLoader;
 /**
  * <p>Launcher class.</p>
  *
- * @author ska
- * @version $Id: $Id
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
  */
 public class Launcher {
 

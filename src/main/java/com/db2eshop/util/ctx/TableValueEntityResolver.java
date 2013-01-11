@@ -29,6 +29,12 @@ import com.db2eshop.persistence.support.AbstractDao;
 import com.db2eshop.util.ClassUtil;
 
 @Component
+/**
+ * <p>TableValueEntityResolver class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class TableValueEntityResolver implements InitializingBean {
 	protected Logger log = Logger.getLogger(getClass());
 	
@@ -58,6 +64,15 @@ public class TableValueEntityResolver implements InitializingBean {
 
 	private volatile HashMap<Class<?>, AbstractDao<?>> entityDao;
 
+	/**
+	 * <p>setValue.</p>
+	 *
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param property a {@link java.lang.Object} object.
+	 * @param target a T object.
+	 * @param <T> a T object.
+	 * @return a T object.
+	 */
 	public <T> T setValue(String propertyName, Object property, T target) {
 		Field field;
 		try {
@@ -76,6 +91,13 @@ public class TableValueEntityResolver implements InitializingBean {
 		}
 	}
 
+	/**
+	 * <p>box.</p>
+	 *
+	 * @param property a {@link java.lang.Object} object.
+	 * @param to a {@link java.lang.Class} object.
+	 * @return a {@link java.lang.Object} object.
+	 */
 	public Object box(Object property, Class<?> to) {
 		if(property==null){
 			return property;
@@ -99,6 +121,13 @@ public class TableValueEntityResolver implements InitializingBean {
 		return to.cast(property);
 	}
 	
+	/**
+	 * <p>asTableData.</p>
+	 *
+	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @param fields an array of {@link java.lang.String} objects.
+	 * @return an array of {@link java.lang.Object} objects.
+	 */
 	public Object[] asTableData(AbstractModel<?> entity, String[] fields) {
 		if (entity == null) {
 			throw new RuntimeException("Entity cannot be null");
@@ -132,10 +161,18 @@ public class TableValueEntityResolver implements InitializingBean {
 		return data;
 	}
 	
+	/**
+	 * <p>getDao.</p>
+	 *
+	 * @param entityClazz a {@link java.lang.Class} object.
+	 * @param <T> a T object.
+	 * @return a {@link com.db2eshop.persistence.support.AbstractDao} object.
+	 */
 	public <T> AbstractDao<?> getDao(Class<T> entityClazz){
 		return (AbstractDao<?>) entityDao.get(entityClazz);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		entityDao = new  HashMap<Class<?>, AbstractDao<?>>();

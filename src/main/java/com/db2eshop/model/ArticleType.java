@@ -20,7 +20,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>ArticleType class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class ArticleType extends AbstractModel<ArticleType> implements Serializable{
 	private static final long serialVersionUID = 2387929026098277701L;
@@ -60,7 +60,7 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 	 * <p>
 	 * Getter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -71,7 +71,7 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 	 * <p>
 	 * Setter for the field <code>name</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            a {@link java.lang.String} object.
 	 */
@@ -79,14 +79,25 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 		this.name = name;
 	}
 	
+	/**
+	 * <p>Getter for the field <code>articles</code>.</p>
+	 *
+	 * @return a {@link java.util.List} object.
+	 */
 	public List<Article> getArticles() {
 		return articles;
 	}
 
+	/**
+	 * <p>Setter for the field <code>articles</code>.</p>
+	 *
+	 * @param articles a {@link java.util.List} object.
+	 */
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -96,6 +107,7 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 		return result;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -118,6 +130,7 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 		return true;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "ArticleType [id=" + id + ", name=" + name + "]";

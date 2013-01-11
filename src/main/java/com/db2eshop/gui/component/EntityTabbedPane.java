@@ -16,6 +16,12 @@ import com.db2eshop.gui.component.tab.ShippingTab;
 import com.db2eshop.gui.component.tab.SupplierTab;
 
 @Component
+/**
+ * <p>EntityTabbedPane class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class EntityTabbedPane extends JTabbedPane implements InitializingBean {
 	private static final long serialVersionUID = -5249754982931738042L;
 
@@ -43,10 +49,14 @@ public class EntityTabbedPane extends JTabbedPane implements InitializingBean {
 	@Autowired
 	private SupplierTab supplierTab;
 
+	/**
+	 * <p>Constructor for EntityTabbedPane.</p>
+	 */
 	public EntityTabbedPane() {
 		super(JTabbedPane.LEFT);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		addTab(articleTab.getTableName(), articleTab);

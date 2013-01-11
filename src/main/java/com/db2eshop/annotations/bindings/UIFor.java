@@ -8,8 +8,8 @@ import java.lang.annotation.Target;
 /**
  * <p>UIComponent class.</p>
  *
- * @author ska
- * @version $Id: $Id
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

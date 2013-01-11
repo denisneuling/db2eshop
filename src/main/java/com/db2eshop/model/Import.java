@@ -17,7 +17,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Import class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class Import extends AbstractModel<Import> implements Serializable {
 	private static final long serialVersionUID = -8663449394006905708L;
@@ -33,35 +33,61 @@ public class Import extends AbstractModel<Import> implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
+	/**
+	 * <p>Constructor for Import.</p>
+	 */
 	public Import() {
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public Long getId() {
 		return id;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>count</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getCount() {
 		return count;
 	}
 
+	/**
+	 * <p>Setter for the field <code>count</code>.</p>
+	 *
+	 * @param count a int.
+	 */
 	public void setCount(int count) {
 		this.count = count;
 	}
 
+	/**
+	 * <p>Getter for the field <code>date</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getDate() {
 		return count;
 	}
 
+	/**
+	 * <p>Setter for the field <code>date</code>.</p>
+	 *
+	 * @param date a {@link java.util.Date} object.
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,6 +98,7 @@ public class Import extends AbstractModel<Import> implements Serializable {
 		return result;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -96,6 +123,7 @@ public class Import extends AbstractModel<Import> implements Serializable {
 		return true;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "Import [id=" + id + ", count=" + count + ", date=" + date + "]";

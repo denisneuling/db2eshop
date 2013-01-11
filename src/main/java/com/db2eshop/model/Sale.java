@@ -16,7 +16,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Sale class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class Sale extends AbstractModel<Sale> implements Serializable {
 	private static final long serialVersionUID = -9016685368451535775L;
@@ -37,23 +37,38 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	@Column
 	private Shipping shipping;
 
+	/**
+	 * <p>Constructor for Sale.</p>
+	 */
 	public Sale() {
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public Long getId() {
 		return id;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>count</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getCount() {
 		return count;
 	}
 
+	/**
+	 * <p>Setter for the field <code>count</code>.</p>
+	 *
+	 * @param count a int.
+	 */
 	public void setCount(int count) {
 		this.count = count;
 	}
@@ -66,22 +81,43 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 //		this.articles = articles;
 //	}
 
+	/**
+	 * <p>Getter for the field <code>customer</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Customer} object.
+	 */
 	public Customer getCustomer() {
 		return customer;
 	}
 
+	/**
+	 * <p>Setter for the field <code>customer</code>.</p>
+	 *
+	 * @param customer a {@link com.db2eshop.model.Customer} object.
+	 */
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
+	/**
+	 * <p>Getter for the field <code>shipping</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Shipping} object.
+	 */
 	public Shipping getShipping() {
 		return shipping;
 	}
 
+	/**
+	 * <p>Setter for the field <code>shipping</code>.</p>
+	 *
+	 * @param shipping a {@link com.db2eshop.model.Shipping} object.
+	 */
 	public void setShipping(Shipping shipping) {
 		this.shipping = shipping;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,6 +129,7 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 		return result;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -122,6 +159,7 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 		return true;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return "Sale [id=" + id + ", count=" + count + ", customer=" + customer + ", shipping=" + shipping + "]";

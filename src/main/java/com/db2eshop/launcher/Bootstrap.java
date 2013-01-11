@@ -15,24 +15,52 @@ import com.db2eshop.model.Customer;
 import com.db2eshop.persistence.ArticleDao;
 import com.db2eshop.persistence.ArticleTypeDao;
 import com.db2eshop.persistence.CustomerDao;
+import com.db2eshop.persistence.EmployeeDao;
+import com.db2eshop.persistence.ImportDao;
+import com.db2eshop.persistence.SaleDao;
+import com.db2eshop.persistence.ShippingDao;
+import com.db2eshop.persistence.SupplierDao;
 import com.db2eshop.util.LoremIpsum;
 
 @Component
+/**
+ * <p>Bootstrap class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
+@SuppressWarnings("unused")
 public class Bootstrap implements ApplicationListener<ApplicationEvent> {
-
-	@Autowired
-	private ArticleTypeDao articleTypeDao;
 
 	@Autowired
 	private ArticleDao articleDao;
 
 	@Autowired
+	private ArticleTypeDao articleTypeDao;
+
+	@Autowired
 	private CustomerDao customerDao;
 
+	@Autowired
+	private EmployeeDao employeeDao;
+
+	@Autowired
+	private ImportDao importDao;
+
+	@Autowired
+	private SaleDao saleDao;
+
+	@Autowired
+	private ShippingDao shippingDao;
+
+	@Autowired
+	private SupplierDao supplierDao;
+
+	/** {@inheritDoc} */
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof ContextRefreshedEvent) {
-			initializeDataSet();
+//			initializeDataSet();
 		}
 	}
 
@@ -40,8 +68,18 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 		 initializeArticleTypes();
 		 initializeArticles();
 		 initializeCustomers();
+		 initializeEmployees();
+		 initializeImports();
+		 initializeSales();
+		 initializeShippings();
+		 initializeSuppliers();
 	}
 
+	/**
+	 * <p>
+	 * initializeArticleTypes.
+	 * </p>
+	 */
 	public void initializeArticleTypes() {
 		List<ArticleType> articleTypes = new LinkedList<ArticleType>();
 		for (int i = 0; i < 15; i++) {
@@ -52,12 +90,17 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 		articleTypeDao.saveAll(articleTypes);
 	}
 
+	/**
+	 * <p>
+	 * initializeArticles.
+	 * </p>
+	 */
 	public void initializeArticles() {
 		int size = articleTypeDao.findAll().size();
 
 		if (size > 0) {
 			List<Article> articles = new LinkedList<Article>();
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 20; i++) {
 				Article article = new Article();
 				article.setCount(LoremIpsum.random.nextInt(5000));
 				article.setName(LoremIpsum.secureRandomString());
@@ -70,9 +113,14 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 		}
 	}
 
+	/**
+	 * <p>
+	 * initializeCustomers.
+	 * </p>
+	 */
 	public void initializeCustomers() {
 		List<Customer> customers = new LinkedList<Customer>();
-		for (int i = 0; i < 200; i++) {
+		for (int i = 0; i < 30; i++) {
 			Customer customer = new Customer();
 			customer.setBirthday(LoremIpsum.word());
 			customer.setCity(LoremIpsum.word());
@@ -86,6 +134,21 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 			customers.add(customer);
 		}
 		customerDao.saveAll(customers);
+	}
+
+	private void initializeSuppliers() {
+	}
+
+	private void initializeShippings() {
+	}
+
+	private void initializeSales() {
+	}
+
+	private void initializeImports() {
+	}
+
+	private void initializeEmployees() {
 	}
 
 }

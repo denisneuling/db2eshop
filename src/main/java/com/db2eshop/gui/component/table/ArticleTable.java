@@ -8,9 +8,17 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.annotations.bindings.UIFor;
 import com.db2eshop.governance.service.model.ArticleService;
 import com.db2eshop.gui.component.table.api.GenericTable;
+import com.db2eshop.gui.component.table.listener.TableMenuCapableMouseListener;
+import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Article;
 
 @Component
+/**
+ * <p>ArticleTable class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 @UIFor(Article.class)
 public class ArticleTable extends GenericTable<Article>{
 	private static final long serialVersionUID = 5044674525159404880L;
@@ -18,16 +26,36 @@ public class ArticleTable extends GenericTable<Article>{
 	@Autowired
 	private ArticleService articleService;
 	
+	@Autowired
+	private RightClickPopupMenu rightClickPopupMenu;
+	
+	protected TableMenuCapableMouseListener tableMenuCapableMouseListener;
+	
+	/** {@inheritDoc} */
 	@Override
 	public void onApplicationReady() {
 		List<Article> articles = articleService.loadEntireTable();
 		for(Article article : articles){
 			addRow(article);
 		}
+		
+		tableMenuCapableMouseListener = new TableMenuCapableMouseListener(this, rightClickPopupMenu);
+		this.addMouseListener(tableMenuCapableMouseListener);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowChange(Article entity) {
 		articleService.update(entity);
+	}
+
+	@Override
+	public void onRowRemove(Article entity) {
+		articleService.delete(entity);
+	}
+
+	@Override
+	public void onRowAdd(Article entity) {
+		articleService.save(entity);
 	}
 }

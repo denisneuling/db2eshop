@@ -8,6 +8,12 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.gui.dialog.SettingsDialog;
 
 @Component
+/**
+ * <p>SettingsMenuItemListener class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class SettingsMenuItemListener extends BaseMenuItemListener {
 
 	@Autowired

@@ -38,6 +38,7 @@ public abstract class BaseDialog extends JDialog implements WindowListener, Acti
 		this.setLocation(newLocation);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void setVisible(boolean visible){
 		if(visible){

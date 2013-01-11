@@ -2,23 +2,44 @@ package com.db2eshop.gui.component.table.listener;
 
 import java.awt.event.MouseEvent;
 
-import org.springframework.stereotype.Component;
-
 import com.db2eshop.gui.component.listener.BaseMouseListener;
+import com.db2eshop.gui.component.table.api.GenericTable;
+import com.db2eshop.gui.menu.RightClickPopupMenu;
+import com.db2eshop.model.support.AbstractModel;
 
-@Component
-public class TableMenuCapableMouseListener extends BaseMouseListener{
+/**
+ * <p>
+ * TableMenuCapableMouseListener class.
+ * </p>
+ * 
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
+public class TableMenuCapableMouseListener extends BaseMouseListener {
 
-//	@Autowired
-//	private TablePopupMenu tablePopupMenu;
-	
+	private RightClickPopupMenu rightClickPopupMenu;
+	private GenericTable<?> genericTable;
+
+	public TableMenuCapableMouseListener(GenericTable<?> genericTable, RightClickPopupMenu clickPopupMenu) {
+		this.genericTable = genericTable;
+		this.rightClickPopupMenu = clickPopupMenu;
+	}
+
+	/** {@inheritDoc} */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		log.debug("Mouse clicked: " + arg0);
 
+		if (genericTable == null || rightClickPopupMenu == null) {
+			throw new RuntimeException("Targeted table could not been found.");
+		}
+
 		if (arg0.getButton() == MouseEvent.BUTTON3) {
-//			tablePopupMenu.relocate(arg0.getPoint());
-//			tablePopupMenu.setVisible(true);
+			int row = genericTable.rowAtPoint(arg0.getPoint());
+			int column = genericTable.columnAtPoint(arg0.getPoint());
+			genericTable.getSelectionModel().setSelectionInterval(row, row);
+			AbstractModel<?> entity = genericTable.getEntityAtRow(row);
+			rightClickPopupMenu.showMenu(arg0.getPoint(), row, column, entity, genericTable);
 		}
 	}
 

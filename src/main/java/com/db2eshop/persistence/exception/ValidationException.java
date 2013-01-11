@@ -10,7 +10,7 @@ import javax.validation.ConstraintViolation;
  * </p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class ValidationException extends RuntimeException {
 	private static final long serialVersionUID = -4971115570135519005L;

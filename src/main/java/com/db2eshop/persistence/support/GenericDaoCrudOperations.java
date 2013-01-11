@@ -9,7 +9,7 @@ import java.util.List;
  * side
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public interface GenericDaoCrudOperations<T> {
 

@@ -11,17 +11,10 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Component;
 
-@Component
-/**
- * <p>Abstract ConfirmCancelDialog class.</p>
- *
- * @author Denis Neuling (denisneuling@gmail.com)
- * 
- */
-public abstract class ConfirmCancelDialog extends BaseDialog{
-	private static final long serialVersionUID = 8516091888456072697L;
+public abstract class ConfirmDialog extends BaseDialog{
+	private static final long serialVersionUID = 5958464790527032755L;
+
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	private MigLayout layout;
@@ -29,12 +22,8 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	private volatile boolean ready = false;
 	protected JPanel contentPane = new JPanel();
 	protected JButton confirmButton;
-	protected JButton cancelButton;
 	
-	/**
-	 * <p>Constructor for ConfirmCancelDialog.</p>
-	 */
-	public ConfirmCancelDialog(){
+	public ConfirmDialog(){
 		layout = new MigLayout("fill");
 		
 		setMinimumSize(new Dimension(300, 110));
@@ -51,10 +40,6 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 		buttonPane.add(confirmButton, "span, split 2, growx");
 		confirmButton.addActionListener(this);
 		
-		cancelButton = new JButton("Cancel");
-		buttonPane.add(cancelButton,"growx");
-		cancelButton.addActionListener(this);
-		
 		add(buttonPane, "growx, south");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		addWindowListener(this);
@@ -69,9 +54,6 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	public void actionPerformed(ActionEvent e) {
 		if(confirmButton.equals(e.getSource())){
 			onConfirm();
-			this.setVisible(false);
-		}else if(cancelButton.equals(e.getSource())){
-			onCancel();
 			this.setVisible(false);
 		}
 	}
@@ -91,8 +73,4 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	 */
 	public abstract void onConfirm();
 	
-	/**
-	 * <p>onCancel.</p>
-	 */
-	public abstract void onCancel();
 }

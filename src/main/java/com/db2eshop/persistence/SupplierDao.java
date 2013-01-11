@@ -8,8 +8,19 @@ import com.db2eshop.model.Supplier;
 import com.db2eshop.persistence.support.AbstractDao;
 
 @Repository
+/**
+ * <p>SupplierDao class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class SupplierDao extends AbstractDao<Supplier> {
 
+	/**
+	 * <p>Constructor for SupplierDao.</p>
+	 *
+	 * @param sessionFactory a {@link org.hibernate.SessionFactory} object.
+	 */
 	@Autowired
 	public SupplierDao(SessionFactory sessionFactory) {
 		super(sessionFactory, Supplier.class);

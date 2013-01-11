@@ -4,11 +4,20 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Random;
 
+/**
+ * <p>LoremIpsum class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class LoremIpsum {
 
+	/** Constant <code>SPACE=" "</code> */
 	public static final String SPACE = " ";
+	/** Constant <code>DOT="."</code> */
 	public static final String DOT = ".";
 
+	/** Constant <code>wordList="{ Lorem, ipsum, dolor, sit, amet, conse"{trunked}</code> */
 	public static final String[] wordList = { "Lorem", "ipsum", "dolor", "sit", "amet", "consetetur", "sadipscing", "elitr", "sed", "diam", "nonumy", "eirmod", "tempor", "invidunt", "ut", "labore", "et", "dolore", "magna", "aliquyam", "erat", "sed", "diam", "voluptua", "At", "vero", "eos", "et",
 			"accusam", "et", "justo", "do", "dolores", "et", "ea", "rebum", "Stet", "clita", "kasd", "gubergren", "no", "sea", "takimata", "sanctus", "est", "Lorem", "ipsum", "dolor", "sit", "amet", "Lorem", "ipsum", "dolor", "sit", "amet", "consetetur", "sadipscing", "elitr", "sed", "diam",
 			"nonumy", "eirmod", "tempor", "invidunt", "ut", "labore", "et", "dolore", "magna", "aliquyam", "erat", "sed", "diam", "voluptua", "At", "vero", "eos", "et", "accusam", "et", "justo", "duo", "dolores", "et", "ea", "rebum", "Stet", "clita", "kasd", "gubergren", "no", "sea", "takimata",
@@ -42,12 +51,24 @@ public class LoremIpsum {
 			"ipsum", "dolor", "sit", "amet", "consectetuer", "adipiscing", "elit", "sed", "diam", "nonummy", "nibh", "euismod", "tincidunt", "ut", "laoreet", "dolore", "magna", "aliquam", "erat", "volutpat", "Ut", "wisi", "enim", "ad", "minim", "veniam", "quis", "nostrud", "exerci", "tation",
 			"ullamcorper", "suscipit", "lobortis", "nisl", "ut", "aliquip", "ex", "ea", "commodo" };
 
+	/** Constant <code>random</code> */
 	public final static Random random = new Random();
 
+	/**
+	 * <p>word.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String word() {
 		return wordList[random.nextInt(wordList.length)];
 	}
 
+	/**
+	 * <p>phrase.</p>
+	 *
+	 * @param words a int.
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String phrase(int words) {
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < words; i++) {
@@ -60,10 +81,20 @@ public class LoremIpsum {
 		return buffer.toString();
 	}
 
+	/**
+	 * <p>phrase.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String phrase() {
 		return phrase(random.nextInt(wordList.length));
 	}
 
+	/**
+	 * <p>secureRandomString.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String secureRandomString() {
 		SecureRandom random = new SecureRandom();
 		return new BigInteger(130, random).toString(32);

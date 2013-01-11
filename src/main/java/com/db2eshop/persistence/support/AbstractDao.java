@@ -24,9 +24,9 @@ import com.db2eshop.persistence.exception.ValidationException;
  * <p>
  * Abstract AbstractDao class.
  * </p>
- * 
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @SuppressWarnings({ "unchecked" })
@@ -51,7 +51,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * Constructor for AbstractDao.
 	 * </p>
-	 * 
+	 *
 	 * @param sessionFactory
 	 *            a {@link org.hibernate.SessionFactory} object.
 	 * @param clazz
@@ -66,7 +66,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * delete.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 */
@@ -91,7 +91,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * evict.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 */
@@ -99,10 +99,20 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		this.getHibernateTemplate().evict(entity);
 	}
 
+	/**
+	 * <p>getCurrentSession.</p>
+	 *
+	 * @return a {@link org.hibernate.Session} object.
+	 */
 	public Session getCurrentSession() {
 		return getSession();
 	}
 
+	/**
+	 * <p>findAllIds.</p>
+	 *
+	 * @return a {@link java.util.List} object.
+	 */
 	public List<Long> findAllIds() {
 		org.hibernate.Query q = this.getSession().createQuery("Select id from " + this.clazz.getName());
 		List<Long> ids = q.list();
@@ -113,7 +123,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * findAll.
 	 * </p>
-	 * 
+	 *
 	 * @return a {@link java.util.List} object.
 	 */
 	public List<T> findAll() {
@@ -239,7 +249,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * merge.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 * @return a T object.
@@ -252,7 +262,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * persist.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 */
@@ -264,7 +274,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * refresh.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 */
@@ -276,7 +286,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * rowCount.
 	 * </p>
-	 * 
+	 *
 	 * @return a int.
 	 */
 	public int rowCount() {
@@ -287,7 +297,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * save.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 * @return a {@link java.io.Serializable} object.
@@ -317,7 +327,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * saveAll.
 	 * </p>
-	 * 
+	 *
 	 * @param entities
 	 *            a T object.
 	 */
@@ -340,7 +350,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * saveAndFlush.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 * @return a {@link java.io.Serializable} object.
@@ -356,7 +366,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * saveOrUpdate.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 */
@@ -382,7 +392,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * saveOrUpdateAll.
 	 * </p>
-	 * 
+	 *
 	 * @param ts
 	 *            a T object.
 	 */
@@ -406,7 +416,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * update.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 */
@@ -432,7 +442,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * updateAll.
 	 * </p>
-	 * 
+	 *
 	 * @param entities
 	 *            a T object.
 	 */
@@ -449,7 +459,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	 * <p>
 	 * validate.
 	 * </p>
-	 * 
+	 *
 	 * @param entity
 	 *            a T object.
 	 */

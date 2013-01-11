@@ -9,9 +9,17 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.annotations.bindings.UIFor;
 import com.db2eshop.governance.service.model.CustomerService;
 import com.db2eshop.gui.component.table.api.GenericTable;
+import com.db2eshop.gui.component.table.listener.TableMenuCapableMouseListener;
+import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Customer;
 
 @Component
+/**
+ * <p>CustomerTable class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 @UIFor(Customer.class)
 public class CustomerTable extends GenericTable<Customer>{
 	private static final long serialVersionUID = 8583486834871539743L;
@@ -20,17 +28,37 @@ public class CustomerTable extends GenericTable<Customer>{
 	@Autowired
 	private CustomerService customerService;
 
+	@Autowired
+	private RightClickPopupMenu rightClickPopupMenu;
+	
+	protected TableMenuCapableMouseListener tableMenuCapableMouseListener;
+
+	/** {@inheritDoc} */
 	@Override
 	public void onApplicationReady() {
 		List<Customer> customers = customerService.loadEntireTable();
 		for(Customer customer : customers){
 			addRow(customer);
 		}
+		
+		tableMenuCapableMouseListener = new TableMenuCapableMouseListener(this, rightClickPopupMenu);
+		this.addMouseListener(tableMenuCapableMouseListener);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowChange(Customer entity) {
 		customerService.update(entity);
+	}
+
+	@Override
+	public void onRowRemove(Customer entity) {
+		customerService.delete(entity);
+	}
+
+	@Override
+	public void onRowAdd(Customer entity) {
+		customerService.save(entity);
 	}
 
 }
