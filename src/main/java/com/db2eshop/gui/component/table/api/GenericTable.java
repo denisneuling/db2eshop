@@ -93,6 +93,12 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		}
 	}
 	
+	/**
+	 * <p>rowChanged.</p>
+	 *
+	 * @param row a int.
+	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 */
 	@SuppressWarnings("unchecked")
 	public void rowChanged(int row, AbstractModel<?> entity){
 		Object values[] = asTableData((T) entity);

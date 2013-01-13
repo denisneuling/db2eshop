@@ -7,6 +7,12 @@ import javax.swing.JPanel;
 
 import net.miginfocom.swing.MigLayout;
 
+/**
+ * <p>ErrorTile class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class ErrorTile extends JPanel {
 	private static final long serialVersionUID = 5721008799327440736L;
 
@@ -16,12 +22,23 @@ public class ErrorTile extends JPanel {
 	private String message;
 	private Throwable throwable;
 
+	/**
+	 * <p>Constructor for ErrorTile.</p>
+	 *
+	 * @param message a {@link java.lang.String} object.
+	 */
 	public ErrorTile(String message) {
 		this.message = message;
 
 		buildTile();
 	}
 
+	/**
+	 * <p>Constructor for ErrorTile.</p>
+	 *
+	 * @param message a {@link java.lang.String} object.
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 */
 	public ErrorTile(String message, Throwable throwable) {
 		this.message = message;
 		this.throwable = throwable;
@@ -29,12 +46,20 @@ public class ErrorTile extends JPanel {
 		buildTile();
 	}
 
+	/**
+	 * <p>Constructor for ErrorTile.</p>
+	 *
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 */
 	public ErrorTile(Throwable throwable) {
 		this.throwable = throwable;
 
 		buildTile();
 	}
 
+	/**
+	 * <p>buildTile.</p>
+	 */
 	public void buildTile() {
 		this.setLayout(new MigLayout());
 
