@@ -153,4 +153,12 @@ public class ClassUtil {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public static <T> T newSilentInstance(Class<T> clazz){
+		try {
+			return clazz.newInstance();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

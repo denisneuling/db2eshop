@@ -1,5 +1,6 @@
 package com.db2eshop.gui.component.table.api;
 
+import java.util.Comparator;
 import java.util.Set;
 
 import javax.swing.JTable;
@@ -145,6 +146,17 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 				columnNames = metaColumnNames.toArray(new String[metaColumnNames.size()]);
 				this.setModel(EntityUtil.asTableModel(entityClazz));
 				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) this.getModel());
+				sorter.setComparator(0, new Comparator<Long>(){
+					@Override
+					public int compare(Long arg0, Long arg1) {
+						if (arg0 == arg1){
+							return 0;
+						}
+						if(arg1>arg0){
+							return -1;
+						}
+						return 1;
+					}});
 				this.setRowSorter(sorter);
 			}
 		}

@@ -6,10 +6,18 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
+import com.db2eshop.annotations.bindings.UIBind;
+import com.db2eshop.annotations.bindings.UIEmbedded;
+import com.db2eshop.gui.component.io.DateInput;
+import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.NumberInput;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -22,19 +30,38 @@ import com.db2eshop.model.support.AbstractModel;
 public class Import extends AbstractModel<Import> implements Serializable {
 	private static final long serialVersionUID = -8663449394006905708L;
 
+	@UIBind(IdInput.class)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@Column
-	private Integer count;
+	@NotNull
+	@UIBind(NumberInput.class)
+	@Column(nullable = false)
+	private Integer count = 0;
 
-	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
+	@NotNull
+	@UIBind(DateInput.class)
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date date = new Date();
+
+	@UIEmbedded
+	@ManyToOne
+	private Employee employee;
+
+	@UIEmbedded
+	@ManyToOne
+	private Article article;
+
+	@UIEmbedded
+	@ManyToOne
+	private Supplier supplier;
 
 	/**
-	 * <p>Constructor for Import.</p>
+	 * <p>
+	 * Constructor for Import.
+	 * </p>
 	 */
 	public Import() {
 	}
@@ -51,40 +78,44 @@ public class Import extends AbstractModel<Import> implements Serializable {
 		this.id = id;
 	}
 
-	/**
-	 * <p>Getter for the field <code>count</code>.</p>
-	 *
-	 * @return a int.
-	 */
-	public int getCount() {
+	public Integer getCount() {
 		return count;
 	}
 
-	/**
-	 * <p>Setter for the field <code>count</code>.</p>
-	 *
-	 * @param count a int.
-	 */
-	public void setCount(int count) {
+	public void setCount(Integer count) {
 		this.count = count;
 	}
 
-	/**
-	 * <p>Getter for the field <code>date</code>.</p>
-	 *
-	 * @return a int.
-	 */
-	public int getDate() {
-		return count;
+	public Date getDate() {
+		return date;
 	}
 
-	/**
-	 * <p>Setter for the field <code>date</code>.</p>
-	 *
-	 * @param date a {@link java.util.Date} object.
-	 */
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
 	/** {@inheritDoc} */
@@ -126,6 +157,6 @@ public class Import extends AbstractModel<Import> implements Serializable {
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		return "Import [id=" + id + ", count=" + count + ", date=" + date + "]";
+		return id + " " + date;
 	}
 }

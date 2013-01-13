@@ -1,13 +1,25 @@
 package com.db2eshop.model;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.db2eshop.annotations.bindings.UIBind;
+import com.db2eshop.annotations.bindings.UIEmbedded;
+import com.db2eshop.annotations.bindings.UIHide;
+import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.TextArea;
+import com.db2eshop.gui.component.io.TextInput;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -17,24 +29,33 @@ import com.db2eshop.model.support.AbstractModel;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class Article extends AbstractModel<Article> implements Serializable{
+public class Article extends AbstractModel<Article> implements Serializable {
 	private static final long serialVersionUID = -3958701112789778500L;
 
+	@UIBind(IdInput.class)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@Column(unique=true)
+	@UIBind(TextInput.class)
+	@Column(unique = true)
 	private String name;
 
-	@Column
-	private Integer count;
-
-	@Column(columnDefinition="TEXT")
+	@UIBind(TextArea.class)
+	@Column(columnDefinition = "TEXT")
 	private String description;
 
+	@UIEmbedded
 	@ManyToOne
 	private ArticleType articleType;
+
+	@UIHide
+	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Sale> sales = new LinkedList<Sale>();
+
+	@UIHide
+	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Import> imports = new LinkedList<Import>();
 
 	/**
 	 * <p>
@@ -56,76 +77,44 @@ public class Article extends AbstractModel<Article> implements Serializable{
 		this.id = id;
 	}
 
-	/**
-	 * <p>Getter for the field <code>name</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * <p>Setter for the field <code>name</code>.</p>
-	 *
-	 * @param name a {@link java.lang.String} object.
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * <p>Getter for the field <code>count</code>.</p>
-	 *
-	 * @return a int.
-	 */
-	public int getCount() {
-		return count;
-	}
-
-	/**
-	 * <p>Setter for the field <code>count</code>.</p>
-	 *
-	 * @param count a int.
-	 */
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	/**
-	 * <p>Getter for the field <code>description</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getDescription() {
 		return description;
 	}
 
-	/**
-	 * <p>Setter for the field <code>description</code>.</p>
-	 *
-	 * @param description a {@link java.lang.String} object.
-	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	/**
-	 * <p>Getter for the field <code>articleType</code>.</p>
-	 *
-	 * @return a {@link com.db2eshop.model.ArticleType} object.
-	 */
+
 	public ArticleType getArticleType() {
 		return articleType;
 	}
 
-	/**
-	 * <p>Setter for the field <code>articleType</code>.</p>
-	 *
-	 * @param articleType a {@link com.db2eshop.model.ArticleType} object.
-	 */
 	public void setArticleType(ArticleType articleType) {
 		this.articleType = articleType;
+	}
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+
+	public List<Import> getImports() {
+		return imports;
+	}
+
+	public void setImports(List<Import> imports) {
+		this.imports = imports;
 	}
 
 	/** {@inheritDoc} */
@@ -134,7 +123,6 @@ public class Article extends AbstractModel<Article> implements Serializable{
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((articleType == null) ? 0 : articleType.hashCode());
-		result = prime * result + count;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -155,8 +143,6 @@ public class Article extends AbstractModel<Article> implements Serializable{
 			if (other.articleType != null)
 				return false;
 		} else if (!articleType.equals(other.articleType))
-			return false;
-		if (count != other.count)
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -179,6 +165,6 @@ public class Article extends AbstractModel<Article> implements Serializable{
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", name=" + name + ", count=" + count + ", description=" + description + "]";
+		return id + " " + name;
 	}
 }

@@ -23,6 +23,7 @@ import com.db2eshop.model.support.AbstractModel;
  * 
  */
 public class EntityUtil {
+	@SuppressWarnings("unused")
 	private static Logger log = Logger.getRootLogger();
 
 	/**

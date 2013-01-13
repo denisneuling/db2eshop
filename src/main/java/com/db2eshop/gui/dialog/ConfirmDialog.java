@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 
 public abstract class ConfirmDialog extends BaseDialog{
 	private static final long serialVersionUID = 5958464790527032755L;
-
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	private MigLayout layout;

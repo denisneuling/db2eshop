@@ -1,14 +1,19 @@
 package com.db2eshop.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
+import com.db2eshop.annotations.bindings.UIBind;
+import com.db2eshop.annotations.bindings.UIEmbedded;
+import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.NumberInput;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -21,24 +26,34 @@ import com.db2eshop.model.support.AbstractModel;
 public class Sale extends AbstractModel<Sale> implements Serializable {
 	private static final long serialVersionUID = -9016685368451535775L;
 
+	@UIBind(IdInput.class)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@Column
-	private Integer count;
+	@NotNull
+	@UIBind(NumberInput.class)
+	@Column(nullable = false)
+	private Integer count = 0;
 
-	@ManyToMany
-	private List<Article> articles;
+	@UIEmbedded
+	@NotNull
+	@ManyToOne(optional = false)
+	private Article article;
 
-	@Column
+	@UIEmbedded
+	@NotNull
+	@ManyToOne(optional = false)
 	private Customer customer;
 
-	@Column
+	@UIEmbedded
+	@ManyToOne
 	private Shipping shipping;
 
 	/**
-	 * <p>Constructor for Sale.</p>
+	 * <p>
+	 * Constructor for Sale.
+	 * </p>
 	 */
 	public Sale() {
 	}
@@ -55,64 +70,34 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 		this.id = id;
 	}
 
-	/**
-	 * <p>Getter for the field <code>count</code>.</p>
-	 *
-	 * @return a int.
-	 */
-	public int getCount() {
+	public Integer getCount() {
 		return count;
 	}
 
-	/**
-	 * <p>Setter for the field <code>count</code>.</p>
-	 *
-	 * @param count a int.
-	 */
-	public void setCount(int count) {
+	public void setCount(Integer count) {
 		this.count = count;
 	}
 
-//	public List<Article> getArticles() {
-//		return articles;
-//	}
-//
-//	public void setArticles(List<Article> articles) {
-//		this.articles = articles;
-//	}
+	public Article getArticle() {
+		return article;
+	}
 
-	/**
-	 * <p>Getter for the field <code>customer</code>.</p>
-	 *
-	 * @return a {@link com.db2eshop.model.Customer} object.
-	 */
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
 	public Customer getCustomer() {
 		return customer;
 	}
 
-	/**
-	 * <p>Setter for the field <code>customer</code>.</p>
-	 *
-	 * @param customer a {@link com.db2eshop.model.Customer} object.
-	 */
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-	/**
-	 * <p>Getter for the field <code>shipping</code>.</p>
-	 *
-	 * @return a {@link com.db2eshop.model.Shipping} object.
-	 */
 	public Shipping getShipping() {
 		return shipping;
 	}
 
-	/**
-	 * <p>Setter for the field <code>shipping</code>.</p>
-	 *
-	 * @param shipping a {@link com.db2eshop.model.Shipping} object.
-	 */
 	public void setShipping(Shipping shipping) {
 		this.shipping = shipping;
 	}
@@ -162,6 +147,6 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		return "Sale [id=" + id + ", count=" + count + ", customer=" + customer + ", shipping=" + shipping + "]";
+		return count + "x " + article + " by " + customer;
 	}
 }

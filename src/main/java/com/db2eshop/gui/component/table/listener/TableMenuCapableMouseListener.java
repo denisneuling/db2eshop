@@ -36,10 +36,9 @@ public class TableMenuCapableMouseListener extends BaseMouseListener {
 
 		if (arg0.getButton() == MouseEvent.BUTTON3) {
 			int row = genericTable.rowAtPoint(arg0.getPoint());
-			int column = genericTable.columnAtPoint(arg0.getPoint());
 			genericTable.getSelectionModel().setSelectionInterval(row, row);
 			AbstractModel<?> entity = genericTable.getEntityAtRow(row);
-			rightClickPopupMenu.showMenu(arg0.getPoint(), row, column, entity, genericTable);
+			rightClickPopupMenu.showMenu(arg0.getPoint(), row, entity, genericTable);
 		}
 	}
 

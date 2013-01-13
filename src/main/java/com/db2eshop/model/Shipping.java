@@ -1,12 +1,25 @@
 package com.db2eshop.model;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.db2eshop.annotations.bindings.UIBind;
+import com.db2eshop.annotations.bindings.UIHide;
+import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.TextInput;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -19,15 +32,38 @@ import com.db2eshop.model.support.AbstractModel;
 public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	private static final long serialVersionUID = 5311617211485240660L;
 
+	@UIBind(IdInput.class)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@Column
+	@NotNull
+	@NotEmpty
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
 	private String name;
 
-	@Column
+	@NotNull
+	@NotEmpty
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
+	private String city;
+
+	@NotNull
+	@NotEmpty
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
+	private String zipCode;
+
+	@NotNull
+	@NotEmpty
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
 	private String telephone;
+
+	@UIHide
+	@OneToMany(mappedBy = "shipping", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Sale> sales = new LinkedList<Sale>();
 
 	/**
 	 * <p>
@@ -37,61 +73,54 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	public Shipping() {
 	}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @param name
-	 *            a {@link java.lang.String} object.
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * <p>
-	 * Getter for the field <code>telephoneNummer</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getTelephone() {
-		return telephone;
-	}
-
-	/**
-	 * <p>
-	 * Setter for the field <code>telephoneNummer</code>.
-	 * </p>
-	 *
-	 * @param telephone a {@link java.lang.String} object.
-	 */
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	/** {@inheritDoc} */
 	@Override
 	public Long getId() {
 		return id;
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
 	}
 
 	/** {@inheritDoc} */
@@ -136,8 +165,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		return "Shipping [id=" + id + ", name=" + name + ", telephone=" + telephone + "]";
+		return name + " " + city;
 	}
-	
-	
+
 }

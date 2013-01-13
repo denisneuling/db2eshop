@@ -1,5 +1,6 @@
 package com.db2eshop.launcher;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.model.Article;
 import com.db2eshop.model.ArticleType;
 import com.db2eshop.model.Customer;
+import com.db2eshop.model.Shipping;
 import com.db2eshop.persistence.ArticleDao;
 import com.db2eshop.persistence.ArticleTypeDao;
 import com.db2eshop.persistence.CustomerDao;
@@ -29,7 +31,6 @@ import com.db2eshop.util.LoremIpsum;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-@SuppressWarnings("unused")
 public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 
 	@Autowired
@@ -60,7 +61,7 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof ContextRefreshedEvent) {
-//			initializeDataSet();
+			initializeDataSet();
 		}
 	}
 
@@ -68,11 +69,11 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 		 initializeArticleTypes();
 		 initializeArticles();
 		 initializeCustomers();
-		 initializeEmployees();
-		 initializeImports();
-		 initializeSales();
-		 initializeShippings();
-		 initializeSuppliers();
+//		 initializeShippings();
+//		 initializeSales();
+//		 initializeEmployees();
+//		 initializeSuppliers();
+//		 initializeImports();
 	}
 
 	/**
@@ -84,7 +85,7 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 		List<ArticleType> articleTypes = new LinkedList<ArticleType>();
 		for (int i = 0; i < 15; i++) {
 			ArticleType articleType = new ArticleType();
-			articleType.setName(LoremIpsum.phrase(LoremIpsum.random.nextInt(3) + 1));
+			articleType.setName(LoremIpsum.secureRandomString());
 			articleTypes.add(articleType);
 		}
 		articleTypeDao.saveAll(articleTypes);
@@ -102,7 +103,6 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 			List<Article> articles = new LinkedList<Article>();
 			for (int i = 0; i < 20; i++) {
 				Article article = new Article();
-				article.setCount(LoremIpsum.random.nextInt(5000));
 				article.setName(LoremIpsum.secureRandomString());
 				String desc = LoremIpsum.phrase();
 				article.setDescription((desc.length() > 255 ? desc.substring(0, 253) + "." : desc));
@@ -122,10 +122,9 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 		List<Customer> customers = new LinkedList<Customer>();
 		for (int i = 0; i < 30; i++) {
 			Customer customer = new Customer();
-			customer.setBirthday(LoremIpsum.word());
+			customer.setBirthday(new Date());
 			customer.setCity(LoremIpsum.word());
-			customer.setCount(LoremIpsum.random.nextInt(100));
-			customer.setName(LoremIpsum.word());
+			customer.setSurName(LoremIpsum.word());
 			customer.setPreName(LoremIpsum.word());
 			customer.setStreet(LoremIpsum.word());
 			customer.setTelephone(LoremIpsum.word());
@@ -136,11 +135,21 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 		customerDao.saveAll(customers);
 	}
 
+	private void initializeShippings() {
+		List<Shipping> shippings = new LinkedList<Shipping>();
+		for (int i = 0; i < 35; i++) {
+			Shipping shipping = new Shipping();
+			shipping.setName(LoremIpsum.secureRandomString());
+			shipping.setTelephone(LoremIpsum.word());
+			shipping.setZipCode(LoremIpsum.word());
+			shippings.add(shipping);
+		}
+		shippingDao.saveAll(shippings);
+	}
+	
 	private void initializeSuppliers() {
 	}
 
-	private void initializeShippings() {
-	}
 
 	private void initializeSales() {
 	}

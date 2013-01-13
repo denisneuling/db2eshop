@@ -16,51 +16,40 @@ import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 
 @Component
-public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
+public class ShowDialog extends ConfirmDialog implements InitializingBean {
 	private static final long serialVersionUID = -2281946458815013162L;
 
-	@Value("${gui.dialog.edit.title}")
-	private String title;
-	
 	@Autowired
 	private UIBinder uiBinder;
-	
-	private volatile GenericTable<?> table;
-	private volatile Integer row;
-	private volatile AbstractModel<?> model;
-	private volatile Map<String, LabeledInput<?>> components;
-	
-	public void showDialog(int row, GenericTable<?> table, AbstractModel<?> model){
-		this.row = row;
-		this.table = table;
+
+	@Value("${gui.dialog.show.title}")
+	private String title;
+
+	private transient AbstractModel<?> model;
+
+	public void showDialog(int row, GenericTable<?> table, AbstractModel<?> model) {
 		this.model = model;
-		
+
 		buildEditor();
 		setVisible(true);
 	}
-	
+
 	private void buildEditor() {
 		this.getContentPane().removeAll();
 		Container container = this.getContentPane();
-		container.setLayout(new MigLayout("fill"));
-		components = uiBinder.create(model);
+		container.setLayout(new MigLayout("filly"));
+		Map<String, LabeledInput<?>> components = uiBinder.create(model);
 		for (LabeledInput<?> labeledInput : components.values()) {
+			labeledInput.setEditable(false);
 			container.add(labeledInput, "wrap");
 		}
 		
 		this.repaint();
 	}
-	
-	@Override
-	public void onConfirm() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public void onCancel() {
-		// TODO Auto-generated method stub
-		
+	public void onConfirm() {
+		model = null;
 	}
 
 	@Override

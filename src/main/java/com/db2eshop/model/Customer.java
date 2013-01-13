@@ -1,12 +1,26 @@
 package com.db2eshop.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import com.db2eshop.annotations.bindings.UIBind;
+import com.db2eshop.annotations.bindings.UIHide;
+import com.db2eshop.gui.component.io.DateInput;
+import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.TextInput;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -19,33 +33,43 @@ import com.db2eshop.model.support.AbstractModel;
 public class Customer extends AbstractModel<Customer> implements Serializable {
 	private static final long serialVersionUID = 2121359969444535875L;
 
+	@UIBind(IdInput.class)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@Column
-	private String name;
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
+	private String surName;
 
-	@Column
-	private Integer count;
-
-	@Column
-	private String city;
-
+	@UIBind(TextInput.class)
 	@Column
 	private String telephone;
 
-	@Column
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
 	private String preName;
 
+	@UIBind(DateInput.class)
+	@Temporal(TemporalType.DATE)
 	@Column
-	private String birthday;
+	private Date birthday;
 
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
+	private String street;
+
+	@UIBind(TextInput.class)
+	@Column(nullable = false)
+	private String city;
+
+	@UIBind(TextInput.class)
 	@Column
 	private String zipCode;
 
-	@Column
-	private String street;
+	@UIHide
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Sale> sales = new LinkedList<Sale>();
 
 	/**
 	 * <p>
@@ -67,148 +91,76 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		this.id = id;
 	}
 
-	/**
-	 * <p>Getter for the field <code>name</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getName() {
-		return name;
+	public String getSurName() {
+		return surName;
 	}
 
-	/**
-	 * <p>Setter for the field <code>name</code>.</p>
-	 *
-	 * @param name a {@link java.lang.String} object.
-	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setSurName(String surName) {
+		this.surName = surName;
 	}
 
-	/**
-	 * <p>Getter for the field <code>count</code>.</p>
-	 *
-	 * @return a int.
-	 */
-	public int getCount() {
-		return count;
-	}
-
-	/**
-	 * <p>Setter for the field <code>count</code>.</p>
-	 *
-	 * @param count a int.
-	 */
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	/**
-	 * <p>Getter for the field <code>city</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getCity() {
 		return city;
 	}
 
-	/**
-	 * <p>Setter for the field <code>city</code>.</p>
-	 *
-	 * @param city a {@link java.lang.String} object.
-	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-	/**
-	 * <p>Getter for the field <code>telephone</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getTelephone() {
 		return telephone;
 	}
 
-	/**
-	 * <p>Setter for the field <code>telephone</code>.</p>
-	 *
-	 * @param telephone a {@link java.lang.String} object.
-	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
-	/**
-	 * <p>Getter for the field <code>preName</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getPreName() {
 		return preName;
 	}
 
-	/**
-	 * <p>Setter for the field <code>preName</code>.</p>
-	 *
-	 * @param preName a {@link java.lang.String} object.
-	 */
 	public void setPreName(String preName) {
 		this.preName = preName;
 	}
 
-	/**
-	 * <p>Getter for the field <code>birthday</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	/**
-	 * <p>Setter for the field <code>birthday</code>.</p>
-	 *
-	 * @param birthday a {@link java.lang.String} object.
-	 */
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
-	/**
-	 * <p>Getter for the field <code>zipCode</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getZipCode() {
 		return zipCode;
 	}
 
-	/**
-	 * <p>Setter for the field <code>zipCode</code>.</p>
-	 *
-	 * @param zipCode a {@link java.lang.String} object.
-	 */
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
-	/**
-	 * <p>Getter for the field <code>street</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getStreet() {
 		return street;
 	}
 
 	/**
-	 * <p>Setter for the field <code>street</code>.</p>
-	 *
-	 * @param street a {@link java.lang.String} object.
+	 * <p>
+	 * Setter for the field <code>street</code>.
+	 * </p>
+	 * 
+	 * @param street
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setStreet(String street) {
 		this.street = street;
+	}
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
 	}
 
 	/** {@inheritDoc} */
@@ -218,9 +170,8 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		int result = super.hashCode();
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + count;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((surName == null) ? 0 : surName.hashCode());
 		result = prime * result + ((preName == null) ? 0 : preName.hashCode());
 		result = prime * result + ((street == null) ? 0 : street.hashCode());
 		result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
@@ -248,17 +199,15 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 				return false;
 		} else if (!city.equals(other.city))
 			return false;
-		if (count != other.count)
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (surName == null) {
+			if (other.surName != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!surName.equals(other.surName))
 			return false;
 		if (preName == null) {
 			if (other.preName != null)
@@ -286,6 +235,6 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", count=" + count + ", city=" + city + ", telephone=" + telephone + ", preName=" + preName + ", birthday=" + birthday + ", zipCode=" + zipCode + ", street=" + street + "]";
+		return id + " " + preName + " " + surName;
 	}
 }

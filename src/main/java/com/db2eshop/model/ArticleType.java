@@ -9,10 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
+import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.TextInput;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -22,18 +26,20 @@ import com.db2eshop.model.support.AbstractModel;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class ArticleType extends AbstractModel<ArticleType> implements Serializable{
+public class ArticleType extends AbstractModel<ArticleType> implements Serializable {
 	private static final long serialVersionUID = 2387929026098277701L;
 
+	@UIBind(IdInput.class)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@Column
+	@UIBind(TextInput.class)
+	@Column(unique = true)
 	private String name;
-	
+
 	@UIHide
-	@OneToMany(mappedBy = "articleType", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "articleType", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Article> articles = new LinkedList<Article>();
 
 	/**
@@ -56,43 +62,18 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 		this.id = id;
 	}
 
-	/**
-	 * <p>
-	 * Getter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>name</code>.
-	 * </p>
-	 *
-	 * @param name
-	 *            a {@link java.lang.String} object.
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	/**
-	 * <p>Getter for the field <code>articles</code>.</p>
-	 *
-	 * @return a {@link java.util.List} object.
-	 */
+
 	public List<Article> getArticles() {
 		return articles;
 	}
 
-	/**
-	 * <p>Setter for the field <code>articles</code>.</p>
-	 *
-	 * @param articles a {@link java.util.List} object.
-	 */
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
@@ -133,6 +114,6 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		return "ArticleType [id=" + id + ", name=" + name + "]";
+		return id + " " + name;
 	}
 }
