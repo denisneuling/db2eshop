@@ -10,7 +10,7 @@ import com.db2eshop.model.Employee;
  * <p>EmployeeService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public interface EmployeeService extends CrudService<Employee>{
 

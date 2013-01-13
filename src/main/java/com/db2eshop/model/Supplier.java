@@ -27,7 +27,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Supplier class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class Supplier extends AbstractModel<Supplier> implements Serializable {
 	private static final long serialVersionUID = -6602792748963845414L;
@@ -85,42 +85,92 @@ public class Supplier extends AbstractModel<Supplier> implements Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>name</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * <p>Setter for the field <code>name</code>.</p>
+	 *
+	 * @param name a {@link java.lang.String} object.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * <p>Getter for the field <code>city</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * <p>Setter for the field <code>city</code>.</p>
+	 *
+	 * @param city a {@link java.lang.String} object.
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * <p>Getter for the field <code>zipCode</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getZipCode() {
 		return zipCode;
 	}
 
+	/**
+	 * <p>Setter for the field <code>zipCode</code>.</p>
+	 *
+	 * @param zipCode a {@link java.lang.String} object.
+	 */
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
+	/**
+	 * <p>Getter for the field <code>telephone</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getTelephone() {
 		return telephone;
 	}
 
+	/**
+	 * <p>Setter for the field <code>telephone</code>.</p>
+	 *
+	 * @param telephone a {@link java.lang.String} object.
+	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
+	/**
+	 * <p>Getter for the field <code>imports</code>.</p>
+	 *
+	 * @return a {@link java.util.List} object.
+	 */
 	public List<Import> getImports() {
 		return imports;
 	}
 
+	/**
+	 * <p>Setter for the field <code>imports</code>.</p>
+	 *
+	 * @param imports a {@link java.util.List} object.
+	 */
 	public void setImports(List<Import> imports) {
 		this.imports = imports;
 	}

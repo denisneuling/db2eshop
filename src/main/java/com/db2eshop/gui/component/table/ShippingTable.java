@@ -18,7 +18,7 @@ import com.db2eshop.model.Shipping;
  * <p>ShippingTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @UIFor(Shipping.class)
 public class ShippingTable extends GenericTable<Shipping>{
@@ -51,11 +51,13 @@ public class ShippingTable extends GenericTable<Shipping>{
 		shippingService.update(entity);		
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Shipping entity) {
 		shippingService.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Shipping entity) {
 		shippingService.save(entity);

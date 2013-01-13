@@ -11,20 +11,30 @@ import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 
 import org.apache.log4j.Logger;
 
+/**
+ * <p>DateInput class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public class DateInput extends LabeledInput<Date>{
 	private static final long serialVersionUID = 2680814138439027839L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	private JDatePickerImpl jDatePicker;
 	
+	/**
+	 * <p>Constructor for DateInput.</p>
+	 */
 	public DateInput(){
-		setLayout(new MigLayout("wrap 2", "[right][grow,fill]"));
+		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 		
 		this.add(label);
 		jDatePicker = new JDatePickerImpl((JDatePanelImpl) JDateComponentFactory.createJDatePanel());
 		this.add(jDatePicker,"growx,push");
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public Date getValue() {
 		DateModel<?> dateModel = jDatePicker.getModel();
@@ -37,6 +47,7 @@ public class DateInput extends LabeledInput<Date>{
 		return calendar.getTime();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	@SuppressWarnings("deprecation")
 	public void setValue(Object object) {
@@ -52,6 +63,7 @@ public class DateInput extends LabeledInput<Date>{
 		}
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setEditable(boolean editable) {
 	}

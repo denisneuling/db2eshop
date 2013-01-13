@@ -8,7 +8,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>EntityTableModel class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class EntityTableModel<T extends AbstractModel<T>> extends DefaultTableModel{
 	private static final long serialVersionUID = -958940428450132022L;

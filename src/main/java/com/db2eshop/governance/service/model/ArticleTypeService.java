@@ -10,7 +10,7 @@ import com.db2eshop.model.ArticleType;
  * <p>ArticleTypeService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public interface ArticleTypeService extends CrudService<ArticleType>{
 

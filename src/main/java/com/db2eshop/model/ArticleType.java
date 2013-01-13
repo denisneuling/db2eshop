@@ -24,7 +24,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>ArticleType class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class ArticleType extends AbstractModel<ArticleType> implements Serializable {
 	private static final long serialVersionUID = 2387929026098277701L;
@@ -62,18 +62,38 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>name</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * <p>Setter for the field <code>name</code>.</p>
+	 *
+	 * @param name a {@link java.lang.String} object.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * <p>Getter for the field <code>articles</code>.</p>
+	 *
+	 * @return a {@link java.util.List} object.
+	 */
 	public List<Article> getArticles() {
 		return articles;
 	}
 
+	/**
+	 * <p>Setter for the field <code>articles</code>.</p>
+	 *
+	 * @param articles a {@link java.util.List} object.
+	 */
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}

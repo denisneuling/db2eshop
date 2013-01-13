@@ -20,7 +20,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>EntityUtil class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class EntityUtil {
 	@SuppressWarnings("unused")

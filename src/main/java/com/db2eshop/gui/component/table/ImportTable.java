@@ -18,7 +18,7 @@ import com.db2eshop.model.Import;
  * <p>ImportTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @UIFor(Import.class)
 public class ImportTable extends GenericTable<Import>{
@@ -51,11 +51,13 @@ public class ImportTable extends GenericTable<Import>{
 		importService.update(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Import entity) {
 		importService.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Import entity) {
 		importService.save(entity);

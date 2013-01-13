@@ -28,7 +28,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Customer class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class Customer extends AbstractModel<Customer> implements Serializable {
 	private static final long serialVersionUID = 2121359969444535875L;
@@ -91,54 +91,119 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>surName</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getSurName() {
 		return surName;
 	}
 
+	/**
+	 * <p>Setter for the field <code>surName</code>.</p>
+	 *
+	 * @param surName a {@link java.lang.String} object.
+	 */
 	public void setSurName(String surName) {
 		this.surName = surName;
 	}
 
+	/**
+	 * <p>Getter for the field <code>city</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * <p>Setter for the field <code>city</code>.</p>
+	 *
+	 * @param city a {@link java.lang.String} object.
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * <p>Getter for the field <code>telephone</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getTelephone() {
 		return telephone;
 	}
 
+	/**
+	 * <p>Setter for the field <code>telephone</code>.</p>
+	 *
+	 * @param telephone a {@link java.lang.String} object.
+	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
+	/**
+	 * <p>Getter for the field <code>preName</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getPreName() {
 		return preName;
 	}
 
+	/**
+	 * <p>Setter for the field <code>preName</code>.</p>
+	 *
+	 * @param preName a {@link java.lang.String} object.
+	 */
 	public void setPreName(String preName) {
 		this.preName = preName;
 	}
 
+	/**
+	 * <p>Getter for the field <code>birthday</code>.</p>
+	 *
+	 * @return a {@link java.util.Date} object.
+	 */
 	public Date getBirthday() {
 		return birthday;
 	}
 
+	/**
+	 * <p>Setter for the field <code>birthday</code>.</p>
+	 *
+	 * @param birthday a {@link java.util.Date} object.
+	 */
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 
+	/**
+	 * <p>Getter for the field <code>zipCode</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getZipCode() {
 		return zipCode;
 	}
 
+	/**
+	 * <p>Setter for the field <code>zipCode</code>.</p>
+	 *
+	 * @param zipCode a {@link java.lang.String} object.
+	 */
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
+	/**
+	 * <p>Getter for the field <code>street</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getStreet() {
 		return street;
 	}
@@ -147,7 +212,7 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	 * <p>
 	 * Setter for the field <code>street</code>.
 	 * </p>
-	 * 
+	 *
 	 * @param street
 	 *            a {@link java.lang.String} object.
 	 */
@@ -155,10 +220,20 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		this.street = street;
 	}
 
+	/**
+	 * <p>Getter for the field <code>sales</code>.</p>
+	 *
+	 * @return a {@link java.util.List} object.
+	 */
 	public List<Sale> getSales() {
 		return sales;
 	}
 
+	/**
+	 * <p>Setter for the field <code>sales</code>.</p>
+	 *
+	 * @param sales a {@link java.util.List} object.
+	 */
 	public void setSales(List<Sale> sales) {
 		this.sales = sales;
 	}

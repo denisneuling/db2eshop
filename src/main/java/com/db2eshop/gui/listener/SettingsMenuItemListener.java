@@ -12,7 +12,7 @@ import com.db2eshop.gui.dialog.SettingsDialog;
  * <p>SettingsMenuItemListener class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class SettingsMenuItemListener extends BaseMenuItemListener {
 

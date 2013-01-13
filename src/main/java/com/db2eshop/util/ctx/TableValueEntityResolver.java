@@ -33,7 +33,7 @@ import com.db2eshop.util.ClassUtil;
  * <p>TableValueEntityResolver class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class TableValueEntityResolver implements InitializingBean {
 	protected Logger log = Logger.getLogger(getClass());
@@ -67,6 +67,11 @@ public class TableValueEntityResolver implements InitializingBean {
 	/**
 	 * <p>setValue.</p>
 	 *
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
 	 * @param propertyName a {@link java.lang.String} object.
 	 * @param property a {@link java.lang.Object} object.
 	 * @param target a T object.
@@ -136,21 +141,14 @@ public class TableValueEntityResolver implements InitializingBean {
 			throw new RuntimeException("Entity extraction fields cannot be null");
 		}
 		
-//		Session session = entityDao.get(entity.getClass()).getSessionFactory().openSession();
-//		session.refresh(entity);
-//		session.close();
-		
 		Object[] data = new Object[fields.length];
 		int index = 0;
 		Class<?> entityClass = entity.getClass();
 		for(String field : fields){
 			try {
 				Object object = ClassUtil.getValueOf(field, entity, entityClass, entityClass.getDeclaredField(field).getType());
-				if(object!=null && AbstractModel.class.isAssignableFrom(object.getClass())){
-//					System.out.println(((AbstractModel<?>)object).getId());
-//					entityDao.get(object.getClass()).refresh((AbstractModel)object);
-//					object = ((AbstractModel<?>)object).getId();
-				}
+//				if(object!=null && AbstractModel.class.isAssignableFrom(object.getClass())){
+//				}
 				data[index] = object;
 			} catch (Exception e) {
 				log.error("Field "+field+" could not been found",e);

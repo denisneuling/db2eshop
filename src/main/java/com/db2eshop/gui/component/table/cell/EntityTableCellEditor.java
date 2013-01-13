@@ -15,7 +15,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>EntityTableCellEditor class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class EntityTableCellEditor<T extends AbstractModel<T>> extends DefaultCellEditor implements CellEditorListener {
 	private static final long serialVersionUID = 4609080583827519706L;

@@ -6,7 +6,7 @@ import java.util.List;
  * <p>CrudService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public interface CrudService<T> {
 

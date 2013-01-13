@@ -17,7 +17,7 @@ import com.db2eshop.gui.MainFrame;
  * <p>Abstract BaseDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @Component
 public abstract class BaseDialog extends JDialog implements WindowListener, ActionListener{

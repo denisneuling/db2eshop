@@ -14,7 +14,7 @@ import com.db2eshop.persistence.ArticleDao;
  * <p>ArticleServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class ArticleServiceImpl implements ArticleService{
 

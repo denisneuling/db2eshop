@@ -15,6 +15,12 @@ import com.db2eshop.gui.component.io.listener.FillUpJListMouseListener;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.persistence.support.AbstractDao;
 
+/**
+ * <p>EmbeddedEntityInput class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	private static final long serialVersionUID = -3059177943483630930L;
 	protected Logger log = Logger.getLogger(this.getClass());
@@ -22,6 +28,11 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	private JList jList;
 	
 	private AbstractDao<?> dao;
+	/**
+	 * <p>Constructor for EmbeddedEntityInput.</p>
+	 *
+	 * @param dao a {@link com.db2eshop.persistence.support.AbstractDao} object.
+	 */
 	public EmbeddedEntityInput(AbstractDao<?> dao){
 		this.dao = dao;
 		
@@ -29,7 +40,7 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		jList.setModel(new DefaultListModel());
 		jList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		jList.addMouseListener(new FillUpJListMouseListener(this));
-		setLayout(new MigLayout("wrap 2", "[right][grow,fill]"));
+		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 		
 		this.add(label);
 		this.add(jList);
@@ -38,11 +49,13 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		jList.setVisible(true);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public AbstractModel<?> getValue() {
 		return (AbstractModel<?>) jList.getSelectedValue();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Object object) {
 		if(object!=null){
@@ -59,6 +72,7 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		}
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setEditable(boolean editable) {
 		jList.setEnabled(editable);
@@ -67,6 +81,9 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	
 	private JTextField jTextField = new JTextField("");
 	
+	/**
+	 * <p>updateList.</p>
+	 */
 	public void updateList() {
 		List<?> entities = dao.findAll();
 		AbstractModel<?> selectedOne = getValue();

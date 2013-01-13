@@ -21,7 +21,7 @@ import java.util.Arrays;
  * <p>ArrayUtils class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class ArrayUtils {
 

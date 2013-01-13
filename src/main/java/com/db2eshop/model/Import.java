@@ -25,7 +25,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Import class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class Import extends AbstractModel<Import> implements Serializable {
 	private static final long serialVersionUID = -8663449394006905708L;
@@ -78,42 +78,92 @@ public class Import extends AbstractModel<Import> implements Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>count</code>.</p>
+	 *
+	 * @return a {@link java.lang.Integer} object.
+	 */
 	public Integer getCount() {
 		return count;
 	}
 
+	/**
+	 * <p>Setter for the field <code>count</code>.</p>
+	 *
+	 * @param count a {@link java.lang.Integer} object.
+	 */
 	public void setCount(Integer count) {
 		this.count = count;
 	}
 
+	/**
+	 * <p>Getter for the field <code>date</code>.</p>
+	 *
+	 * @return a {@link java.util.Date} object.
+	 */
 	public Date getDate() {
 		return date;
 	}
 
+	/**
+	 * <p>Setter for the field <code>date</code>.</p>
+	 *
+	 * @param date a {@link java.util.Date} object.
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/**
+	 * <p>Getter for the field <code>employee</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Employee} object.
+	 */
 	public Employee getEmployee() {
 		return employee;
 	}
 
+	/**
+	 * <p>Setter for the field <code>employee</code>.</p>
+	 *
+	 * @param employee a {@link com.db2eshop.model.Employee} object.
+	 */
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
 
+	/**
+	 * <p>Getter for the field <code>article</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Article} object.
+	 */
 	public Article getArticle() {
 		return article;
 	}
 
+	/**
+	 * <p>Setter for the field <code>article</code>.</p>
+	 *
+	 * @param article a {@link com.db2eshop.model.Article} object.
+	 */
 	public void setArticle(Article article) {
 		this.article = article;
 	}
 
+	/**
+	 * <p>Getter for the field <code>supplier</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Supplier} object.
+	 */
 	public Supplier getSupplier() {
 		return supplier;
 	}
 
+	/**
+	 * <p>Setter for the field <code>supplier</code>.</p>
+	 *
+	 * @param supplier a {@link com.db2eshop.model.Supplier} object.
+	 */
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}

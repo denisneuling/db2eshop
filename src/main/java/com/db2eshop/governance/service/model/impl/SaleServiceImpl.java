@@ -14,7 +14,7 @@ import com.db2eshop.persistence.SaleDao;
  * <p>SaleServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class SaleServiceImpl implements SaleService{
 

@@ -6,7 +6,7 @@ import com.db2eshop.annotations.bindings.UIFor;
  * <p>UIForUtil class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class UIForUtil {
 

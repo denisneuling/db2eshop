@@ -18,7 +18,7 @@ import com.db2eshop.model.Supplier;
  * <p>SupplierTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @UIFor(Supplier.class)
 public class SupplierTable extends GenericTable<Supplier> {
@@ -51,11 +51,13 @@ public class SupplierTable extends GenericTable<Supplier> {
 		supplierService.update(entity);		
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Supplier entity) {
 		supplierService.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Supplier entity) {
 		supplierService.save(entity);

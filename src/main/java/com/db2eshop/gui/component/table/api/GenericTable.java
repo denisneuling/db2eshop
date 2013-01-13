@@ -29,7 +29,7 @@ import com.db2eshop.util.ctx.TableValueEntityResolver;
  * <p>Abstract GenericTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public abstract class GenericTable<T extends AbstractModel<T>> extends JTable implements InitializingBean, ApplicationListener<ApplicationEvent> {
 	private static final long serialVersionUID = 1180747329897017816L;
@@ -101,6 +101,12 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		return result;
 	}
 	
+	/**
+	 * <p>getEntityAtRow.</p>
+	 *
+	 * @param row a int.
+	 * @return a T object.
+	 */
 	@SuppressWarnings("unchecked")
 	public T getEntityAtRow(int row) {
 		Object[] values = getRowAt(row);
@@ -173,6 +179,11 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		((DefaultTableModel)getModel()).addRow(asTableData(entity));
 	}
 	
+	/**
+	 * <p>removeRow.</p>
+	 *
+	 * @param row a int.
+	 */
 	@SuppressWarnings("unchecked")
 	public void removeRow(int row){
 		Object[] values = this.getRowAt(row);
@@ -191,6 +202,11 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 			onError(e);
 		}
 	}
+	/**
+	 * <p>removeRow.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public void removeRow(T entity){
 		throw new NotImplementedException();
 	}
@@ -255,14 +271,34 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	 */
 	public abstract void onRowChange(T entity);
 	
+	/**
+	 * <p>onRowRemove.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public abstract void onRowRemove(T entity);
 	
+	/**
+	 * <p>onRowAdd.</p>
+	 *
+	 * @param entity a T object.
+	 */
 	public abstract void onRowAdd(T entity);
 	
+	/**
+	 * <p>onError.</p>
+	 *
+	 * @param e a {@link java.lang.Exception} object.
+	 */
 	public void onError(Exception e){
 		errorDialog.notifyError(e);
 	}
 	
+	/**
+	 * <p>Getter for the field <code>entityClazz</code>.</p>
+	 *
+	 * @return a {@link java.lang.Class} object.
+	 */
 	public Class<T> getEntityClazz(){
 		return entityClazz;
 	}

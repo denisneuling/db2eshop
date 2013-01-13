@@ -12,7 +12,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>TableEntityModelListener class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class TableEntityModelListener<T extends AbstractModel<T>> implements TableModelListener{
 	protected Logger log = Logger.getLogger(getClass()); 

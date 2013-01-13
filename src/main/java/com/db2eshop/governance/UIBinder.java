@@ -16,15 +16,28 @@ import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.persistence.support.AbstractDao;
 import com.db2eshop.util.ClassUtil;
+import com.db2eshop.util.StringUtil;
 import com.db2eshop.util.ctx.TableValueEntityResolver;
 
 @Component
+/**
+ * <p>UIBinder class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public class UIBinder {
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
 	private TableValueEntityResolver tableValueEntityResolver;
 	
+	/**
+	 * <p>create.</p>
+	 *
+	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @return a {@link java.util.Map} object.
+	 */
 	@SuppressWarnings("unchecked")
 	public Map<String, LabeledInput<?>> create(AbstractModel<?> entity) {
 		Class<? extends AbstractModel<?>> entityClazz = (Class<? extends AbstractModel<?>>) entity.getClass();
@@ -32,6 +45,12 @@ public class UIBinder {
 		return mixin(ui, entity);
 	}
 
+	/**
+	 * <p>create.</p>
+	 *
+	 * @param entityClazz a {@link java.lang.Class} object.
+	 * @return a {@link java.util.Map} object.
+	 */
 	public Map<String, LabeledInput<?>> create(Class<? extends AbstractModel<?>> entityClazz) {
 		Map<String, LabeledInput<?>> ui = new HashMap<String, LabeledInput<?>>();
 
@@ -48,7 +67,7 @@ public class UIBinder {
 				if (inputClazz != null) {
 					try {
 						LabeledInput<?> input = ClassUtil.newInstance(inputClazz);
-						input.setLabel(fieldName);
+						input.setLabel(StringUtil.nominilize(fieldName));
 						ui.put(fieldName, input);
 					} catch (RuntimeException e) {
 						log.error("Could not instantiate: " + inputClazz.getName(), e);
@@ -63,7 +82,7 @@ public class UIBinder {
 				}else{
 					AbstractDao<?> daoToBeSet = tableValueEntityResolver.getDao(clazz);
 					EmbeddedEntityInput input = new EmbeddedEntityInput(daoToBeSet);
-					input.setLabel(fieldName);
+					input.setLabel(StringUtil.nominilize(fieldName));
 					ui.put(fieldName, input);
 				}
 			} else {
@@ -77,6 +96,13 @@ public class UIBinder {
 		return ui;
 	}
 
+	/**
+	 * <p>mixin.</p>
+	 *
+	 * @param ui a {@link java.util.Map} object.
+	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @return a {@link java.util.Map} object.
+	 */
 	public Map<String, LabeledInput<?>> mixin(Map<String, LabeledInput<?>> ui, AbstractModel<?> entity) {
 		AbstractDao<?> dao = tableValueEntityResolver.getDao(entity.getClass());
 		dao.getHibernateTemplate().refresh(entity);

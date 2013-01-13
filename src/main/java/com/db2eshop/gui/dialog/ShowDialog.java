@@ -16,6 +16,12 @@ import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 
 @Component
+/**
+ * <p>ShowDialog class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public class ShowDialog extends ConfirmDialog implements InitializingBean {
 	private static final long serialVersionUID = -2281946458815013162L;
 
@@ -27,6 +33,13 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 
 	private transient AbstractModel<?> model;
 
+	/**
+	 * <p>showDialog.</p>
+	 *
+	 * @param row a int.
+	 * @param table a {@link com.db2eshop.gui.component.table.api.GenericTable} object.
+	 * @param model a {@link com.db2eshop.model.support.AbstractModel} object.
+	 */
 	public void showDialog(int row, GenericTable<?> table, AbstractModel<?> model) {
 		this.model = model;
 
@@ -47,14 +60,23 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 		this.repaint();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onConfirm() {
 		model = null;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		setTitle(title);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void onError(Exception e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

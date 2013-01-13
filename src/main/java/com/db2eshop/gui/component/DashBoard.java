@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * <p>DashBoard class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class DashBoard extends JPanel implements InitializingBean {
 	private static final long serialVersionUID = 6816890195017278060L;

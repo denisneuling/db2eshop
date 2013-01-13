@@ -1,7 +1,6 @@
 package com.db2eshop.gui.dialog;
 
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Component;
  * <p>Abstract ConfirmCancelDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public abstract class ConfirmCancelDialog extends BaseDialog{
 	private static final long serialVersionUID = 8516091888456072697L;
@@ -35,27 +34,25 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	 * <p>Constructor for ConfirmCancelDialog.</p>
 	 */
 	public ConfirmCancelDialog(){
-		layout = new MigLayout("fill");
-		
-		setMinimumSize(new Dimension(300, 110));
+		layout = new MigLayout("fill","","[grow]rel[grow]");
 		
 		setLayout(layout);
 		contentPane = new JPanel();
 		contentPane.setLayout(new MigLayout("fill"));
-		add(contentPane, "wrap");
+		add(contentPane, "grow,push,wrap");
 		
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new MigLayout("fill"));
 		
 		confirmButton = new JButton("Confirm");
-		buttonPane.add(confirmButton, "span, split 2, growx");
+		buttonPane.add(confirmButton, "span,split 2,growx,push");
 		confirmButton.addActionListener(this);
 		
 		cancelButton = new JButton("Cancel");
-		buttonPane.add(cancelButton,"growx");
+		buttonPane.add(cancelButton,"growx, push");
 		cancelButton.addActionListener(this);
 		
-		add(buttonPane, "growx, south");
+		add(buttonPane, "growx, push");//, south");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		addWindowListener(this);
 		
@@ -68,11 +65,19 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(confirmButton.equals(e.getSource())){
-			onConfirm();
-			this.setVisible(false);
+			try{
+				onConfirm();
+				this.setVisible(false);
+			}catch(Exception exception){
+				onError(exception);
+			}
 		}else if(cancelButton.equals(e.getSource())){
-			onCancel();
-			this.setVisible(false);
+			try{
+				onCancel();
+				this.setVisible(false);
+			}catch(Exception exception){
+				onError(exception);
+			}
 		}
 	}
 	
@@ -95,4 +100,11 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	 * <p>onCancel.</p>
 	 */
 	public abstract void onCancel();
+	
+	/**
+	 * <p>onError.</p>
+	 *
+	 * @param e a {@link java.lang.Exception} object.
+	 */
+	public abstract void onError(Exception e);
 }

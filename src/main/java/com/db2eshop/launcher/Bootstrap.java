@@ -29,7 +29,7 @@ import com.db2eshop.util.LoremIpsum;
  * <p>Bootstrap class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 

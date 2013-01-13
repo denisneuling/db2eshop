@@ -22,6 +22,12 @@ import com.db2eshop.gui.dialog.ShowDialog;
 import com.db2eshop.model.support.AbstractModel;
 
 @Component
+/**
+ * <p>RightClickPopupMenu class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public class RightClickPopupMenu extends JPopupMenu implements InitializingBean, ActionListener{
 	private static final long serialVersionUID = -5478903794243320305L;
 	protected Logger log = Logger.getLogger(this.getClass());
@@ -50,6 +56,9 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 	private JMenuItem edit;
 	private JMenuItem remove;
 	
+	/**
+	 * <p>Constructor for RightClickPopupMenu.</p>
+	 */
 	public RightClickPopupMenu(){
 		show = new JMenuItem("Show Entity");
 		add = new JMenuItem("Add Entity");
@@ -65,6 +74,15 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 		this.pack();
 	}
 	
+	/**
+	 * <p>showMenu.</p>
+	 *
+	 * @param location a {@link java.awt.Point} object.
+	 * @param row a int.
+	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @param table a {@link com.db2eshop.gui.component.table.api.GenericTable} object.
+	 * @param <T> a T object.
+	 */
 	public <T> void showMenu(Point location, int row, AbstractModel<?> entity, GenericTable<?> table){
 		relocate(location);
 		this.setVisible(true);
@@ -74,6 +92,7 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 		this.table = table;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(show.equals(arg0.getSource())){
@@ -93,7 +112,7 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 		
 		else if(remove.equals(arg0.getSource())){
 			log.debug("Remove");
-			removeDialog.showDialog(row, table);
+			removeDialog.showDialog(row, table, entity);
 		}
 		
 		unsetVolatile();
@@ -105,6 +124,7 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 		this.table = null;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		show.addActionListener(this);
@@ -115,6 +135,11 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 		setInvoker(mainFrame);
 	}
 	
+	/**
+	 * <p>relocate.</p>
+	 *
+	 * @param point a {@link java.awt.Point} object.
+	 */
 	public void relocate(Point point){
 		Point mainFrameLocation = mainFrame.getLocation();
 		this.setLocation((int)(mainFrameLocation.getX() + point.getX()) + 40, (int)(mainFrameLocation.getY() + point.getY()) + 70);

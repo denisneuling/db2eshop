@@ -13,7 +13,7 @@ import com.db2eshop.gui.MainFrame;
  * <p>QuitMenuItemListener class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class QuitMenuItemListener  extends BaseMenuItemListener {
 	protected Logger log = Logger.getLogger(this.getClass());

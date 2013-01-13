@@ -18,7 +18,7 @@ import com.db2eshop.model.Employee;
  * <p>EmployeeTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @UIFor(Employee.class)
 public class EmployeeTable  extends GenericTable<Employee>{
@@ -51,11 +51,13 @@ public class EmployeeTable  extends GenericTable<Employee>{
 		employeeService.update(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Employee entity) {
 		employeeService.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Employee entity) {
 		employeeService.save(entity);

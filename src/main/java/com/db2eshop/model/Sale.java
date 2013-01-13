@@ -21,7 +21,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Sale class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class Sale extends AbstractModel<Sale> implements Serializable {
 	private static final long serialVersionUID = -9016685368451535775L;
@@ -70,34 +70,74 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * <p>Getter for the field <code>count</code>.</p>
+	 *
+	 * @return a {@link java.lang.Integer} object.
+	 */
 	public Integer getCount() {
 		return count;
 	}
 
+	/**
+	 * <p>Setter for the field <code>count</code>.</p>
+	 *
+	 * @param count a {@link java.lang.Integer} object.
+	 */
 	public void setCount(Integer count) {
 		this.count = count;
 	}
 
+	/**
+	 * <p>Getter for the field <code>article</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Article} object.
+	 */
 	public Article getArticle() {
 		return article;
 	}
 
+	/**
+	 * <p>Setter for the field <code>article</code>.</p>
+	 *
+	 * @param article a {@link com.db2eshop.model.Article} object.
+	 */
 	public void setArticle(Article article) {
 		this.article = article;
 	}
 
+	/**
+	 * <p>Getter for the field <code>customer</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Customer} object.
+	 */
 	public Customer getCustomer() {
 		return customer;
 	}
 
+	/**
+	 * <p>Setter for the field <code>customer</code>.</p>
+	 *
+	 * @param customer a {@link com.db2eshop.model.Customer} object.
+	 */
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
+	/**
+	 * <p>Getter for the field <code>shipping</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.model.Shipping} object.
+	 */
 	public Shipping getShipping() {
 		return shipping;
 	}
 
+	/**
+	 * <p>Setter for the field <code>shipping</code>.</p>
+	 *
+	 * @param shipping a {@link com.db2eshop.model.Shipping} object.
+	 */
 	public void setShipping(Shipping shipping) {
 		this.shipping = shipping;
 	}

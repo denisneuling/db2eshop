@@ -18,7 +18,7 @@ import com.db2eshop.model.Sale;
  * <p>SaleTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @UIFor(Sale.class)
 public class SaleTable  extends GenericTable<Sale>{
@@ -51,11 +51,13 @@ public class SaleTable  extends GenericTable<Sale>{
 		saleService.update(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Sale entity) {
 		saleService.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Sale entity) {
 		saleService.save(entity);

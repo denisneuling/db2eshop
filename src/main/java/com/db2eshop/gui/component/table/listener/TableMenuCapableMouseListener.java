@@ -11,15 +11,21 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>
  * TableMenuCapableMouseListener class.
  * </p>
- * 
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class TableMenuCapableMouseListener extends BaseMouseListener {
 
 	private RightClickPopupMenu rightClickPopupMenu;
 	private GenericTable<?> genericTable;
 
+	/**
+	 * <p>Constructor for TableMenuCapableMouseListener.</p>
+	 *
+	 * @param genericTable a {@link com.db2eshop.gui.component.table.api.GenericTable} object.
+	 * @param clickPopupMenu a {@link com.db2eshop.gui.menu.RightClickPopupMenu} object.
+	 */
 	public TableMenuCapableMouseListener(GenericTable<?> genericTable, RightClickPopupMenu clickPopupMenu) {
 		this.genericTable = genericTable;
 		this.rightClickPopupMenu = clickPopupMenu;

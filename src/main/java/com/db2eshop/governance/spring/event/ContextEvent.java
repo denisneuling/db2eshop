@@ -4,7 +4,7 @@ package com.db2eshop.governance.spring.event;
  * <p>ContextEvent class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class ContextEvent {
 

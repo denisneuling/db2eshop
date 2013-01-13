@@ -10,7 +10,7 @@ import com.db2eshop.model.Customer;
  * <p>CustomerService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public interface CustomerService extends CrudService<Customer>{
 

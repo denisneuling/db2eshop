@@ -18,7 +18,7 @@ import com.db2eshop.model.Customer;
  * <p>CustomerTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @UIFor(Customer.class)
 public class CustomerTable extends GenericTable<Customer>{
@@ -51,11 +51,13 @@ public class CustomerTable extends GenericTable<Customer>{
 		customerService.update(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Customer entity) {
 		customerService.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Customer entity) {
 		customerService.save(entity);

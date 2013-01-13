@@ -19,17 +19,25 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
+/**
+ * <p>ErrorDialog class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	private static final long serialVersionUID = -1726175077914308091L;
 
 	@Value("${gui.dialog.error.title}")
 	private String title;
 
+	/** {@inheritDoc} */
 	@Override
 	public void onConfirm() {
 		getContentPane().removeAll();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		setTitle(title);
@@ -43,6 +51,11 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	private JScrollPane jScrollPaneException;
 	private JTextArea jTextAreaException;
 
+	/**
+	 * <p>notifyError.</p>
+	 *
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 */
 	public void notifyError(Throwable throwable) {
 		if (!this.isVisible()) {
 			this.setVisible(true);
@@ -93,6 +106,13 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 		PrintWriter printWriter = new PrintWriter(result);
 		exception.printStackTrace(printWriter);
 		return result.toString();
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void onError(Exception e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -17,7 +17,7 @@ import com.db2eshop.gui.component.table.api.GenericTable;
  * <p>ShippingTab class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class ShippingTab extends AbstractEntityTab {
 	private static final long serialVersionUID = -3479416508430189797L;
@@ -41,6 +41,12 @@ public class ShippingTab extends AbstractEntityTab {
 		this.add(scrollPane, "grow, push");
 	}
 
+	/**
+	 * <p>registerMouseListener.</p>
+	 *
+	 * @param jScrollPane a {@link javax.swing.JScrollPane} object.
+	 * @param table a {@link com.db2eshop.gui.component.table.api.GenericTable} object.
+	 */
 	public void registerMouseListener(JScrollPane jScrollPane, GenericTable<?> table) {
 		jScrollPane.addMouseListener(new BaseMouseListener() {
 			@Override

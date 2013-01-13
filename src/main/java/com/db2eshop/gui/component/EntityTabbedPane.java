@@ -20,7 +20,7 @@ import com.db2eshop.gui.component.tab.SupplierTab;
  * <p>EntityTabbedPane class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class EntityTabbedPane extends JTabbedPane implements InitializingBean {
 	private static final long serialVersionUID = -5249754982931738042L;

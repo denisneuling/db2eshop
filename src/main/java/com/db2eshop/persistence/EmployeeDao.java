@@ -12,7 +12,7 @@ import com.db2eshop.persistence.support.AbstractDao;
  * <p>EmployeeDao class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class EmployeeDao extends AbstractDao<Employee> {
 

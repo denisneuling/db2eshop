@@ -14,7 +14,7 @@ import com.db2eshop.persistence.EmployeeDao;
  * <p>EmployeeServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class EmployeeServiceImpl implements EmployeeService{
 

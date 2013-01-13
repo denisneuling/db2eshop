@@ -1,30 +1,44 @@
 package com.db2eshop.gui.component.io;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
 
 import org.apache.log4j.Logger;
 
+/**
+ * <p>TextInput class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public class TextInput extends LabeledInput<String> {
 	private static final long serialVersionUID = 7628321355750318743L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
-	private JTextField jTextField = new JTextField("");
+	private JTextField jTextField = new JTextField();
 
+	/**
+	 * <p>Constructor for TextInput.</p>
+	 */
 	public TextInput() {
-		setLayout(new MigLayout("wrap 2", "[right][grow,fill]"));
+		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 
+		jTextField.setBounds(0, 0, 200, 100);
+		jTextField.setBorder(BorderFactory.createEmptyBorder());
 		this.add(label);
 		this.add(jTextField, "growx,push");
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public String getValue() {
 		String text = jTextField.getText();
 		return text;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Object object) {
 		if (object != null) {
@@ -36,6 +50,7 @@ public class TextInput extends LabeledInput<String> {
 		}
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setEditable(boolean editable) {
 		jTextField.setEditable(false);

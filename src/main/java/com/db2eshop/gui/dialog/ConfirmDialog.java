@@ -12,6 +12,12 @@ import net.miginfocom.swing.MigLayout;
 
 import org.apache.log4j.Logger;
 
+/**
+ * <p>Abstract ConfirmDialog class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * @version $Id: $Id
+ */
 public abstract class ConfirmDialog extends BaseDialog{
 	private static final long serialVersionUID = 5958464790527032755L;
 	protected Logger log = Logger.getLogger(this.getClass());
@@ -22,6 +28,9 @@ public abstract class ConfirmDialog extends BaseDialog{
 	protected JPanel contentPane = new JPanel();
 	protected JButton confirmButton;
 	
+	/**
+	 * <p>Constructor for ConfirmDialog.</p>
+	 */
 	public ConfirmDialog(){
 		layout = new MigLayout("fill");
 		
@@ -52,8 +61,12 @@ public abstract class ConfirmDialog extends BaseDialog{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(confirmButton.equals(e.getSource())){
-			onConfirm();
-			this.setVisible(false);
+			try{
+				onConfirm();
+				this.setVisible(false);
+			}catch(Exception exception){
+				onError(exception);
+			}
 		}
 	}
 	
@@ -71,5 +84,12 @@ public abstract class ConfirmDialog extends BaseDialog{
 	 * <p>onConfirm.</p>
 	 */
 	public abstract void onConfirm();
+	
+	/**
+	 * <p>onError.</p>
+	 *
+	 * @param e a {@link java.lang.Exception} object.
+	 */
+	public abstract void onError(Exception e);
 	
 }

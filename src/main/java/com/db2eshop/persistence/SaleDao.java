@@ -12,7 +12,7 @@ import com.db2eshop.persistence.support.AbstractDao;
  * <p>SaleDao class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class SaleDao extends AbstractDao<Sale> {
 

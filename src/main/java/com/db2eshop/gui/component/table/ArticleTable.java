@@ -17,7 +17,7 @@ import com.db2eshop.model.Article;
  * <p>ArticleTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @UIFor(Article.class)
 public class ArticleTable extends GenericTable<Article>{
@@ -49,11 +49,13 @@ public class ArticleTable extends GenericTable<Article>{
 		articleService.update(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Article entity) {
 		articleService.delete(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Article entity) {
 		articleService.save(entity);

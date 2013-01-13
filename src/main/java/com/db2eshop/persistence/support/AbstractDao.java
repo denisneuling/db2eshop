@@ -26,7 +26,7 @@ import com.db2eshop.persistence.exception.ValidationException;
  * </p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @Component
 @SuppressWarnings({ "unchecked" })

@@ -19,7 +19,7 @@ import com.db2eshop.gui.listener.SettingsMenuItemListener;
  * <p>MenuPanel class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class MenuPanel extends JMenuBar implements InitializingBean {
 	private static final long serialVersionUID = -8033351688374778735L;

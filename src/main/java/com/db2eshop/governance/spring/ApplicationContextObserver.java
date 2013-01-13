@@ -17,7 +17,7 @@ import com.db2eshop.governance.spring.event.ContextEvent;
  * <p>ApplicationContextObserver class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 @SuppressWarnings("rawtypes")
 public class ApplicationContextObserver extends Observable implements BeanPostProcessor, ApplicationContextAware, ApplicationListener {

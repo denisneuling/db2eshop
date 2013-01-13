@@ -14,7 +14,7 @@ import com.db2eshop.governance.service.gui.SettingsService;
  * <p>SettingsDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ * @version $Id: $Id
  */
 public class SettingsDialog extends ConfirmCancelDialog implements InitializingBean{
 	private static final long serialVersionUID = -8952902211592950640L;
@@ -43,6 +43,13 @@ public class SettingsDialog extends ConfirmCancelDialog implements InitializingB
 		this.setTitle(title);
 		
 		Container contentPane = this.getContentPane();
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void onError(Exception e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
