@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.db2eshop.gui.component.listener.BaseMouseListener;
 import com.db2eshop.gui.component.tab.api.AbstractEntityTab;
+import com.db2eshop.gui.component.tab.menu.TabRightClickPopupMenu;
 import com.db2eshop.gui.component.table.CustomerTable;
 import com.db2eshop.gui.component.table.api.GenericTable;
 
@@ -24,6 +25,9 @@ public class CustomerTab extends AbstractEntityTab{
 	
 	@Autowired
 	private CustomerTable customerTable;
+	
+	@Autowired
+	private TabRightClickPopupMenu tabRightClickPopupMenu;
 	
 	private JScrollPane scrollPane;
 
@@ -52,7 +56,7 @@ public class CustomerTab extends AbstractEntityTab{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if (arg0.getButton() == MouseEvent.BUTTON3) {
-//					table
+					tabRightClickPopupMenu.showMenu(arg0.getPoint(), null, null, customerTable);
 				}
 			}
 		});
