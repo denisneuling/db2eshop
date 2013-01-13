@@ -4,10 +4,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import com.db2eshop.model.Article;
@@ -31,7 +29,7 @@ import com.db2eshop.util.LoremIpsum;
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
-public class Bootstrap implements ApplicationListener<ApplicationEvent> {
+public class Bootstrap implements InitializingBean{
 
 	@Autowired
 	private ArticleDao articleDao;
@@ -57,12 +55,9 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 	@Autowired
 	private SupplierDao supplierDao;
 
-	/** {@inheritDoc} */
 	@Override
-	public void onApplicationEvent(ApplicationEvent event) {
-		if (event instanceof ContextRefreshedEvent) {
-//			initializeDataSet();
-		}
+	public void afterPropertiesSet() throws Exception {
+		initializeDataSet();
 	}
 
 	private void initializeDataSet() {
@@ -159,5 +154,4 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 
 	private void initializeEmployees() {
 	}
-
 }
