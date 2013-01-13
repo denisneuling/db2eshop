@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,9 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
@@ -38,31 +34,24 @@ public class Supplier extends AbstractModel<Supplier> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@NotNull
-	@NotEmpty
 	@UIBind(TextInput.class)
 	@Column(nullable = false, unique=true)
 	private String name;
 
-	@NotNull
-	@NotEmpty
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String city;
 
-	@NotNull
 	@UIBind(NumberInput.class)
 	@Column(nullable = false)
 	private Integer zipCode;
 
-	@NotNull
-	@NotEmpty
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String telephone;
 
 	@UIHide
-	@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY)
 	private List<Import> imports = new LinkedList<Import>();
 
 	/**
@@ -121,10 +110,20 @@ public class Supplier extends AbstractModel<Supplier> implements Serializable {
 		this.city = city;
 	}
 
+	/**
+	 * <p>Getter for the field <code>zipCode</code>.</p>
+	 *
+	 * @return a {@link java.lang.Integer} object.
+	 */
 	public Integer getZipCode() {
 		return zipCode;
 	}
 
+	/**
+	 * <p>Setter for the field <code>zipCode</code>.</p>
+	 *
+	 * @param zipCode a {@link java.lang.Integer} object.
+	 */
 	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
 	}

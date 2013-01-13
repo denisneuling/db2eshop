@@ -268,9 +268,12 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 			try {
 				Object object = ClassUtil.getValueOf(field, entity, entityClass, entityClass.getDeclaredField(field).getType());
 				if (object != null && AbstractModel.class.isAssignableFrom(object.getClass())) {
-					tableValueEntityResolver.asTableData(entity, columnNames);
-					object = ((AbstractModel<?>) object).getId();
-				} else if(object instanceof Date){
+					if(object instanceof AbstractModel){
+						object = ((AbstractModel<?>) object).getId();
+					}else if(object instanceof String){
+						log.error("Target was entity but found String "+object);
+					}
+				} else if(object != null && object instanceof Date){
 					object = DateUtil.asString((Date)object);
 				}
 				data[index] = object;

@@ -87,7 +87,6 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 		for(String property : components.keySet()){
 			LabeledInput<?> labeledInput = components.get(property);
 			Object currentValue = labeledInput.getValue();
-			
 			model = tableValueEntityResolver.setValue(property, currentValue, model);
 		}
 		table.rowChanged(row, model);

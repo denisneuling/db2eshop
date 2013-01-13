@@ -1,5 +1,6 @@
 package com.db2eshop.gui.dialog;
 
+import java.awt.Dimension;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -34,6 +35,13 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	
 	private volatile LinkedList<ErrorTile> errors = new LinkedList<ErrorTile>();
 
+	/**
+	 * <p>Constructor for ErrorDialog.</p>
+	 */
+	public ErrorDialog(){
+		this.setMinimumSize(new Dimension(600, 300));
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public void onConfirm() {

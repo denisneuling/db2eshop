@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
@@ -35,12 +34,10 @@ public class Import extends AbstractModel<Import> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@NotNull
 	@UIBind(NumberInput.class)
 	@Column(nullable = false)
 	private Integer count = 0;
 
-	@NotNull
 	@UIBind(DateInput.class)
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)

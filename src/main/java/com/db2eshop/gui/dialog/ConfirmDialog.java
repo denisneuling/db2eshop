@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -28,6 +29,7 @@ public abstract class ConfirmDialog extends BaseDialog{
 	
 	private volatile boolean ready = false;
 	protected JPanel contentPane = new JPanel();
+	private JScrollPane scrollPane;
 	protected JButton confirmButton;
 	
 	/**
@@ -36,12 +38,14 @@ public abstract class ConfirmDialog extends BaseDialog{
 	public ConfirmDialog(){
 		layout = new MigLayout("fill");
 		
-		setMinimumSize(new Dimension(300, 110));
+		this.setMinimumSize(new Dimension(600, 300));
 		
 		setLayout(layout);
 		contentPane = new JPanel();
 		contentPane.setLayout(new MigLayout("fill"));
-		add(contentPane, "wrap");
+		
+		scrollPane = new JScrollPane(contentPane);
+		add(scrollPane, "grow, push,wrap");
 		
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new MigLayout("fill"));

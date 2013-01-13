@@ -1,11 +1,13 @@
 package com.db2eshop.gui.dialog;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -26,7 +28,9 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	private MigLayout layout;
 	
 	private volatile boolean ready = false;
-	protected JPanel contentPane = new JPanel();
+	protected JPanel contentPane;
+	private JScrollPane scrollPane;
+	
 	protected JButton confirmButton;
 	protected JButton cancelButton;
 	
@@ -36,10 +40,14 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 	public ConfirmCancelDialog(){
 		layout = new MigLayout("fill","","[grow]rel[grow]");
 		
+		this.setMinimumSize(new Dimension(600, 300));
 		setLayout(layout);
+		
 		contentPane = new JPanel();
 		contentPane.setLayout(new MigLayout("fill"));
-		add(contentPane, "grow,push,wrap");
+		
+		scrollPane = new JScrollPane(contentPane);
+		add(scrollPane, "grow, push,wrap");
 		
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new MigLayout("fill"));
@@ -52,7 +60,7 @@ public abstract class ConfirmCancelDialog extends BaseDialog{
 		buttonPane.add(cancelButton,"growx, push");
 		cancelButton.addActionListener(this);
 		
-		add(buttonPane, "growx, push");//, south");
+		add(buttonPane, "growx");//, south");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		addWindowListener(this);
 		

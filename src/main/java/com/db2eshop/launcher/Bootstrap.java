@@ -36,9 +36,9 @@ import com.db2eshop.util.common.Streets;
  * <p>
  * Bootstrap class.
  * </p>
- * 
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
- * 
+ *
  */
 @Component
 public class Bootstrap implements InitializingBean {
@@ -91,7 +91,7 @@ public class Bootstrap implements InitializingBean {
 		articleTypeDao.save(a);
 
 		ArticleType c = new ArticleType();
-		c.setName("Dring");
+		c.setName("Drink");
 		articleTypeDao.save(c);
 
 		ArticleType b = new ArticleType();
@@ -103,7 +103,7 @@ public class Bootstrap implements InitializingBean {
 		int size = articleTypeDao.findAll().size();
 
 		if (size > 0) {
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 60; i++) {
 				Article article = new Article();
 				article.setName(Products.product());
 				String desc = LoremIpsum.phrase();
@@ -120,7 +120,7 @@ public class Bootstrap implements InitializingBean {
 
 	private void initializeCustomers() {
 		List<Customer> customers = new LinkedList<Customer>();
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 40; i++) {
 			Customer customer = new Customer();
 			customer.setBirthday(Dates.date());
 			customer.setCity(Cities.city());
@@ -156,7 +156,7 @@ public class Bootstrap implements InitializingBean {
 
 	private void initializeEmployees() {
 
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 15; i++) {
 			Employee employee = new Employee();
 			employee.setPreName(Persons.preName());
 			employee.setSurName(Persons.surName());
@@ -169,7 +169,7 @@ public class Bootstrap implements InitializingBean {
 	}
 
 	private void initializeShippings() {
-		for (int i = 0; i < 35; i++) {
+		for (int i = 0; i < 20; i++) {
 			Shipping shipping = new Shipping();
 			shipping.setName(DeliveryService.name());
 			shipping.setTelephone(Cities.zipCode() + " " + Cities.zipCode());
@@ -182,25 +182,25 @@ public class Bootstrap implements InitializingBean {
 			}
 		}
 	}
-	
+
 	private void initializeImports() {
-		
+
 		List<Article> articles = articleDao.findAll();
 		List<Employee> employees = employeeDao.findAll();
 		List<Supplier> suppliers = supplierDao.findAll();
-		
-		for(int i = 0 ; i < 50 ; i ++){
+
+		for(int i = 0 ; i < 150 ; i ++){
 			Article article = articles.get(LoremIpsum.random.nextInt(articles.size()-1)+1);
 			Employee employee = employees.get(LoremIpsum.random.nextInt(employees.size()-1)+1);
 			Supplier supplier = suppliers.get(LoremIpsum.random.nextInt(suppliers.size()-1)+1);
-			
-			Import currentImport = new Import(); 
+
+			Import currentImport = new Import();
 			currentImport.setArticle(article);
 			currentImport.setCount(LoremIpsum.random.nextInt(10)+1);
 			currentImport.setDate(Dates.date());
 			currentImport.setEmployee(employee);
 			currentImport.setSupplier(supplier);
-			
+
 			try{
 				importDao.save(currentImport);
 			} catch (Throwable throwable) {
@@ -208,24 +208,24 @@ public class Bootstrap implements InitializingBean {
 			}
 		}
 	}
-	
+
 	private void initializeSales() {
 		List<Article> articles = articleDao.findAll();
 		List<Customer> customers = customerDao.findAll();
 		List<Shipping> shippings = shippingDao.findAll();
-		
-		for(int i = 0 ; i < 50 ; i ++){
+
+		for(int i = 0 ; i < 135 ; i ++){
 			Article article = articles.get(LoremIpsum.random.nextInt(articles.size()-1)+1);
 			Customer customer = customers.get(LoremIpsum.random.nextInt(customers.size()-1)+1);
 			Shipping shipping = shippings.get(LoremIpsum.random.nextInt(shippings.size()-1)+1);
-			
+
 			Sale sale = new Sale();
 			sale.setArticle(article);
 			sale.setCount(LoremIpsum.random.nextInt(10)+1);
 			sale.setDate(Dates.date());
 			sale.setCustomer(customer);
 			sale.setShipping(shipping);
-			
+
 			try{
 				saleDao.save(sale);
 			} catch (Throwable throwable) {

@@ -2,6 +2,12 @@ package com.db2eshop.util.common;
 
 import java.util.Random;
 
+/**
+ * <p>Products class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class Products {
 
 	/** Constant <code>SPACE=" "</code> */
@@ -10,6 +16,7 @@ public class Products {
 	/** Constant <code>random</code> */
 	public final static Random random = new Random();
 	
+	/** Constant <code>products="{ Knockwurst, Smorgasbord, Coffee, Donu"{trunked}</code> */
 	public static String[] products = { "Knockwurst", "Smorgasbord", "Coffee", "Donuts", "Cherry Pie", "Jelly Donuts", "Asparagus", "Extra Decaf", "Gum", "Two eggs over hard, ", "bacon super crispy, almost burned, cremated",
 			"Grapefruit juice, just as long as those grapefruits are freshly squeezed", "Coconut", "Beer", "Tuna fish, whole wheat", "Coffee with fish", "Fruit punch", "Soft drinks", "Sparkling cider", "Baguettes with brie and butter", "Huckleberry pie", "Double scotch on the rocks (two of them)",
 			"Coffee with creme and sugar", "Black coffee (black as midnight on a moonless night)", "Fish", "Short stack of griddle cakes, slightly heated,", "butter,", "slice of ham", "Local mushrooms", "Huckleberry pie, heated, ice cream on the side", "Weenie roast", "Ice cube", "Diet lasagna",
@@ -22,6 +29,11 @@ public class Products {
 			"Big biscuits smothered in gravy", "Anchovies", "Bicarbonate soda", "Sausage patties (not sausage links)", "Pig head with grapes and a green apple in its mouth", "Roasted pine weasel", "Rare steak", "Chicken pot pie", "Turkey sandwich, whole wheat, lettuce, dollop of mayonnaise",
 			"Garmonbozia", "Turkey dog", "Muffin", "High school sandwich", "Reiner Ale" };
 	
+	/**
+	 * <p>product.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String product() {
 		return products[random.nextInt(products.length - 1)];
 	}

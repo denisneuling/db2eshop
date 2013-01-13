@@ -4,9 +4,6 @@ import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultStyledDocument;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -30,8 +27,10 @@ public class TextArea extends LabeledInput<String> {
 	public TextArea() {
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 
+		jTextField.setMaximumSize(new Dimension(inputWidth, 100));
 		jTextField.setMinimumSize(new Dimension(inputWidth, 100));
-		jTextField.setDocument(new LimitedRowLengthDocument(jTextField, 50));
+		jTextField.setLineWrap(true);
+		jTextField.setWrapStyleWord(true);
 		jTextField.setBorder(BorderFactory.createEmptyBorder());
 		this.add(label);
 		this.add(jTextField, "growx,push");
@@ -61,60 +60,4 @@ public class TextArea extends LabeledInput<String> {
 	public void setEditable(boolean editable) {
 		jTextField.setEditable(false);
 	}
-}
-
-class LimitedRowLengthDocument extends DefaultStyledDocument {
-
-	private static final long serialVersionUID = -2059737037274062490L;
-
-    private static final String EOL = "\n";
-	
-    private int max;
-    private JTextArea ta = null;
-
-    /**
-     * <p>Constructor for LimitedRowLengthDocument.</p>
-     *
-     * @param ta a {@link javax.swing.JTextArea} object.
-     * @param max a int.
-     */
-    public LimitedRowLengthDocument(JTextArea ta, int max) {
-    	this.ta = ta;
-    	this.max = max;
-    }
-
-    /** {@inheritDoc} */
-    public void insertString(int offs, String str, AttributeSet attribute) throws BadLocationException { 
-    	
-    	int actRow = ta.getLineOfOffset(offs);
-    	int rowBeginn = ta.getLineStartOffset(actRow);
-    	int rowEnd = ta.getLineEndOffset(actRow);
-      	int referenceValue = 0;
-      	
-    	if (str.length() > 1) {
-    		referenceValue = (rowEnd + str.length()) - rowBeginn;
-    	} else {
-    		referenceValue = rowEnd - rowBeginn;
-    	}
-    	
-    	if (referenceValue >= max) {
-        	if (str.length() > 1) {        		
-        		StringBuffer str_buff = new StringBuffer();
-        		for (int i=0; i<str.length(); i++) {
-        			if (i >= max) {
-        				str_buff.append(EOL);
-        				str_buff.append(str.charAt(i));
-        				str = str.substring(i, str.length());
-        				i = 0;
-        			} else {
-        				str_buff.append(str.charAt(i));
-        			}
-        		}        		
-        		str = str_buff + EOL;
-        	} else {
-        		str = EOL + str;
-        	}    		
-    	}    	
-    	super.insertString(offs, str, attribute);
-    }
 }

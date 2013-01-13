@@ -71,6 +71,7 @@ public class DateInput extends LabeledInput<Date>{
 		jDatePicker.getModel().setYear(calendar.get(Calendar.YEAR));
 		jDatePicker.getModel().setMonth(calendar.get(Calendar.MONTH));
 		jDatePicker.getModel().setDay(calendar.get(Calendar.DAY_OF_MONTH));
+		jDatePicker.updateUI();
 	}
 
 	/** {@inheritDoc} */

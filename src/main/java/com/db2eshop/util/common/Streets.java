@@ -2,6 +2,12 @@ package com.db2eshop.util.common;
 
 import java.util.Random;
 
+/**
+ * <p>Streets class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class Streets {
 
 	/** Constant <code>SPACE=" "</code> */
@@ -11,6 +17,7 @@ public class Streets {
 	public final static Random random = new Random();
 
 	
+	/** Constant <code>streets="{ 12TH ST, 14TH ST, 16TH ST, 19TH ST, 1"{trunked}</code> */
 	public static String[] streets = { "12TH ST", "14TH ST", "16TH ST", "19TH ST", "1ST AV", "1ST AV", "1ST ST", "1ST ST", "1ST ST", "1ST ST", "1ST ST", "1ST ST", "2ND AV", "2ND AV", "2ND AV", "2ND FORK", "2ND ST", "2ND ST", "2ND ST", "2ND ST", "2ND ST", "3RD AV", "3RD AV", "3RD AV", "3RD ST",
 			"3RD ST", "3RD ST", "3RD ST", "3RD ST", "3RD ST", "4-H CAMP RD", "4-H LAKE RD", "4TH  ST", "4TH ST", "4TH ST", "4TH ST", "5TH ST", "5TH ST", "5TH ST", "5TH ST", "6TH ST", "6TH ST", "6TH ST", "6TH ST (PARTIAL AKA)****", "7TH ST", "7TH ST", "8TH ST", "8TH ST", "8TH ST", "9TH ST",
 			"9TH ST", "AARON LN", "ABBEVILLE CT", "ABBEY LN", "ABBOTT WAY", "ABBY RD", "ABC DR", "ABERDEEN DR", "ABNEY RD", "ABRAHAM CT", "ABRAHAM RD", "ABRAM ST", "ACORD LN", "ACORD MOUNTAIN RD", "ACORN DR", "ADAIR ST", "ADAM ST", "ADAMOS ST", "ADAMS AV", "ADAMS ST", "ADDIE LN", "ADDISON LN",
@@ -207,10 +214,20 @@ public class Streets {
 			"WOODFORD ST", "WOODLAND ACRES DR", "WOODLAND AV", "WOODLAND DR", "WOODLAND DR", "WOODLAND RD", "WOODLAWN AV", "WOODLAWN DR", "WOODPECK HOLLOW", "WOODS RD", "WOODSPRITE DR", "WOODTHRUSH LN", "WOODVIEW LN", "WORKMANS CREEK", "WORLEY LN", "WORLEY RD", "WORRELL LN", "WREN PL", "WREN ST",
 			"WRIGHT PARK", "WRIGHT RD", "WRIGHT ST", "WRISTON RD", "WYNDHAM TRACE", "WYNDMERE CT", "WYNN ST", "WYOMING AV", "YAMAHA TRAIL", "YEE LN", "YORK DR", "YORKTOWN CT", "YOST PL", "YOUNG LN", "YOUNGER AV", "YUMA LN", "ZACK ST", "ZARA CT", "ZENITH LN", "ZINA CT", "ZINK LN", "ZION LN" };
 
+	/**
+	 * <p>street.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String street() {
 		return streets[random.nextInt(streets.length - 1)];
 	}
 	
+	/**
+	 * <p>streetFull.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String streetFull(){
 		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append(street());

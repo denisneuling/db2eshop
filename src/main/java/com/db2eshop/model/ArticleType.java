@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,7 +38,7 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 	private String name;
 
 	@UIHide
-	@OneToMany(mappedBy = "articleType", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "articleType", fetch = FetchType.LAZY)
 	private List<Article> articles = new LinkedList<Article>();
 
 	/**
