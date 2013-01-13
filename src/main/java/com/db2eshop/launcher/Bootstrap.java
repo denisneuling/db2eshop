@@ -56,6 +56,7 @@ public class Bootstrap implements InitializingBean{
 	private SupplierDao supplierDao;
 
 	@Override
+
 	public void afterPropertiesSet() throws Exception {
 		initializeDataSet();
 	}
