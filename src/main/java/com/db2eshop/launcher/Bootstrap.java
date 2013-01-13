@@ -61,7 +61,7 @@ public class Bootstrap implements ApplicationListener<ApplicationEvent> {
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		if (event instanceof ContextRefreshedEvent) {
-			initializeDataSet();
+//			initializeDataSet();
 		}
 	}
 
