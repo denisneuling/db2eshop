@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	private static final long serialVersionUID = -1726175077914308091L;
+	protected Logger log = Logger.getLogger(this.getClass());
 
 	@Value("${gui.dialog.error.title}")
 	private String title;
@@ -53,7 +55,40 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	 *
 	 * @param throwable a {@link java.lang.Throwable} object.
 	 */
-	public void notifyError(Throwable throwable) {
+
+	private String getStackTraceAsString(Throwable exception) {
+		Writer result = new StringWriter();
+		PrintWriter printWriter = new PrintWriter(result);
+		exception.printStackTrace(printWriter);
+		return result.toString();
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void onError(Throwable throwable) {
+		showError(throwable);
+	}
+	
+	/**
+	 * <p>showError.</p>
+	 *
+	 * @param message a {@link java.lang.String} object.
+	 */
+	public void showError(String message){
+		log.error(message);
+		if (!this.isVisible()) {
+			this.setVisible(true);
+		}
+	}
+	
+	/**
+	 * <p>showError.</p>
+	 *
+	 * @param message a {@link java.lang.String} object.
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 */
+	public void showError(String message, Throwable throwable){
+		log.error(message, throwable);
 		if (!this.isVisible()) {
 			this.setVisible(true);
 		}
@@ -97,38 +132,6 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 			jTextAreaException.setEditable(false);
 		}
 	}
-
-	private String getStackTraceAsString(Throwable exception) {
-		Writer result = new StringWriter();
-		PrintWriter printWriter = new PrintWriter(result);
-		exception.printStackTrace(printWriter);
-		return result.toString();
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void onError(Throwable throwable) {
-		showError(throwable);
-	}
-	
-	/**
-	 * <p>showError.</p>
-	 *
-	 * @param message a {@link java.lang.String} object.
-	 */
-	public void showError(String message){
-		
-	}
-	
-	/**
-	 * <p>showError.</p>
-	 *
-	 * @param message a {@link java.lang.String} object.
-	 * @param throwable a {@link java.lang.Throwable} object.
-	 */
-	public void showError(String message, Throwable throwable){
-		
-	}
 	
 	/**
 	 * <p>showError.</p>
@@ -136,7 +139,49 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	 * @param throwable a {@link java.lang.Throwable} object.
 	 */
 	public void showError(Throwable throwable){
-		
+		log.error(throwable);
+		if (!this.isVisible()) {
+			this.setVisible(true);
+		}
+
+		jPanelTop = new JPanel();
+		jPanelTop.setLayout(null);
+		jPanelTop.setPreferredSize(new Dimension(480, 100));
+
+		jTextPaneErrorMsg = new JTextPane();
+		jTextPaneErrorMsg.setFont(jTextPaneErrorMsg.getFont().deriveFont(jTextPaneErrorMsg.getFont().getStyle() | Font.BOLD, jTextPaneErrorMsg.getFont().getSize() + 1));
+		jTextPaneErrorMsg.setBorder(null);
+		jTextPaneErrorMsg.setEditable(false);
+		jTextPaneErrorMsg.setBackground(null);
+		jScrollPaneErrorMsg = new JScrollPane(jTextPaneErrorMsg);
+		jScrollPaneErrorMsg.setBorder(null);
+		jScrollPaneErrorMsg.setSize(new Dimension(405, 80));
+		jScrollPaneErrorMsg.setLocation(new Point(71, 13));
+		jPanelTop.add(jScrollPaneErrorMsg);
+
+		jPanelCenter = new JPanel();
+		jPanelCenter.setSize(new Dimension(420, 300));
+		jTextAreaException = new JTextArea();
+		jScrollPaneException = new JScrollPane(jTextAreaException);
+		jScrollPaneException.setPreferredSize(new Dimension(470, 300));
+		jPanelCenter.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		jPanelCenter.add(jScrollPaneException);
+
+		jPanelBottom = new JPanel();
+		jPanelBottom.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 15));
+
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().add(jPanelTop, BorderLayout.NORTH);
+		this.getContentPane().add(jPanelCenter, BorderLayout.CENTER);
+		this.getContentPane().add(jPanelBottom, BorderLayout.SOUTH);
+
+		this.jPanelCenter.setVisible(false);
+
+		if (throwable != null) {
+			String exceptionText = getStackTraceAsString(throwable);
+			jTextAreaException.setText(exceptionText);
+			jTextAreaException.setEditable(false);
+		}
 	}
 	
 	/** {@inheritDoc} */

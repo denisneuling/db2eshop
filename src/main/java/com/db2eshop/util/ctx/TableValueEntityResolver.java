@@ -1,6 +1,7 @@
 package com.db2eshop.util.ctx;
 
 import java.lang.reflect.Field;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;
@@ -27,6 +28,7 @@ import com.db2eshop.persistence.ShippingDao;
 import com.db2eshop.persistence.SupplierDao;
 import com.db2eshop.persistence.support.AbstractDao;
 import com.db2eshop.util.ClassUtil;
+import com.db2eshop.util.DateUtil;
 
 /**
  * <p>TableValueEntityResolver class.</p>
@@ -68,48 +70,6 @@ public class TableValueEntityResolver implements InitializingBean {
 	 * <p>setValue.</p>
 	 *
 	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param property a {@link java.lang.Object} object.
 	 * @param target a T object.
 	 * @param <T> a T object.
 	 * @return a T object.
@@ -148,6 +108,9 @@ public class TableValueEntityResolver implements InitializingBean {
 		}
 		if (property instanceof String && Integer.class.isAssignableFrom(to)) {
 			return new Integer((String) property);
+		}
+		if (property instanceof String && Date.class.isAssignableFrom(to)) {
+			return DateUtil.asDate((String)property);
 		}
 		
 		if(AbstractModel.class.isAssignableFrom(to)){

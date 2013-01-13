@@ -42,6 +42,7 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	
 	protected volatile String tableName = this.getClass().getSimpleName();
 	protected volatile boolean ready = false;
+	protected volatile boolean stable = true;
 	
 	@Autowired
 	protected ErrorDialog errorDialog;
@@ -74,13 +75,28 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 			updateAble = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
 		}
 		
-		updateAble = mixin(values, updateAble);
-		if (ready) {
-			try {
-				onRowChange(updateAble);
-			} catch (RuntimeException re) {
-				onError(re);
+		try{
+			if(stable){
+				updateAble = mixin(values, updateAble);
 			}
+			if (ready) {
+				onRowChange(updateAble);
+			}
+		}catch(Throwable throwable){
+			stable = false;
+			onError(throwable);
+			
+			Long id = (Long) values[0];
+			updateAble = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
+			setValueAt(row, updateAble);
+			stable = true;
+		}
+	}
+	
+	public void setValueAt(int row, T entity){
+		Object values[] = asTableData(entity);
+		for(int i = 0 ; i< columnNames.length; i++){
+			this.getModel().setValueAt(values[i], row, i);
 		}
 	}
 
@@ -296,15 +312,6 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	 * @param throwable a {@link java.lang.Throwable} object.
 	 */
 	public abstract void onError(Throwable throwable);
-	
-	/**
-	 * <p>onError.</p>
-	 *
-	 * @param e a {@link java.lang.Exception} object.
-	 */
-	public void onError(Exception e){
-		errorDialog.showError(e);
-	}
 	
 	/**
 	 * <p>Getter for the field <code>entityClazz</code>.</p>
