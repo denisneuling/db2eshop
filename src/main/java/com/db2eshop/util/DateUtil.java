@@ -32,6 +32,11 @@ public class DateUtil {
 		}
 	}
 	
+	public static String asString(Date date){
+		 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 return simpleDateFormat.format(date);
+	}
+	
 	/**
 	 * <p>isIsoFormat.</p>
 	 *

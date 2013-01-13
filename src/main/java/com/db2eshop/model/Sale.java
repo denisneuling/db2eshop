@@ -47,7 +47,7 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	private Customer customer;
 
 	@UIEmbedded
-	@ManyToOne
+	@ManyToOne(optional=true)
 	private Shipping shipping;
 
 	/**

@@ -29,7 +29,6 @@ import com.db2eshop.util.LoremIpsum;
  * 
  */
 @Component
-@SuppressWarnings("unused")
 public class Bootstrap implements InitializingBean{
 
 	@Autowired
@@ -67,19 +66,14 @@ public class Bootstrap implements InitializingBean{
 		 initializeArticleTypes();
 		 initializeArticles();
 		 initializeCustomers();
-//		 initializeShippings();
-//		 initializeSales();
-//		 initializeEmployees();
-//		 initializeSuppliers();
-//		 initializeImports();
+		 initializeShippings();
+		 initializeSales();
+		 initializeEmployees();
+		 initializeSuppliers();
+		 initializeImports();
 	}
 
-	/**
-	 * <p>
-	 * initializeArticleTypes.
-	 * </p>
-	 */
-	public void initializeArticleTypes() {
+	private void initializeArticleTypes() {
 		List<ArticleType> articleTypes = new LinkedList<ArticleType>();
 		for (int i = 0; i < 15; i++) {
 			ArticleType articleType = new ArticleType();
@@ -89,12 +83,7 @@ public class Bootstrap implements InitializingBean{
 		articleTypeDao.saveAll(articleTypes);
 	}
 
-	/**
-	 * <p>
-	 * initializeArticles.
-	 * </p>
-	 */
-	public void initializeArticles() {
+	private void initializeArticles() {
 		int size = articleTypeDao.findAll().size();
 
 		if (size > 0) {
@@ -111,12 +100,7 @@ public class Bootstrap implements InitializingBean{
 		}
 	}
 
-	/**
-	 * <p>
-	 * initializeCustomers.
-	 * </p>
-	 */
-	public void initializeCustomers() {
+	private void initializeCustomers() {
 		List<Customer> customers = new LinkedList<Customer>();
 		for (int i = 0; i < 30; i++) {
 			Customer customer = new Customer();
@@ -134,15 +118,15 @@ public class Bootstrap implements InitializingBean{
 	}
 
 	private void initializeShippings() {
-		List<Shipping> shippings = new LinkedList<Shipping>();
-		for (int i = 0; i < 35; i++) {
-			Shipping shipping = new Shipping();
-			shipping.setName(LoremIpsum.secureRandomString());
-			shipping.setTelephone(LoremIpsum.word());
-			shipping.setZipCode(LoremIpsum.word());
-			shippings.add(shipping);
-		}
-		shippingDao.saveAll(shippings);
+//		List<Shipping> shippings = new LinkedList<Shipping>();
+//		for (int i = 0; i < 35; i++) {
+//			Shipping shipping = new Shipping();
+//			shipping.setName(LoremIpsum.secureRandomString());
+//			shipping.setTelephone(LoremIpsum.word());
+//			shipping.setZipCode(LoremIpsum.word());
+//			shippings.add(shipping);
+//		}
+//		shippingDao.saveAll(shippings);
 	}
 	
 	private void initializeSuppliers() {

@@ -1,6 +1,7 @@
 package com.db2eshop.gui.component.table.api;
 
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Set;
 
 import javax.swing.JTable;
@@ -20,6 +21,7 @@ import com.db2eshop.gui.component.table.listener.TableEntityModelListener;
 import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.util.ClassUtil;
+import com.db2eshop.util.DateUtil;
 import com.db2eshop.util.EntityUtil;
 import com.db2eshop.util.UIForUtil;
 import com.db2eshop.util.ctx.TableValueEntityResolver;
@@ -268,6 +270,8 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 				if (object != null && AbstractModel.class.isAssignableFrom(object.getClass())) {
 					tableValueEntityResolver.asTableData(entity, columnNames);
 					object = ((AbstractModel<?>) object).getId();
+				} else if(object instanceof Date){
+					object = DateUtil.asString((Date)object);
 				}
 				data[index] = object;
 			} catch (Exception e) {

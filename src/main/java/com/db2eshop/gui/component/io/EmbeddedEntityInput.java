@@ -1,9 +1,11 @@
 package com.db2eshop.gui.component.io;
 
+import java.awt.Dimension;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
@@ -38,12 +40,17 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		
 		jList = new JList();
 		jList.setModel(new DefaultListModel());
-		jList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		jList.setLayoutOrientation(JList.VERTICAL);
+		jList.setVisibleRowCount(-1);
 		jList.addMouseListener(new FillUpJListMouseListener(this));
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 		
+		JScrollPane listScroller = new JScrollPane(jList);
+		listScroller.setPreferredSize(new Dimension(350, 200));
+		
 		this.add(label);
-		this.add(jList);
+		this.add(listScroller);
 //		,"growx,push");
 		
 		jList.setVisible(true);
@@ -52,6 +59,7 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	/** {@inheritDoc} */
 	@Override
 	public AbstractModel<?> getValue() {
+//		jList.getselec
 		return (AbstractModel<?>) jList.getSelectedValue();
 	}
 

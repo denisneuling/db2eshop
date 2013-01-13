@@ -1,5 +1,6 @@
 package com.db2eshop.gui.dialog;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;

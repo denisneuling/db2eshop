@@ -11,6 +11,8 @@ import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 
 import org.apache.log4j.Logger;
 
+import com.db2eshop.util.DateUtil;
+
 /**
  * <p>DateInput class.</p>
  *
@@ -49,18 +51,26 @@ public class DateInput extends LabeledInput<Date>{
 
 	/** {@inheritDoc} */
 	@Override
-	@SuppressWarnings("deprecation")
 	public void setValue(Object object) {
 		if(object!=null){
 			if (object instanceof Date) {
 				Date currentDate = (Date)object;
-				jDatePicker.getModel().setYear(currentDate.getYear());
-				jDatePicker.getModel().setMonth(currentDate.getMonth());
-				jDatePicker.getModel().setDay(currentDate.getDay());
-			} else{
+				setDate(currentDate);
+			} else if(object instanceof String){
+				Date currentDate = DateUtil.asDate((String)object);
+				setDate(currentDate);
+			}else{
 				log.error("Could not set value of type " + object.getClass());
 			}
 		}
+	}
+	
+	private void setDate(Date date){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		jDatePicker.getModel().setYear(calendar.get(Calendar.YEAR));
+		jDatePicker.getModel().setMonth(calendar.get(Calendar.MONTH));
+		jDatePicker.getModel().setDay(calendar.get(Calendar.DAY_OF_MONTH));
 	}
 
 	/** {@inheritDoc} */

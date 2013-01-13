@@ -1,5 +1,7 @@
 package com.db2eshop.gui.component.io;
 
+import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
@@ -18,6 +20,7 @@ public class IdInput extends LabeledInput<Long> {
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	private JTextField jTextField = new JTextField(30);
+	private Long id;
 
 	/**
 	 * <p>Constructor for IdInput.</p>
@@ -26,6 +29,7 @@ public class IdInput extends LabeledInput<Long> {
 		setEditable(false);
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 
+		jTextField.setMaximumSize(new Dimension(inputWidth, 10));
 		jTextField.setBorder(BorderFactory.createEmptyBorder());
 		this.add(label);
 		this.add(jTextField, "growx,push");
@@ -34,13 +38,7 @@ public class IdInput extends LabeledInput<Long> {
 	/** {@inheritDoc} */
 	@Override
 	public Long getValue() {
-		String text = jTextField.getText();
-		try {
-			return Long.parseLong(text);
-		} catch (NumberFormatException nfe) {
-			jTextField.setText(0 + "");
-			throw new RuntimeException(nfe);
-		}
+		return id;
 	}
 
 	/** {@inheritDoc} */
@@ -48,6 +46,7 @@ public class IdInput extends LabeledInput<Long> {
 	public void setValue(Object object) {
 		if (object != null) {
 			if (object instanceof Long) {
+				id = (Long) object;
 				jTextField.setText(((Long) object).toString());
 			} else {
 				log.error("Could not set value of type " + object.getClass());

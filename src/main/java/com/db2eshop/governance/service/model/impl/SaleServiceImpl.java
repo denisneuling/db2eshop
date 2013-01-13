@@ -42,7 +42,7 @@ public class SaleServiceImpl implements SaleService{
 	/** {@inheritDoc} */
 	@Override
 	public void save(Sale entity) {
-		saleDao.saveOrUpdate(entity);
+		saleDao.save(entity);
 	}
 
 	/** {@inheritDoc} */

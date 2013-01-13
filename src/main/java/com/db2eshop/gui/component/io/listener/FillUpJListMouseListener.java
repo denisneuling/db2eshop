@@ -33,6 +33,7 @@ public class FillUpJListMouseListener extends BaseMouseListener implements Mouse
 	public void mouseClicked(MouseEvent arg0) {
 		if(!updated){
 			embeddedEntityInput.updateList();
+			this.updated = true;
 		}
 	}
 }

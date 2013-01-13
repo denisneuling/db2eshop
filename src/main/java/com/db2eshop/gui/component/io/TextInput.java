@@ -1,5 +1,7 @@
 package com.db2eshop.gui.component.io;
 
+import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
@@ -24,8 +26,7 @@ public class TextInput extends LabeledInput<String> {
 	 */
 	public TextInput() {
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
-
-		jTextField.setBounds(0, 0, 200, 100);
+		jTextField.setMinimumSize(new Dimension(inputWidth, 10));
 		jTextField.setBorder(BorderFactory.createEmptyBorder());
 		this.add(label);
 		this.add(jTextField, "growx,push");
