@@ -22,7 +22,7 @@ import com.db2eshop.model.Shipping;
  */
 @Component
 @UIFor(Shipping.class)
-public abstract class ShippingTable extends GenericTable<Shipping>{
+public class ShippingTable extends GenericTable<Shipping>{
 	private static final long serialVersionUID = 6298771983478946691L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
