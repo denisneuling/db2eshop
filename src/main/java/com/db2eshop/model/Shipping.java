@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
 import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.NumberInput;
 import com.db2eshop.gui.component.io.TextInput;
 import com.db2eshop.model.support.AbstractModel;
 
@@ -40,7 +41,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	@NotNull
 	@NotEmpty
 	@UIBind(TextInput.class)
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String name;
 
 	@NotNull
@@ -50,10 +51,9 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	private String city;
 
 	@NotNull
-	@NotEmpty
-	@UIBind(TextInput.class)
+	@UIBind(NumberInput.class)
 	@Column(nullable = false)
-	private String zipCode;
+	private Integer zipCode;
 
 	@NotNull
 	@NotEmpty
@@ -121,21 +121,11 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 		this.city = city;
 	}
 
-	/**
-	 * <p>Getter for the field <code>zipCode</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getZipCode() {
+	public Integer getZipCode() {
 		return zipCode;
 	}
 
-	/**
-	 * <p>Setter for the field <code>zipCode</code>.</p>
-	 *
-	 * @param zipCode a {@link java.lang.String} object.
-	 */
-	public void setZipCode(String zipCode) {
+	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
 	}
 

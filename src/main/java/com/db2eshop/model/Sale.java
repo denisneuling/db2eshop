@@ -1,6 +1,7 @@
 package com.db2eshop.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
+import com.db2eshop.gui.component.io.DateInput;
 import com.db2eshop.gui.component.io.IdInput;
 import com.db2eshop.gui.component.io.NumberInput;
 import com.db2eshop.model.support.AbstractModel;
@@ -49,6 +53,12 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	@UIEmbedded
 	@ManyToOne(optional=true)
 	private Shipping shipping;
+	
+	@NotNull
+	@UIBind(DateInput.class)
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date date = new Date();
 
 	/**
 	 * <p>
@@ -140,6 +150,14 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	 */
 	public void setShipping(Shipping shipping) {
 		this.shipping = shipping;
+	}
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/** {@inheritDoc} */

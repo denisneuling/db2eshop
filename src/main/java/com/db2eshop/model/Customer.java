@@ -20,6 +20,7 @@ import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
 import com.db2eshop.gui.component.io.DateInput;
 import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.NumberInput;
 import com.db2eshop.gui.component.io.TextInput;
 import com.db2eshop.model.support.AbstractModel;
 
@@ -63,9 +64,9 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	@Column(nullable = false)
 	private String city;
 
-	@UIBind(TextInput.class)
+	@UIBind(NumberInput.class)
 	@Column
-	private String zipCode;
+	private Integer zipCode;
 
 	@UIHide
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -181,21 +182,11 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		this.birthday = birthday;
 	}
 
-	/**
-	 * <p>Getter for the field <code>zipCode</code>.</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String getZipCode() {
+	public Integer getZipCode() {
 		return zipCode;
 	}
 
-	/**
-	 * <p>Setter for the field <code>zipCode</code>.</p>
-	 *
-	 * @param zipCode a {@link java.lang.String} object.
-	 */
-	public void setZipCode(String zipCode) {
+	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
 	}
 

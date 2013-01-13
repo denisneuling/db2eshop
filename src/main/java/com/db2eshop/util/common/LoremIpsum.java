@@ -1,4 +1,4 @@
-package com.db2eshop.util;
+package com.db2eshop.util.common;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
