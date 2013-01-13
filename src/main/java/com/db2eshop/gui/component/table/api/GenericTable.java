@@ -88,15 +88,19 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 			
 			Long id = (Long) values[0];
 			updateAble = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
-			setValueAt(row, updateAble);
+			rowChanged(row, updateAble);
 			stable = true;
 		}
 	}
 	
-	public void setValueAt(int row, T entity){
-		Object values[] = asTableData(entity);
+	@SuppressWarnings("unchecked")
+	public void rowChanged(int row, AbstractModel<?> entity){
+		Object values[] = asTableData((T) entity);
 		for(int i = 0 ; i< columnNames.length; i++){
 			this.getModel().setValueAt(values[i], row, i);
+		}
+		if(stable){
+			onRowChange((T) entity);
 		}
 	}
 
@@ -195,8 +199,12 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	 *
 	 * @param entity a T object.
 	 */
-	protected void addRow(T entity){
-		((DefaultTableModel)getModel()).addRow(asTableData(entity));
+	@SuppressWarnings("unchecked")
+	public void addRow(AbstractModel<T> entity){
+		if(ready){
+			onRowAdd((T)entity);
+		}
+		((DefaultTableModel)getModel()).addRow(asTableData((T)entity));
 	}
 	
 	/**

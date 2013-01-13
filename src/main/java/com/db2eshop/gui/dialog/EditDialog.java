@@ -14,6 +14,7 @@ import com.db2eshop.governance.UIBinder;
 import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
+import com.db2eshop.util.ctx.TableValueEntityResolver;
 
 /**
  * <p>EditDialog class.</p>
@@ -22,7 +23,6 @@ import com.db2eshop.model.support.AbstractModel;
  * 
  */
 @Component
-@SuppressWarnings("unused")
 public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	private static final long serialVersionUID = -2281946458815013162L;
 
@@ -34,6 +34,9 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	
 	@Autowired
 	private ErrorDialog errorDialog;
+	
+	@Autowired
+	private TableValueEntityResolver tableValueEntityResolver;
 	
 	private volatile GenericTable<?> table;
 	private volatile Integer row;
@@ -81,13 +84,26 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	/** {@inheritDoc} */
 	@Override
 	public void onConfirm() {
-		
+		for(String property : components.keySet()){
+			LabeledInput<?> labeledInput = components.get(property);
+			Object currentValue = labeledInput.getValue();
+			
+			model = tableValueEntityResolver.setValue(property, currentValue, model);
+		}
+		table.rowChanged(row, model);
+		unsetVolatile();
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void onCancel() {
-		
+		unsetVolatile();
+	}
+	
+	private void unsetVolatile(){
+		table = null;
+		model = null;
+		components = null;
 	}
 
 	/** {@inheritDoc} */

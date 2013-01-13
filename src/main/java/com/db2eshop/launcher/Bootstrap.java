@@ -29,6 +29,7 @@ import com.db2eshop.util.LoremIpsum;
  * 
  */
 @Component
+@SuppressWarnings("unused")
 public class Bootstrap implements InitializingBean{
 
 	@Autowired

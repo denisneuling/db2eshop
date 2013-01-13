@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.governance.UIBinder;
 import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
+import com.db2eshop.model.support.AbstractModel;
+import com.db2eshop.util.ClassUtil;
+import com.db2eshop.util.ctx.TableValueEntityResolver;
 
 /**
  * <p>AddDialog class.</p>
@@ -32,6 +35,9 @@ public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
 	
 	@Autowired
 	private ErrorDialog errorDialog;
+	
+	@Autowired
+	private TableValueEntityResolver tableValueEntityResolver;
 	
 	private volatile GenericTable<?> table;
 	private volatile Map<String, LabeledInput<?>> components;
@@ -70,14 +76,28 @@ public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
 	
 	/** {@inheritDoc} */
 	@Override
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void onConfirm() {
-		
+		AbstractModel entity = ClassUtil.newInstance(table.getEntityClazz());
+		for(String property : components.keySet()){
+			LabeledInput<?> labeledInput = components.get(property);
+			Object currentValue = labeledInput.getValue();
+			
+			entity = tableValueEntityResolver.setValue(property, currentValue, entity);
+		}
+		table.addRow((AbstractModel) entity);
+		unsetVolatile();
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void onCancel() {
-		
+		unsetVolatile();
+	}
+	
+	private void unsetVolatile(){
+		table = null;
+		components = null;
 	}
 	
 	/** {@inheritDoc} */
