@@ -10,6 +10,7 @@ import com.db2eshop.annotations.bindings.UIFor;
 import com.db2eshop.governance.service.model.CustomerService;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.gui.component.table.listener.TableMenuCapableMouseListener;
+import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Customer;
 
@@ -30,6 +31,9 @@ public class CustomerTable extends GenericTable<Customer>{
 
 	@Autowired
 	private RightClickPopupMenu rightClickPopupMenu;
+
+	@Autowired
+	private ErrorDialog errorDialog;
 	
 	protected TableMenuCapableMouseListener tableMenuCapableMouseListener;
 
@@ -63,4 +67,8 @@ public class CustomerTable extends GenericTable<Customer>{
 		customerService.save(entity);
 	}
 
+	@Override
+	public void onError(Throwable throwable) {
+		errorDialog.showError(throwable);
+	}
 }

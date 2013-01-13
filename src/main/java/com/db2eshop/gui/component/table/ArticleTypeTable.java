@@ -10,6 +10,7 @@ import com.db2eshop.annotations.bindings.UIFor;
 import com.db2eshop.governance.service.model.ArticleTypeService;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.gui.component.table.listener.TableMenuCapableMouseListener;
+import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.ArticleType;
 
@@ -30,6 +31,9 @@ public class ArticleTypeTable extends GenericTable<ArticleType> {
 
 	@Autowired
 	private RightClickPopupMenu rightClickPopupMenu;
+
+	@Autowired
+	private ErrorDialog errorDialog;
 	
 	protected TableMenuCapableMouseListener tableMenuCapableMouseListener;
 	
@@ -61,5 +65,10 @@ public class ArticleTypeTable extends GenericTable<ArticleType> {
 	@Override
 	public void onRowAdd(ArticleType entity) {
 		articleTypeService.save(entity);
+	}
+
+	@Override
+	public void onError(Throwable throwable) {
+		errorDialog.showError(throwable);
 	}
 }

@@ -32,6 +32,9 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	@Autowired
 	private UIBinder uiBinder;
 	
+	@Autowired
+	private ErrorDialog errorDialog;
+	
 	private volatile GenericTable<?> table;
 	private volatile Integer row;
 	private volatile AbstractModel<?> model;
@@ -49,8 +52,12 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 		this.table = table;
 		this.model = model;
 		
-		buildEditor();
-		setVisible(true);
+		try{
+			buildEditor();
+			setVisible(true);
+		}catch(Throwable throwable){
+			onError(throwable);
+		}
 	}
 	
 	private void buildEditor() {
@@ -87,7 +94,7 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 
 	/** {@inheritDoc} */
 	@Override
-	public void onError(Exception e) {
+	public void onError(Throwable throwable) {
 		// TODO Auto-generated method stub
 		
 	}

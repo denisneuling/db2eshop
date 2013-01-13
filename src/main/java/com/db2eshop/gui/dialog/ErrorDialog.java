@@ -8,6 +8,7 @@ import java.awt.Point;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.LinkedList;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -30,6 +31,8 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 
 	@Value("${gui.dialog.error.title}")
 	private String title;
+	
+	private volatile LinkedList<Object> errors = new LinkedList<Object>();
 
 	/** {@inheritDoc} */
 	@Override
@@ -110,8 +113,19 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 
 	/** {@inheritDoc} */
 	@Override
-	public void onError(Exception e) {
-		// TODO Auto-generated method stub
+	public void onError(Throwable throwable) {
+		showError(throwable);
+	}
+	
+	public void showError(String message){
+		
+	}
+	
+	public void showError(String message, Throwable throwable){
+		
+	}
+	
+	public void showError(Throwable throwable){
 		
 	}
 

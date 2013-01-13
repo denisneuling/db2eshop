@@ -31,11 +31,14 @@ public class RemoveDialog extends ConfirmCancelDialog implements InitializingBea
 	@Value("${gui.dialog.remove.title}")
 	private String title;
 	
+	@Autowired
+	private ErrorDialog errorDialog;
+	
 	private volatile GenericTable<?> table;
 	private volatile Integer row;
 	private volatile AbstractModel<?> model;
 	
-	private Map<String, LabeledInput<?>> components; 
+	private volatile Map<String, LabeledInput<?>> components; 
 	
 	/**
 	 * <p>showDialog.</p>
@@ -49,8 +52,12 @@ public class RemoveDialog extends ConfirmCancelDialog implements InitializingBea
 		this.table = table;
 		this.row = row;
 
-		buildEditor();
-		setVisible(true);
+		try{
+			buildEditor();
+			setVisible(true);
+		}catch(Throwable throwable){
+			onError(throwable);
+		}
 	}
 	
 	/**
@@ -89,7 +96,7 @@ public class RemoveDialog extends ConfirmCancelDialog implements InitializingBea
 
 	/** {@inheritDoc} */
 	@Override
-	public void onError(Exception e) {
+	public void onError(Throwable throwable) {
 		// TODO Auto-generated method stub
 		
 	}

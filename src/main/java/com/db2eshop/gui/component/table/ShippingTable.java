@@ -10,6 +10,7 @@ import com.db2eshop.annotations.bindings.UIFor;
 import com.db2eshop.governance.service.model.ShippingService;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.gui.component.table.listener.TableMenuCapableMouseListener;
+import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Shipping;
 
@@ -21,7 +22,7 @@ import com.db2eshop.model.Shipping;
  * @version $Id: $Id
  */
 @UIFor(Shipping.class)
-public class ShippingTable extends GenericTable<Shipping>{
+public abstract class ShippingTable extends GenericTable<Shipping>{
 	private static final long serialVersionUID = 6298771983478946691L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
@@ -30,6 +31,9 @@ public class ShippingTable extends GenericTable<Shipping>{
 
 	@Autowired
 	private RightClickPopupMenu rightClickPopupMenu;
+
+	@Autowired
+	private ErrorDialog errorDialog;
 	
 	protected TableMenuCapableMouseListener tableMenuCapableMouseListener;
 
@@ -61,5 +65,10 @@ public class ShippingTable extends GenericTable<Shipping>{
 	@Override
 	public void onRowAdd(Shipping entity) {
 		shippingService.save(entity);
+	}
+	
+	@Override
+	public void onError(Throwable throwable) {
+		errorDialog.showError(throwable);
 	}
 }

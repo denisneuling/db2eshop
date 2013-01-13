@@ -30,8 +30,11 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 
 	@Value("${gui.dialog.show.title}")
 	private String title;
+	
+	@Autowired
+	private ErrorDialog errorDialog;
 
-	private transient AbstractModel<?> model;
+	private volatile AbstractModel<?> model;
 
 	/**
 	 * <p>showDialog.</p>
@@ -43,8 +46,12 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 	public void showDialog(int row, GenericTable<?> table, AbstractModel<?> model) {
 		this.model = model;
 
-		buildEditor();
-		setVisible(true);
+		try{
+			buildEditor();
+			setVisible(true);
+		}catch(Throwable throwable){
+			onError(throwable);
+		}
 	}
 
 	private void buildEditor() {
@@ -74,7 +81,7 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 
 	/** {@inheritDoc} */
 	@Override
-	public void onError(Exception e) {
+	public void onError(Throwable throwable) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -79,7 +79,7 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 			try {
 				onRowChange(updateAble);
 			} catch (RuntimeException re) {
-				log.error(re);
+				onError(re);
 			}
 		}
 	}
@@ -131,6 +131,10 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	protected T mixin(Object[] values, AbstractModel<T> oldEntity) {
 		if (values.length != columnNames.length) {
 			throw new RuntimeException("ColumnNames lenght unqual value lenght!");
+		}
+		if(oldEntity == null){
+			log.error("Entity is null. Skip mixing in Properties.");
+			return (T) oldEntity;
 		}
 
 		for (int i = 0; i < values.length; i++) {
@@ -285,13 +289,16 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	 */
 	public abstract void onRowAdd(T entity);
 	
+	
+	public abstract void onError(Throwable throwable);
+	
 	/**
 	 * <p>onError.</p>
 	 *
 	 * @param e a {@link java.lang.Exception} object.
 	 */
 	public void onError(Exception e){
-		errorDialog.notifyError(e);
+		errorDialog.showError(e);
 	}
 	
 	/**

@@ -90,6 +90,6 @@ public abstract class ConfirmDialog extends BaseDialog{
 	 *
 	 * @param e a {@link java.lang.Exception} object.
 	 */
-	public abstract void onError(Exception e);
+	public abstract void onError(Throwable throwable);
 	
 }
