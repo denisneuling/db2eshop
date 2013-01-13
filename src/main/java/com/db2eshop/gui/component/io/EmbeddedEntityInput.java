@@ -1,12 +1,13 @@
 package com.db2eshop.gui.component.io;
 
 import java.awt.Dimension;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import net.miginfocom.swing.MigLayout;
@@ -28,6 +29,7 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	protected Logger log = Logger.getLogger(this.getClass());
 	
 	private JList jList;
+	private Map<String, Object> hashedJListEntries = new HashMap<String, Object>();
 	
 	private AbstractDao<?> dao;
 	/**
@@ -47,33 +49,50 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 		
 		JScrollPane listScroller = new JScrollPane(jList);
-		listScroller.setPreferredSize(new Dimension(350, 200));
+		listScroller.setMinimumSize(new Dimension(inputWidth, 200));
 		
 		this.add(label);
 		this.add(listScroller);
-//		,"growx,push");
 		
 		jList.setVisible(true);
 	}
 
 	/** {@inheritDoc} */
 	@Override
+	@SuppressWarnings("rawtypes")
 	public AbstractModel<?> getValue() {
-//		jList.getselec
-		return (AbstractModel<?>) jList.getSelectedValue();
+		int index = jList.getSelectedIndex();
+		if(index < 0 ){
+			return null;
+		}
+		Object selectedValue = jList.getModel().getElementAt(index);
+		String searchKey;
+		if(selectedValue instanceof AbstractModel){
+			searchKey = ((AbstractModel)selectedValue).toString();
+		}else{
+			searchKey = (String)selectedValue;
+		}
+		return (AbstractModel<?>) hashedJListEntries.get(searchKey);
 	}
 
 	/** {@inheritDoc} */
 	@Override
+	@SuppressWarnings("rawtypes")
 	public void setValue(Object object) {
 		if(object!=null){
-			log.debug("Setting value of type " + object.getClass());
+			log.info("Setting value of type " + object.getClass());
 			if (object instanceof AbstractModel) {
-				jTextField.setText((object).toString());
-			} else if(object instanceof Long){
-				AbstractModel<?> valueToSet = dao.findById((Long)object);
+				AbstractModel valueToSet = (AbstractModel)object;
+				hashedJListEntries.put(valueToSet.toString(), valueToSet);
 				((DefaultListModel)jList.getModel()).addElement(valueToSet);
 				jList.setSelectedIndex(jList.getModel().getSize()-1);
+				jList.updateUI();
+			} else if(object instanceof Long){
+				AbstractModel<?> valueToSet = dao.findById((Long)object);
+				hashedJListEntries.put(valueToSet.toString(), valueToSet);
+				((DefaultListModel)jList.getModel()).addElement(valueToSet);
+				jList.setSelectedIndex(jList.getModel().getSize()-1);
+				jList.updateUI();
 			}else{
 				log.error("Could not set value of type " + object.getClass());
 			}
@@ -87,13 +106,14 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		
 	}
 	
-	private JTextField jTextField = new JTextField("");
-	
 	/**
 	 * <p>updateList.</p>
 	 */
 	public void updateList() {
 		List<?> entities = dao.findAll();
+		for(Object whatever : entities){
+			hashedJListEntries.put(whatever.toString(), whatever);
+		}
 		AbstractModel<?> selectedOne = getValue();
 		if(selectedOne!=null){
 			entities.remove(selectedOne);

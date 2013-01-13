@@ -10,20 +10,20 @@
 	</appender>
 
 	<logger name="org.hibernate.type">
-		<level value="INFO" />
+		<level value="FATAL" />
 		<appender-ref ref="console" />
 	</logger>
 
-	<logger name="org.hibernate.SQL">
-		<level value="INFO" />
+	<logger name="org.hibernate.sql">
+		<level value="FATAL" />
 		<appender-ref ref="console" />
 	</logger>
 
 	<logger name="org.hibernate">
-		<level value="INFO" />
+		<level value="FATAL" />
 		<appender-ref ref="console" />
 	</logger>
-
+	
 	<root>
 		<priority value="INFO" />
 		<appender-ref ref="console" />

@@ -36,7 +36,7 @@ import com.db2eshop.util.common.Streets;
  * <p>
  * Bootstrap class.
  * </p>
- * 
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
@@ -91,7 +91,7 @@ public class Bootstrap implements InitializingBean {
 		articleTypeDao.save(a);
 
 		ArticleType c = new ArticleType();
-		c.setName("Dring");
+		c.setName("Drink");
 		articleTypeDao.save(c);
 
 		ArticleType b = new ArticleType();

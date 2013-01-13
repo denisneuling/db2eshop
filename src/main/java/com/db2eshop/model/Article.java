@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,11 +49,11 @@ public class Article extends AbstractModel<Article> implements Serializable {
 	private ArticleType articleType;
 
 	@UIHide
-	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
 	private List<Sale> sales = new LinkedList<Sale>();
 
 	@UIHide
-	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
 	private List<Import> imports = new LinkedList<Import>();
 
 	/**

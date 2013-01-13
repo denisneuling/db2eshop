@@ -73,6 +73,7 @@ public class TableValueEntityResolver implements InitializingBean {
 	 * @param target a T object.
 	 * @param <T> a T object.
 	 * @return a T object.
+	 * @param propertyName a {@link java.lang.String} object.
 	 * @param property a {@link java.lang.Object} object.
 	 */
 	public <T> T setValue(String propertyName, Object property, T target) {
@@ -100,6 +101,7 @@ public class TableValueEntityResolver implements InitializingBean {
 	 * @param to a {@link java.lang.Class} object.
 	 * @return a {@link java.lang.Object} object.
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object box(Object property, Class<?> to) {
 		if(property==null){
 			return property;
@@ -118,6 +120,8 @@ public class TableValueEntityResolver implements InitializingBean {
 			Long id = null;
 			if(property instanceof String){
 				id = new Long((String) property);
+			}else if(property instanceof AbstractModel){
+				id = ((AbstractModel)property).getId();
 			}
 			AbstractModel<?> model = entityDao.get(to).findById(id);
 			return model;

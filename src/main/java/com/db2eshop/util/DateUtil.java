@@ -32,6 +32,12 @@ public class DateUtil {
 		}
 	}
 	
+	/**
+	 * <p>asString.</p>
+	 *
+	 * @param date a {@link java.util.Date} object.
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String asString(Date date){
 		 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		 return simpleDateFormat.format(date);

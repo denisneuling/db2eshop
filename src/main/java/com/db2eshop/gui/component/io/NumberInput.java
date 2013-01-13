@@ -27,8 +27,8 @@ public class NumberInput extends LabeledInput<Integer> {
 	public NumberInput() {
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 
-		jTextField.setMaximumSize(new Dimension(inputWidth, 10));
-		label.setBorder(BorderFactory.createEmptyBorder());
+		jTextField.setMinimumSize(new Dimension(inputWidth, 10));
+		jTextField.setBorder(BorderFactory.createEmptyBorder());
 		this.add(label);
 		this.add(jTextField, "growx,push");
 	}
@@ -40,8 +40,7 @@ public class NumberInput extends LabeledInput<Integer> {
 		try {
 			return Integer.parseInt(text);
 		} catch (NumberFormatException nfe) {
-			jTextField.setText(0 + "");
-			throw new RuntimeException(nfe);
+			throw new RuntimeException("Input was not numerous.");
 		}
 	}
 

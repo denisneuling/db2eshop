@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
@@ -35,18 +34,15 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	@NotNull
 	@UIBind(NumberInput.class)
 	@Column(nullable = false)
 	private Integer count = 0;
 
 	@UIEmbedded
-	@NotNull
 	@ManyToOne(optional = false)
 	private Article article;
 
 	@UIEmbedded
-	@NotNull
 	@ManyToOne(optional = false)
 	private Customer customer;
 
@@ -54,7 +50,6 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	@ManyToOne(optional=true)
 	private Shipping shipping;
 	
-	@NotNull
 	@UIBind(DateInput.class)
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -152,10 +147,20 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 		this.shipping = shipping;
 	}
 	
+	/**
+	 * <p>Getter for the field <code>date</code>.</p>
+	 *
+	 * @return a {@link java.util.Date} object.
+	 */
 	public Date getDate() {
 		return date;
 	}
 
+	/**
+	 * <p>Setter for the field <code>date</code>.</p>
+	 *
+	 * @param date a {@link java.util.Date} object.
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}

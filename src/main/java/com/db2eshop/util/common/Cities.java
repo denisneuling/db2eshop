@@ -2,8 +2,15 @@ package com.db2eshop.util.common;
 
 import java.util.Random;
 
+/**
+ * <p>Cities class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class Cities {
 
+	/** Constant <code>cities="{ YUMA, REDDING, LAS VEGAS, PHOENIX, TU"{trunked}</code> */
 	public static String[] cities = { "YUMA", "REDDING", "LAS VEGAS", "PHOENIX", "TUCSON", "EL PASO", "FRESNO", "RENO", "FLAGSTAFF", "SACRAMENTO", "ALBUQUERQUE", "KEY WEST", "PUEBLO", "MIDLAND-ODESSA", "ROSWELL", "AMARILLO", "ELY", "LOS ANGELES C.O.", "LAKE CHARLES", "LUBBOCK", "NORTH LITTLE ROCK",
 			"GRAND JUNCTION", "HONOLULU", "JOHNSTON ISLAND", "ABILENE", "DODGE CITY", "MIAMI", "MILFORD", "WAKE ISLAND", "DENVER", "LANDER", "OKLAHOMA CITY", "SAN DIEGO", "WINNEMUCCA", "CONCORDIA", "KAHULUI", "NORTH PLATTE", "SAN JUAN", "APALACHICOLA", "CHEYENNE", "MACON", "SALT LAKE CITY",
 			"SAN FRANCISCO C.O.", "TAMPA", "VALENTINE", "WICHITA", "BOISE", "COLUMBIA", "MEMPHIS", "POCATELLO", "SHREVEPORT", "TUPELO", "CHARLESTON AP", "HURON", "JACKSONVILLE", "RAPID CITY", "RICHMOND", "SHERIDAN", "WILMINGTON", "CHARLOTTE", "GALVESTON", "LITTLE ROCK", "SAVANNAH", "TULSA",
@@ -17,10 +24,20 @@ public class Cities {
 	/** Constant <code>random</code> */
 	public final static Random random = new Random();
 	
+	/**
+	 * <p>city.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String city() {
 		return cities[random.nextInt(cities.length - 1)];
 	}
 
+	/**
+	 * <p>zipCode.</p>
+	 *
+	 * @return a int.
+	 */
 	public static int zipCode(){
 		StringBuffer stringBuffer = new StringBuffer();
 		for(int i = 0; i < 5; i++){

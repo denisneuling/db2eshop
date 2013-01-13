@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -69,7 +68,7 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	private Integer zipCode;
 
 	@UIHide
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<Sale> sales = new LinkedList<Sale>();
 
 	/**
@@ -182,10 +181,20 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 		this.birthday = birthday;
 	}
 
+	/**
+	 * <p>Getter for the field <code>zipCode</code>.</p>
+	 *
+	 * @return a {@link java.lang.Integer} object.
+	 */
 	public Integer getZipCode() {
 		return zipCode;
 	}
 
+	/**
+	 * <p>Setter for the field <code>zipCode</code>.</p>
+	 *
+	 * @param zipCode a {@link java.lang.Integer} object.
+	 */
 	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
 	}

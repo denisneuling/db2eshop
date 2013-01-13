@@ -4,11 +4,22 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+/**
+ * <p>Dates class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class Dates {
 
 	/** Constant <code>random</code> */
 	public final static Random random = new Random();
 	
+	/**
+	 * <p>date.</p>
+	 *
+	 * @return a {@link java.util.Date} object.
+	 */
 	public static Date date(){
 	
 		Date date = new Date();
