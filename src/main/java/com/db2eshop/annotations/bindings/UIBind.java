@@ -11,7 +11,7 @@ import com.db2eshop.gui.component.io.LabeledInput;
  * <p>UIBind class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

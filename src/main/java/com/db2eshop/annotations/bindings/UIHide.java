@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * <p>UIHide class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

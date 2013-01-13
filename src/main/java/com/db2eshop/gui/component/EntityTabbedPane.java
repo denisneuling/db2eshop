@@ -19,7 +19,7 @@ import com.db2eshop.gui.component.tab.SupplierTab;
  * <p>EntityTabbedPane class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class EntityTabbedPane extends JTabbedPane implements InitializingBean {

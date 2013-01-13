@@ -18,7 +18,7 @@ import com.db2eshop.model.Employee;
  * <p>EmployeeTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @UIFor(Employee.class)
@@ -67,6 +67,7 @@ public class EmployeeTable  extends GenericTable<Employee>{
 		employeeService.save(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
 		errorDialog.showError(throwable);

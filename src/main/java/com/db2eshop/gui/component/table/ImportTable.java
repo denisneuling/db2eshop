@@ -18,7 +18,7 @@ import com.db2eshop.model.Import;
  * <p>ImportTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @UIFor(Import.class)
@@ -67,6 +67,7 @@ public class ImportTable extends GenericTable<Import>{
 		importService.save(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
 		errorDialog.showError(throwable);

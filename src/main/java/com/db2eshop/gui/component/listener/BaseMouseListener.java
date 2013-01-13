@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
  * <p>Abstract BaseMouseListener class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public abstract class BaseMouseListener implements MouseListener {
 	protected Logger log = Logger.getLogger(this.getClass());

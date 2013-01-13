@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * <p>Abstract AbstractEntityTab class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public abstract class AbstractEntityTab extends JPanel implements InitializingBean{

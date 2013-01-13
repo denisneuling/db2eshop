@@ -17,7 +17,7 @@ import com.db2eshop.model.Article;
  * <p>ArticleTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @UIFor(Article.class)
@@ -65,6 +65,7 @@ public class ArticleTable extends GenericTable<Article>{
 		articleService.save(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
 		errorDialog.showError(throwable);

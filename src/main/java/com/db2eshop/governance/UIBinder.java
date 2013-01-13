@@ -23,7 +23,7 @@ import com.db2eshop.util.ctx.TableValueEntityResolver;
  * <p>UIBinder class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class UIBinder {

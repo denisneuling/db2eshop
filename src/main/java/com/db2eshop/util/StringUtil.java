@@ -3,8 +3,8 @@ package com.db2eshop.util;
 /**
  * <p>StringUtil class.</p>
  *
- * @author ska
- * @version $Id: $Id
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
  */
 public class StringUtil {
 

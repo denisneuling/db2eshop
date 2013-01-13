@@ -9,7 +9,7 @@ import com.db2eshop.model.Import;
  * <p>ImportService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Transactional
 public interface ImportService extends CrudService<Import>{

@@ -13,7 +13,7 @@ import com.db2eshop.model.support.AbstractModel;
  * </p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class TableMenuCapableMouseListener extends BaseMouseListener {
 

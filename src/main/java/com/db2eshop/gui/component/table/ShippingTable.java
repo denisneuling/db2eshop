@@ -18,7 +18,7 @@ import com.db2eshop.model.Shipping;
  * <p>ShippingTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @UIFor(Shipping.class)
@@ -67,6 +67,7 @@ public abstract class ShippingTable extends GenericTable<Shipping>{
 		shippingService.save(entity);
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
 		errorDialog.showError(throwable);

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
  * <p>Abstract LabeledInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public abstract class LabeledInput<T> extends JPanel{
 	private static final long serialVersionUID = -6759994950632289431L;

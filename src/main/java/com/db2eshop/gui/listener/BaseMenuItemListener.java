@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * <p>BaseMenuItemListener class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class BaseMenuItemListener implements ActionListener {

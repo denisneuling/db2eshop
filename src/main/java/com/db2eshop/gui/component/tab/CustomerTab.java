@@ -17,7 +17,7 @@ import com.db2eshop.gui.component.table.api.GenericTable;
  * <p>CustomerTab class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class CustomerTab extends AbstractEntityTab{

@@ -19,7 +19,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>ShowDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class ShowDialog extends ConfirmDialog implements InitializingBean {
@@ -36,6 +36,9 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 	
 	private volatile AbstractModel<?> model;
 	
+	/**
+	 * <p>Constructor for ShowDialog.</p>
+	 */
 	public ShowDialog(){
 	}
 

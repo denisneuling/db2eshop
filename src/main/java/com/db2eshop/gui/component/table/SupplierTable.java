@@ -18,7 +18,7 @@ import com.db2eshop.model.Supplier;
  * <p>SupplierTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @UIFor(Supplier.class)
@@ -67,6 +67,7 @@ public class SupplierTable extends GenericTable<Supplier> {
 		supplierService.save(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
 		errorDialog.showError(throwable);

@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  * <p>DateInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class DateInput extends LabeledInput<Date>{
 	private static final long serialVersionUID = 2680814138439027839L;

@@ -32,7 +32,7 @@ import com.db2eshop.util.ClassUtil;
  * <p>TableValueEntityResolver class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class TableValueEntityResolver implements InitializingBean {
@@ -67,6 +67,42 @@ public class TableValueEntityResolver implements InitializingBean {
 	/**
 	 * <p>setValue.</p>
 	 *
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
 	 * @param propertyName a {@link java.lang.String} object.
 	 * @param propertyName a {@link java.lang.String} object.
 	 * @param propertyName a {@link java.lang.String} object.

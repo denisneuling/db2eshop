@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * <p>DashBoard class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class DashBoard extends JPanel implements InitializingBean {

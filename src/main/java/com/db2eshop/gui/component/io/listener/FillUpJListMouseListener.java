@@ -12,7 +12,7 @@ import com.db2eshop.gui.component.listener.BaseMouseListener;
  * <p>FillUpJListMouseListener class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class FillUpJListMouseListener extends BaseMouseListener implements MouseListener{
 	protected Logger log = Logger.getLogger(this.getClass());

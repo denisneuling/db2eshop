@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
  * <p>TextArea class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class TextArea extends LabeledInput<String> {
 	private static final long serialVersionUID = -2609420739863688029L;

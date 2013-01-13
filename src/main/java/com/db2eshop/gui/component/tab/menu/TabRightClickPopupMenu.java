@@ -18,9 +18,10 @@ import com.db2eshop.gui.dialog.AddDialog;
 import com.db2eshop.model.support.AbstractModel;
 
 /**
- * 
- * @author ska
+ * <p>TabRightClickPopupMenu class.</p>
  *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
  */
 @Component
 public class TabRightClickPopupMenu extends JPopupMenu implements InitializingBean, ActionListener{
@@ -37,6 +38,9 @@ public class TabRightClickPopupMenu extends JPopupMenu implements InitializingBe
 	
 	private JMenuItem add;
 	
+	/**
+	 * <p>Constructor for TabRightClickPopupMenu.</p>
+	 */
 	public TabRightClickPopupMenu(){
 		add = new JMenuItem("Add Entity");
 
@@ -45,6 +49,15 @@ public class TabRightClickPopupMenu extends JPopupMenu implements InitializingBe
 		this.pack();
 	}
 	
+	/**
+	 * <p>showMenu.</p>
+	 *
+	 * @param location a {@link java.awt.Point} object.
+	 * @param row a {@link java.lang.Integer} object.
+	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @param table a {@link com.db2eshop.gui.component.table.api.GenericTable} object.
+	 * @param <T> a T object.
+	 */
 	public <T> void showMenu(Point location, Integer row, AbstractModel<?> entity, GenericTable<?> table){
 		relocate(location);
 		this.setVisible(true);
@@ -52,6 +65,7 @@ public class TabRightClickPopupMenu extends JPopupMenu implements InitializingBe
 		this.table = table;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(add.equals(arg0.getSource())){
@@ -65,6 +79,7 @@ public class TabRightClickPopupMenu extends JPopupMenu implements InitializingBe
 		this.table = null;
 	}
 	
+	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		add.addActionListener(this);
@@ -72,6 +87,11 @@ public class TabRightClickPopupMenu extends JPopupMenu implements InitializingBe
 		setInvoker(mainFrame);
 	}
 	
+	/**
+	 * <p>relocate.</p>
+	 *
+	 * @param point a {@link java.awt.Point} object.
+	 */
 	public void relocate(Point point){
 		Point mainFrameLocation = mainFrame.getLocation();
 		this.setLocation((int)(mainFrameLocation.getX() + point.getX()) + 40, (int)(mainFrameLocation.getY() + point.getY()) + 70);

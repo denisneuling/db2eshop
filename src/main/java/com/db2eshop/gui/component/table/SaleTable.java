@@ -18,7 +18,7 @@ import com.db2eshop.model.Sale;
  * <p>SaleTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @UIFor(Sale.class)
@@ -67,6 +67,7 @@ public class SaleTable  extends GenericTable<Sale>{
 		saleService.save(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
 		errorDialog.showError(throwable);

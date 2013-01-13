@@ -9,7 +9,7 @@ import com.db2eshop.gui.MainFrame;
  * <p>MainFrameAdapter class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class MainFrameAdapter extends ComponentAdapter {
 

@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  * <p>ErrorDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class ErrorDialog extends ConfirmDialog implements InitializingBean {
@@ -111,14 +111,30 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 		showError(throwable);
 	}
 	
+	/**
+	 * <p>showError.</p>
+	 *
+	 * @param message a {@link java.lang.String} object.
+	 */
 	public void showError(String message){
 		
 	}
 	
+	/**
+	 * <p>showError.</p>
+	 *
+	 * @param message a {@link java.lang.String} object.
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 */
 	public void showError(String message, Throwable throwable){
 		
 	}
 	
+	/**
+	 * <p>showError.</p>
+	 *
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 */
 	public void showError(Throwable throwable){
 		
 	}

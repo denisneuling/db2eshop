@@ -11,7 +11,7 @@ import com.db2eshop.persistence.support.AbstractDao;
  * <p>SupplierDao class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Repository
 public class SupplierDao extends AbstractDao<Supplier> {

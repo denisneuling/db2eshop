@@ -25,7 +25,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>RightClickPopupMenu class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class RightClickPopupMenu extends JPopupMenu implements InitializingBean, ActionListener{

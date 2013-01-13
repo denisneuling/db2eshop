@@ -24,7 +24,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>ArticleType class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class ArticleType extends AbstractModel<ArticleType> implements Serializable {
 	private static final long serialVersionUID = 2387929026098277701L;

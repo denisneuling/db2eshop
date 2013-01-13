@@ -9,7 +9,7 @@ import com.db2eshop.model.Sale;
  * <p>SaleService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Transactional
 public interface SaleService extends CrudService<Sale>{

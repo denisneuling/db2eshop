@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * <p>Abstract ConfirmDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public abstract class ConfirmDialog extends BaseDialog{
@@ -90,7 +90,7 @@ public abstract class ConfirmDialog extends BaseDialog{
 	/**
 	 * <p>onError.</p>
 	 *
-	 * @param e a {@link java.lang.Exception} object.
+	 * @param throwable a {@link java.lang.Throwable} object.
 	 */
 	public abstract void onError(Throwable throwable);
 	

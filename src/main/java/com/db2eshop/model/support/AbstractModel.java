@@ -8,7 +8,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public abstract class AbstractModel<T extends AbstractModel<T>> implements Serializable {
 	private static final long serialVersionUID = 2375311756226868202L;

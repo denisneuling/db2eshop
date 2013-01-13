@@ -13,7 +13,7 @@ import com.db2eshop.persistence.CustomerDao;
  * <p>CustomerServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Service
 public class CustomerServiceImpl implements CustomerService{

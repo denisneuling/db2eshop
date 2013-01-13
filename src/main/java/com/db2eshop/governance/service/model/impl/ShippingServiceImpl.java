@@ -13,7 +13,7 @@ import com.db2eshop.persistence.ShippingDao;
  * <p>ShippingServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Service
 public class ShippingServiceImpl implements ShippingService{

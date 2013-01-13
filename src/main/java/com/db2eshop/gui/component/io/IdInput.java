@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
  * <p>IdInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class IdInput extends LabeledInput<Long> {
 	private static final long serialVersionUID = -8517052445051136182L;

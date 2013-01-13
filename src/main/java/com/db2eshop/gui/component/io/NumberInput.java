@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
  * <p>NumberInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class NumberInput extends LabeledInput<Integer> {
 	private static final long serialVersionUID = -6723222187600862538L;

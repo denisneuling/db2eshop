@@ -11,7 +11,7 @@ import java.util.List;
  * </p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class ClassUtil {
 
@@ -83,6 +83,42 @@ public class ClassUtil {
 	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param valueType a {@link java.lang.Class} object.
 	 * @param <T> a T object.
 	 * @return a T object.
@@ -106,6 +142,42 @@ public class ClassUtil {
 	 *
 	 * @param fieldName a {@link java.lang.String} object.
 	 * @param reference a {@link java.lang.Object} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.

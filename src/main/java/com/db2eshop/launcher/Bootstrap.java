@@ -26,7 +26,7 @@ import com.db2eshop.util.LoremIpsum;
  * <p>Bootstrap class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class Bootstrap implements InitializingBean{
@@ -55,6 +55,7 @@ public class Bootstrap implements InitializingBean{
 	@Autowired
 	private SupplierDao supplierDao;
 
+	/** {@inheritDoc} */
 	@Override
 
 	public void afterPropertiesSet() throws Exception {

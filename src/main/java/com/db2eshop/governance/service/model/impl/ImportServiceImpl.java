@@ -13,7 +13,7 @@ import com.db2eshop.persistence.ImportDao;
  * <p>ImportServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Service
 public class ImportServiceImpl implements ImportService{

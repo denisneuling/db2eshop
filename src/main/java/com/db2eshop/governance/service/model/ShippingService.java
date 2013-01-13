@@ -9,7 +9,7 @@ import com.db2eshop.model.Shipping;
  * <p>ShippingService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Transactional
 public interface ShippingService extends CrudService<Shipping>{

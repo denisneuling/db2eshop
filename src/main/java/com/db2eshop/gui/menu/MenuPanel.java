@@ -16,7 +16,7 @@ import com.db2eshop.gui.listener.QuitMenuItemListener;
  * <p>MenuPanel class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class MenuPanel extends JMenuBar implements InitializingBean {

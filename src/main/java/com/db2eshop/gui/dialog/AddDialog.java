@@ -18,7 +18,7 @@ import com.db2eshop.gui.component.table.api.GenericTable;
  * <p>AddDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
@@ -36,6 +36,9 @@ public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
 	private volatile GenericTable<?> table;
 	private volatile Map<String, LabeledInput<?>> components;
 	
+	/**
+	 * <p>Constructor for AddDialog.</p>
+	 */
 	public AddDialog(){
 	}
 	

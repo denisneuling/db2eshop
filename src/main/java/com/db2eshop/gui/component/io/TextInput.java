@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
  * <p>TextInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class TextInput extends LabeledInput<String> {
 	private static final long serialVersionUID = 7628321355750318743L;

@@ -21,7 +21,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>Sale class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 public class Sale extends AbstractModel<Sale> implements Serializable {
 	private static final long serialVersionUID = -9016685368451535775L;

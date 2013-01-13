@@ -13,7 +13,7 @@ import com.db2eshop.persistence.SupplierDao;
  * <p>SupplierServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Service
 public class SupplierServiceImpl implements SupplierService{

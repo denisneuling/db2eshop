@@ -19,7 +19,7 @@ import com.db2eshop.model.support.AbstractModel;
  * <p>RemoveDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public class RemoveDialog extends ConfirmCancelDialog implements InitializingBean{
@@ -39,6 +39,9 @@ public class RemoveDialog extends ConfirmCancelDialog implements InitializingBea
 	private volatile AbstractModel<?> model;
 	private volatile Map<String, LabeledInput<?>> components; 
 	
+	/**
+	 * <p>Constructor for RemoveDialog.</p>
+	 */
 	public RemoveDialog(){
 	}
 	

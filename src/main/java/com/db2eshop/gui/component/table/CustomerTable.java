@@ -18,7 +18,7 @@ import com.db2eshop.model.Customer;
  * <p>CustomerTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 @UIFor(Customer.class)
@@ -67,6 +67,7 @@ public class CustomerTable extends GenericTable<Customer>{
 		customerService.save(entity);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
 		errorDialog.showError(throwable);

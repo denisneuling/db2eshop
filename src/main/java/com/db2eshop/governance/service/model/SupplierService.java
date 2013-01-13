@@ -9,7 +9,7 @@ import com.db2eshop.model.Supplier;
  * <p>SupplierService interface.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Transactional
 public interface SupplierService extends CrudService<Supplier>{

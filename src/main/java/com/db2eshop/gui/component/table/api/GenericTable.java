@@ -28,7 +28,7 @@ import com.db2eshop.util.ctx.TableValueEntityResolver;
  * <p>Abstract GenericTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
- * @version $Id: $Id
+ * 
  */
 @Component
 public abstract class GenericTable<T extends AbstractModel<T>> extends JTable implements InitializingBean, ApplicationListener<ApplicationEvent> {
@@ -290,6 +290,11 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	public abstract void onRowAdd(T entity);
 	
 	
+	/**
+	 * <p>onError.</p>
+	 *
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 */
 	public abstract void onError(Throwable throwable);
 	
 	/**
