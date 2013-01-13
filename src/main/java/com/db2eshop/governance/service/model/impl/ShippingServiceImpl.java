@@ -9,13 +9,13 @@ import com.db2eshop.governance.service.model.ShippingService;
 import com.db2eshop.model.Shipping;
 import com.db2eshop.persistence.ShippingDao;
 
-@Service
 /**
  * <p>ShippingServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Service
 public class ShippingServiceImpl implements ShippingService{
 
 	@Autowired
@@ -30,35 +30,30 @@ public class ShippingServiceImpl implements ShippingService{
 	/** {@inheritDoc} */
 	@Override
 	public Shipping getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return shippingDao.findById(id);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void update(Shipping entity) {
-		// TODO Auto-generated method stub
-		
+		shippingDao.update(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void save(Shipping entity) {
-		// TODO Auto-generated method stub
-		
+		shippingDao.saveOrUpdate(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void delete(Shipping entity) {
-		// TODO Auto-generated method stub
-		
+		shippingDao.delete(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void refresh(Shipping entity) {
-		// TODO Auto-generated method stub
-		
+		shippingDao.refresh(entity);		
 	}
 }

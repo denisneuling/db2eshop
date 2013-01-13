@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>Abstract ConfirmDialog class.</p>
@@ -18,6 +19,7 @@ import org.apache.log4j.Logger;
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public abstract class ConfirmDialog extends BaseDialog{
 	private static final long serialVersionUID = 5958464790527032755L;
 	protected Logger log = Logger.getLogger(this.getClass());

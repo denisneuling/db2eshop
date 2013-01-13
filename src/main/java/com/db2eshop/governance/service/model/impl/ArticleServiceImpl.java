@@ -9,13 +9,13 @@ import com.db2eshop.governance.service.model.ArticleService;
 import com.db2eshop.model.Article;
 import com.db2eshop.persistence.ArticleDao;
 
-@Service
 /**
  * <p>ArticleServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Service
 public class ArticleServiceImpl implements ArticleService{
 
 	@Autowired

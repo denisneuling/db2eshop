@@ -13,13 +13,13 @@ import com.db2eshop.gui.component.tab.menu.TabRightClickPopupMenu;
 import com.db2eshop.gui.component.table.ArticleTable;
 import com.db2eshop.gui.component.table.api.GenericTable;
 
-@Component
 /**
  * <p>ArticleTab class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class ArticleTab extends AbstractEntityTab{
 	private static final long serialVersionUID = -7331929490773962158L;
 	

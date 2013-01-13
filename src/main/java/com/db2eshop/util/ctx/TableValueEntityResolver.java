@@ -28,13 +28,13 @@ import com.db2eshop.persistence.SupplierDao;
 import com.db2eshop.persistence.support.AbstractDao;
 import com.db2eshop.util.ClassUtil;
 
-@Component
 /**
  * <p>TableValueEntityResolver class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class TableValueEntityResolver implements InitializingBean {
 	protected Logger log = Logger.getLogger(getClass());
 	

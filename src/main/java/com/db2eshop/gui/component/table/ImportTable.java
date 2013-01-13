@@ -14,13 +14,13 @@ import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Import;
 
-@Component
 /**
  * <p>ImportTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 @UIFor(Import.class)
 public class ImportTable extends GenericTable<Import>{
 	private static final long serialVersionUID = -1146391679064557712L;

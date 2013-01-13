@@ -9,13 +9,13 @@ import com.db2eshop.governance.service.model.CustomerService;
 import com.db2eshop.model.Customer;
 import com.db2eshop.persistence.CustomerDao;
 
-@Service
 /**
  * <p>CustomerServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Service
 public class CustomerServiceImpl implements CustomerService{
 
 	@Autowired

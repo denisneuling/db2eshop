@@ -13,13 +13,13 @@ import com.db2eshop.gui.component.tab.menu.TabRightClickPopupMenu;
 import com.db2eshop.gui.component.table.ImportTable;
 import com.db2eshop.gui.component.table.api.GenericTable;
 
-@Component
 /**
  * <p>ImportTab class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class ImportTab extends AbstractEntityTab{
 	private static final long serialVersionUID = -4813755540750285937L;
 	

@@ -19,13 +19,13 @@ import com.db2eshop.util.ClassUtil;
 import com.db2eshop.util.StringUtil;
 import com.db2eshop.util.ctx.TableValueEntityResolver;
 
-@Component
 /**
  * <p>UIBinder class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class UIBinder {
 	protected Logger log = Logger.getLogger(this.getClass());
 

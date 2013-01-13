@@ -24,13 +24,13 @@ import com.db2eshop.util.EntityUtil;
 import com.db2eshop.util.UIForUtil;
 import com.db2eshop.util.ctx.TableValueEntityResolver;
 
-@Component
 /**
  * <p>Abstract GenericTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public abstract class GenericTable<T extends AbstractModel<T>> extends JTable implements InitializingBean, ApplicationListener<ApplicationEvent> {
 	private static final long serialVersionUID = 1180747329897017816L;
 	protected Logger log = Logger.getLogger(this.getClass());

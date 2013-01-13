@@ -17,6 +17,11 @@ import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.gui.dialog.AddDialog;
 import com.db2eshop.model.support.AbstractModel;
 
+/**
+ * 
+ * @author ska
+ *
+ */
 @Component
 public class TabRightClickPopupMenu extends JPopupMenu implements InitializingBean, ActionListener{
 	private static final long serialVersionUID = 1351904828139461655L;

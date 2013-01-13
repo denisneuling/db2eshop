@@ -15,13 +15,13 @@ import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 
-@Component
 /**
  * <p>ShowDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class ShowDialog extends ConfirmDialog implements InitializingBean {
 	private static final long serialVersionUID = -2281946458815013162L;
 
@@ -33,8 +33,11 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 	
 	@Autowired
 	private ErrorDialog errorDialog;
-
+	
 	private volatile AbstractModel<?> model;
+	
+	public ShowDialog(){
+	}
 
 	/**
 	 * <p>showDialog.</p>
@@ -75,15 +78,13 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 
 	/** {@inheritDoc} */
 	@Override
-	public void afterPropertiesSet() throws Exception {
-		setTitle(title);
+	public void onError(Throwable throwable) {
+		errorDialog.showError(throwable);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void onError(Throwable throwable) {
-		// TODO Auto-generated method stub
-		
+	public void afterPropertiesSet() throws Exception {
+		setTitle(title);
 	}
-
 }

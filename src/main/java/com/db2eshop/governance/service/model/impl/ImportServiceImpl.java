@@ -9,13 +9,13 @@ import com.db2eshop.governance.service.model.ImportService;
 import com.db2eshop.model.Import;
 import com.db2eshop.persistence.ImportDao;
 
-@Service
 /**
  * <p>ImportServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Service
 public class ImportServiceImpl implements ImportService{
 
 	@Autowired
@@ -30,35 +30,30 @@ public class ImportServiceImpl implements ImportService{
 	/** {@inheritDoc} */
 	@Override
 	public Import getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return importDao.findById(id);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void update(Import entity) {
-		// TODO Auto-generated method stub
-		
+		importDao.update(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void save(Import entity) {
-		// TODO Auto-generated method stub
-		
+		importDao.saveOrUpdate(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void delete(Import entity) {
-		// TODO Auto-generated method stub
-		
+		importDao.delete(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void refresh(Import entity) {
-		// TODO Auto-generated method stub
-		
+		importDao.refresh(entity);		
 	}
 }

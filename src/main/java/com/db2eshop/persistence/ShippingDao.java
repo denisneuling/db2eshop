@@ -7,13 +7,13 @@ import org.springframework.stereotype.Repository;
 import com.db2eshop.model.Shipping;
 import com.db2eshop.persistence.support.AbstractDao;
 
-@Repository
 /**
  * <p>ShippingDao class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Repository
 public class ShippingDao extends AbstractDao<Shipping> {
 
 	/**

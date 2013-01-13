@@ -19,13 +19,13 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
 /**
  * <p>ErrorDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	private static final long serialVersionUID = -1726175077914308091L;
 
@@ -38,12 +38,6 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	@Override
 	public void onConfirm() {
 		getContentPane().removeAll();
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		setTitle(title);
 	}
 
 	private JPanel jPanelBottom;
@@ -128,5 +122,10 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	public void showError(Throwable throwable){
 		
 	}
-
+	
+	/** {@inheritDoc} */
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		setTitle(title);
+	}
 }

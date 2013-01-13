@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.gui.MainFrame;
 import com.db2eshop.gui.listener.QuitMenuItemListener;
 
-@Component
 /**
  * <p>MenuPanel class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class MenuPanel extends JMenuBar implements InitializingBean {
 	private static final long serialVersionUID = -8033351688374778735L;
 	protected Logger log = Logger.getLogger(this.getClass());

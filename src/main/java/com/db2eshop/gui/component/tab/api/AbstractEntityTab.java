@@ -7,13 +7,13 @@ import net.miginfocom.swing.MigLayout;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
-@Component
 /**
  * <p>Abstract AbstractEntityTab class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public abstract class AbstractEntityTab extends JPanel implements InitializingBean{
 	private static final long serialVersionUID = -538333795587495921L;
 

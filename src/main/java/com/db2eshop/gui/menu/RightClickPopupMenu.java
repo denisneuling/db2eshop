@@ -21,13 +21,13 @@ import com.db2eshop.gui.dialog.RemoveDialog;
 import com.db2eshop.gui.dialog.ShowDialog;
 import com.db2eshop.model.support.AbstractModel;
 
-@Component
 /**
  * <p>RightClickPopupMenu class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class RightClickPopupMenu extends JPopupMenu implements InitializingBean, ActionListener{
 	private static final long serialVersionUID = -5478903794243320305L;
 	protected Logger log = Logger.getLogger(this.getClass());

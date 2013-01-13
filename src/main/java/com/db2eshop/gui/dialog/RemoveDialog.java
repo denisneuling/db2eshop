@@ -15,13 +15,13 @@ import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 
-@Component
 /**
  * <p>RemoveDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class RemoveDialog extends ConfirmCancelDialog implements InitializingBean{
 	private static final long serialVersionUID = -8846282721759634756L;
 
@@ -37,8 +37,10 @@ public class RemoveDialog extends ConfirmCancelDialog implements InitializingBea
 	private volatile GenericTable<?> table;
 	private volatile Integer row;
 	private volatile AbstractModel<?> model;
-	
 	private volatile Map<String, LabeledInput<?>> components; 
+	
+	public RemoveDialog(){
+	}
 	
 	/**
 	 * <p>showDialog.</p>
@@ -86,18 +88,16 @@ public class RemoveDialog extends ConfirmCancelDialog implements InitializingBea
 	public void onCancel() {
 		table = null;
 	}
-	
-
-	/** {@inheritDoc} */
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		setTitle(title);
-	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
-		// TODO Auto-generated method stub
-		
+		errorDialog.showError(throwable);
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		setTitle(title);
 	}
 }

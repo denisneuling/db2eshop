@@ -48,7 +48,7 @@ public class ApplicationContextObserver extends Observable implements BeanPostPr
 	/** {@inheritDoc} */
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		log.debug(String.format("On %s Bean {%s} initialized.", applicationContext.getDisplayName(), beanName));
+		log.info(String.format("On %s Bean {%s} initialized.", applicationContext.getDisplayName(), beanName));
 		
 		this.setChanged();
 		this.notifyObservers(new ContextEvent(beanName));

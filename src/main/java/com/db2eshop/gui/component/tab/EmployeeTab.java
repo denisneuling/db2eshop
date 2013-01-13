@@ -13,13 +13,13 @@ import com.db2eshop.gui.component.tab.menu.TabRightClickPopupMenu;
 import com.db2eshop.gui.component.table.EmployeeTable;
 import com.db2eshop.gui.component.table.api.GenericTable;
 
-@Component
 /**
  * <p>EmployeeTab class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class EmployeeTab extends AbstractEntityTab{
 	private static final long serialVersionUID = 7009889466212726163L;
 	

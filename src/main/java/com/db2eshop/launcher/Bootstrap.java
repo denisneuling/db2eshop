@@ -22,13 +22,13 @@ import com.db2eshop.persistence.ShippingDao;
 import com.db2eshop.persistence.SupplierDao;
 import com.db2eshop.util.LoremIpsum;
 
-@Component
 /**
  * <p>Bootstrap class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class Bootstrap implements InitializingBean{
 
 	@Autowired

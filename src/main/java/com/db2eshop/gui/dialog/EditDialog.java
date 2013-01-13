@@ -15,13 +15,13 @@ import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 
-@Component
 /**
  * <p>EditDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 @SuppressWarnings("unused")
 public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	private static final long serialVersionUID = -2281946458815013162L;
@@ -39,6 +39,9 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	private volatile Integer row;
 	private volatile AbstractModel<?> model;
 	private volatile Map<String, LabeledInput<?>> components;
+	
+	public EditDialog(){
+	}
 	
 	/**
 	 * <p>showDialog.</p>
@@ -75,14 +78,12 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	/** {@inheritDoc} */
 	@Override
 	public void onConfirm() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void onCancel() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -95,8 +96,7 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
-		// TODO Auto-generated method stub
-		
+		errorDialog.showError(throwable);
 	}
 
 }

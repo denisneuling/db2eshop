@@ -9,13 +9,13 @@ import com.db2eshop.governance.service.model.EmployeeService;
 import com.db2eshop.model.Employee;
 import com.db2eshop.persistence.EmployeeDao;
 
-@Service
 /**
  * <p>EmployeeServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Service
 public class EmployeeServiceImpl implements EmployeeService{
 
 	@Autowired
@@ -30,36 +30,31 @@ public class EmployeeServiceImpl implements EmployeeService{
 	/** {@inheritDoc} */
 	@Override
 	public Employee getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDao.findById(id);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void update(Employee entity) {
-		// TODO Auto-generated method stub
-		
+		employeeDao.update(entity);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void save(Employee entity) {
-		// TODO Auto-generated method stub
-		
+		employeeDao.saveOrUpdate(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void delete(Employee entity) {
-		// TODO Auto-generated method stub
-		
+		employeeDao.delete(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void refresh(Employee entity) {
-		// TODO Auto-generated method stub
-		
+		employeeDao.refresh(entity);		
 	}
 
 }

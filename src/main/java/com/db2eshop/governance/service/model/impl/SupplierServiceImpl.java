@@ -9,13 +9,13 @@ import com.db2eshop.governance.service.model.SupplierService;
 import com.db2eshop.model.Supplier;
 import com.db2eshop.persistence.SupplierDao;
 
-@Service
 /**
  * <p>SupplierServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Service
 public class SupplierServiceImpl implements SupplierService{
 
 	@Autowired
@@ -30,37 +30,30 @@ public class SupplierServiceImpl implements SupplierService{
 	/** {@inheritDoc} */
 	@Override
 	public Supplier getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return supplierDao.findById(id);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void update(Supplier entity) {
-		// TODO Auto-generated method stub
-		
+		supplierDao.update(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void save(Supplier entity) {
-		// TODO Auto-generated method stub
-		
+		supplierDao.saveOrUpdate(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void delete(Supplier entity) {
-		// TODO Auto-generated method stub
-		
+		supplierDao.delete(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void refresh(Supplier entity) {
-		// TODO Auto-generated method stub
-		
+		supplierDao.refresh(entity);		
 	}
-	
-	
 }

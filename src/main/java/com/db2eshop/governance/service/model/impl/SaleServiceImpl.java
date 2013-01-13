@@ -9,13 +9,13 @@ import com.db2eshop.governance.service.model.SaleService;
 import com.db2eshop.model.Sale;
 import com.db2eshop.persistence.SaleDao;
 
-@Service
 /**
  * <p>SaleServiceImpl class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Service
 public class SaleServiceImpl implements SaleService{
 
 	@Autowired
@@ -30,35 +30,30 @@ public class SaleServiceImpl implements SaleService{
 	/** {@inheritDoc} */
 	@Override
 	public Sale getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return saleDao.findById(id);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void update(Sale entity) {
-		// TODO Auto-generated method stub
-		
+		saleDao.update(entity);		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void save(Sale entity) {
-		// TODO Auto-generated method stub
-		
+		saleDao.saveOrUpdate(entity);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void delete(Sale entity) {
-		// TODO Auto-generated method stub
-		
+		saleDao.delete(entity);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void refresh(Sale entity) {
-		// TODO Auto-generated method stub
-		
+		saleDao.refresh(entity);
 	}
 }

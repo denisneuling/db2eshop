@@ -14,13 +14,13 @@ import com.db2eshop.governance.UIBinder;
 import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
 
-@Component
 /**
  * <p>AddDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
 	private static final long serialVersionUID = 3423718231846257527L;
 
@@ -35,6 +35,9 @@ public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
 	
 	private volatile GenericTable<?> table;
 	private volatile Map<String, LabeledInput<?>> components;
+	
+	public AddDialog(){
+	}
 	
 	/**
 	 * <p>showDialog.</p>
@@ -65,27 +68,24 @@ public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
 	/** {@inheritDoc} */
 	@Override
 	public void onConfirm() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void onCancel() {
-		// TODO Auto-generated method stub
 		
 	}
 	
-
+	/** {@inheritDoc} */
+	@Override
+	public void onError(Throwable throwable) {
+		errorDialog.showError(throwable);
+	}
+	
 	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		setTitle(title);
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void onError(Throwable throwable) {
-		// TODO Auto-generated method stub
-		
 	}
 }

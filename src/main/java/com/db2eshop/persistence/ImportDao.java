@@ -8,13 +8,13 @@ import com.db2eshop.model.Import;
 import com.db2eshop.persistence.support.AbstractDao;
 
 
-@Repository
 /**
  * <p>ImportDao class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Repository
 public class ImportDao extends AbstractDao<Import> {
 
 	/**

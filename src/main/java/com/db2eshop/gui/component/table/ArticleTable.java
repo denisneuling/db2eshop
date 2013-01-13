@@ -13,13 +13,13 @@ import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Article;
 
-@Component
 /**
  * <p>ArticleTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 @UIFor(Article.class)
 public class ArticleTable extends GenericTable<Article>{
 	private static final long serialVersionUID = 5044674525159404880L;

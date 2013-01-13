@@ -14,13 +14,13 @@ import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Shipping;
 
-@Component
 /**
  * <p>ShippingTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 @UIFor(Shipping.class)
 public abstract class ShippingTable extends GenericTable<Shipping>{
 	private static final long serialVersionUID = 6298771983478946691L;

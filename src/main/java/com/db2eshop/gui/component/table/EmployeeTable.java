@@ -14,13 +14,13 @@ import com.db2eshop.gui.dialog.ErrorDialog;
 import com.db2eshop.gui.menu.RightClickPopupMenu;
 import com.db2eshop.model.Employee;
 
-@Component
 /**
  * <p>EmployeeTable class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 @UIFor(Employee.class)
 public class EmployeeTable  extends GenericTable<Employee>{
 	private static final long serialVersionUID = -1896093636084399376L;

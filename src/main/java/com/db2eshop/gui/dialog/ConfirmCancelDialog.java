@@ -12,13 +12,13 @@ import net.miginfocom.swing.MigLayout;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-@Component
 /**
  * <p>Abstract ConfirmCancelDialog class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * @version $Id: $Id
  */
+@Component
 public abstract class ConfirmCancelDialog extends BaseDialog{
 	private static final long serialVersionUID = 8516091888456072697L;
 	protected Logger log = Logger.getLogger(this.getClass());
