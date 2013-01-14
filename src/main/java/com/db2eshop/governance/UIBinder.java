@@ -17,7 +17,7 @@ import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.persistence.support.AbstractDao;
 import com.db2eshop.util.ClassUtil;
 import com.db2eshop.util.StringUtil;
-import com.db2eshop.util.ctx.TableValueEntityResolver;
+import com.db2eshop.util.orm.TableValueEntityResolver;
 
 /**
  * <p>UIBinder class.</p>

@@ -68,6 +68,6 @@ public class ArticleTable extends GenericTable<Article>{
 	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
-		errorDialog.showError(throwable);
+		errorDialog.showError(onConstraintViolation(throwable),throwable);
 	}
 }

@@ -11,6 +11,7 @@ import net.miginfocom.swing.MigLayout;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,9 @@ import com.db2eshop.gui.menu.MenuPanel;
 public class MainFrame extends JFrame implements WindowListener,InitializingBean{
 	private static final long serialVersionUID = 5447391288059975630L;
 	protected Logger log = Logger.getLogger(this.getClass());
+	
+	@Value("${application.name}")
+	private String title;
 	
 	@Autowired
 	private ApplicationContext applicationContext;
@@ -71,6 +75,7 @@ public class MainFrame extends JFrame implements WindowListener,InitializingBean
 	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		setTitle(title);
 		setJMenuBar(menuPanel);
 		
 		MigLayout layout = new MigLayout("fill");

@@ -12,6 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
@@ -36,10 +40,15 @@ public class Article extends AbstractModel<Article> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(unique = true)
 	private String name;
 
+	@NotNull
+	@NotEmpty
 	@UIBind(TextArea.class)
 	@Column(columnDefinition = "TEXT")
 	private String description;

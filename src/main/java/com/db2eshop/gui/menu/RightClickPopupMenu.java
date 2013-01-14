@@ -96,12 +96,12 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(show.equals(arg0.getSource())){
-			log.info("Show");
+			log.debug("Show");
 			showDialog.showDialog(row, table, entity);
 		} 
 		
 		else if(add.equals(arg0.getSource())){
-			log.info("Add");
+			log.debug("Add");
 			addDialog.showDialog(table);
 		}
 		

@@ -1,5 +1,9 @@
 package com.db2eshop.launcher;
 
+import java.util.Locale;
+
+import org.springframework.context.i18n.LocaleContextHolder;
+
 import com.db2eshop.governance.spring.ApplicationContextLoader;
 
 /**
@@ -19,5 +23,6 @@ public class Launcher {
 	 * @param args an array of {@link java.lang.String} objects.
 	 */
 	public static void main(String[] args){
+		LocaleContextHolder.setLocale(Locale.US);
 	}
 }

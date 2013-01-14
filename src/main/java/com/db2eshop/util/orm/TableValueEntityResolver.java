@@ -1,4 +1,4 @@
-package com.db2eshop.util.ctx;
+package com.db2eshop.util.orm;
 
 import java.lang.reflect.Field;
 import java.util.Date;
@@ -70,9 +70,13 @@ public class TableValueEntityResolver implements InitializingBean {
 	 * <p>setValue.</p>
 	 *
 	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
 	 * @param target a T object.
 	 * @param <T> a T object.
 	 * @return a T object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
 	 * @param propertyName a {@link java.lang.String} object.
 	 * @param property a {@link java.lang.Object} object.
 	 */
@@ -119,6 +123,9 @@ public class TableValueEntityResolver implements InitializingBean {
 		if(AbstractModel.class.isAssignableFrom(to)){
 			Long id = null;
 			if(property instanceof String){
+				if(((String)property).isEmpty()){
+					return null;
+				}
 				id = new Long((String) property);
 			}else if(property instanceof AbstractModel){
 				id = ((AbstractModel)property).getId();

@@ -22,7 +22,7 @@ import com.db2eshop.model.support.AbstractModel;
  * 
  */
 @Component
-public class RemoveDialog extends ConfirmCancelDialog implements InitializingBean{
+public class RemoveDialog extends ORMActionDialog implements InitializingBean{
 	private static final long serialVersionUID = -8846282721759634756L;
 
 	@Autowired
@@ -95,7 +95,7 @@ public class RemoveDialog extends ConfirmCancelDialog implements InitializingBea
 	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
-		errorDialog.showError(throwable);
+		errorDialog.showError(onConstraintViolation(throwable),throwable);
 	}
 	
 	/** {@inheritDoc} */

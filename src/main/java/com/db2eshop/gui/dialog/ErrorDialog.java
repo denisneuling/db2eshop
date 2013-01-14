@@ -61,7 +61,6 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 	 * @param message a {@link java.lang.String} object.
 	 */
 	public void showError(String message){
-		log.error(message);
 		this.showError(message, null);
 	}
 	
@@ -77,17 +76,18 @@ public class ErrorDialog extends ConfirmDialog implements InitializingBean {
 		embeddedContentPane.removeAll();
 		embeddedContentPane.setLayout(new MigLayout("fill"));
 		
-		ErrorTile tile = new ErrorTile(message, throwable);
+		ErrorTile tile = new ErrorTile(message, throwable, scrollPane);
 		errors.add(tile);
 		
 		Collections.reverse(errors);
 		for(ErrorTile errorTile : errors){
-			embeddedContentPane.add(errorTile, "wrap");
+			embeddedContentPane.add(errorTile, "north");
 			embeddedContentPane.updateUI();
 		}
 		Collections.reverse(errors);
 		
 		scrollPane.updateUI();
+		scrollPane.revalidate();
 		if (!this.isVisible()) {
 			this.setVisible(true);
 		}

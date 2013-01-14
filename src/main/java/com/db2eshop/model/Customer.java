@@ -14,6 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
@@ -38,34 +44,53 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String surName;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
-	@Column
+	@Column(nullable=false)
 	private String telephone;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String preName;
 
+	@NotNull
+	@Past
 	@UIBind(DateInput.class)
 	@Temporal(TemporalType.DATE)
-	@Column
+	@Column(nullable=false)
 	private Date birthday;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String street;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String city;
 
+	@NotNull
+	@Min(0)
 	@UIBind(NumberInput.class)
 	@Column
-	private Integer zipCode;
+	private Long zipCode;
 
 	@UIHide
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
@@ -186,7 +211,7 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	 *
 	 * @return a {@link java.lang.Integer} object.
 	 */
-	public Integer getZipCode() {
+	public Long getZipCode() {
 		return zipCode;
 	}
 
@@ -195,7 +220,7 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	 *
 	 * @param zipCode a {@link java.lang.Integer} object.
 	 */
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(Long zipCode) {
 		this.zipCode = zipCode;
 	}
 

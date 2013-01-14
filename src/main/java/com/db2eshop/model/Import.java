@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
@@ -34,10 +37,14 @@ public class Import extends AbstractModel<Import> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
+	@NotNull
+	@Min(0)
 	@UIBind(NumberInput.class)
 	@Column(nullable = false)
-	private Integer count = 0;
+	private Long count = 0L;
 
+	@NotNull
+	@Past
 	@UIBind(DateInput.class)
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -80,7 +87,7 @@ public class Import extends AbstractModel<Import> implements Serializable {
 	 *
 	 * @return a {@link java.lang.Integer} object.
 	 */
-	public Integer getCount() {
+	public Long getCount() {
 		return count;
 	}
 
@@ -89,7 +96,7 @@ public class Import extends AbstractModel<Import> implements Serializable {
 	 *
 	 * @param count a {@link java.lang.Integer} object.
 	 */
-	public void setCount(Integer count) {
+	public void setCount(Long count) {
 		this.count = count;
 	}
 
@@ -170,7 +177,6 @@ public class Import extends AbstractModel<Import> implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + count;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;

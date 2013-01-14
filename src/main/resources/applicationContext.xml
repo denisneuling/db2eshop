@@ -14,13 +14,11 @@
 	<bean id="applicationContextObserver"
 		class="com.db2eshop.governance.spring.ApplicationContextObserver"
 		factory-method="getInstance" />
-
+	
 	<import resource="propertiesContext.xml" />
 
 	<aop:aspectj-autoproxy />
 
-<!-- 	<bean id="validator" -->
-<!-- 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" /> -->
 
 	<import resource="datasourceContext.xml" />
 

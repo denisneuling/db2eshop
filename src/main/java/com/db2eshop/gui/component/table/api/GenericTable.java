@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import com.db2eshop.err.orm.ConstraintVialotionTranslator;
 import com.db2eshop.exception.NotImplementedException;
 import com.db2eshop.gui.component.table.listener.TableEntityModelListener;
 import com.db2eshop.gui.dialog.ErrorDialog;
@@ -24,10 +25,12 @@ import com.db2eshop.util.ClassUtil;
 import com.db2eshop.util.DateUtil;
 import com.db2eshop.util.EntityUtil;
 import com.db2eshop.util.UIForUtil;
-import com.db2eshop.util.ctx.TableValueEntityResolver;
+import com.db2eshop.util.orm.TableValueEntityResolver;
 
 /**
- * <p>Abstract GenericTable class.</p>
+ * <p>
+ * Abstract GenericTable class.
+ * </p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
@@ -38,22 +41,27 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	protected Class<T> entityClazz;
-	
+
 	protected TableEntityModelListener<T> tableEntityModelListener;
 	protected String[] columnNames;
-	
+
 	protected volatile String tableName = this.getClass().getSimpleName();
 	protected volatile boolean ready = false;
 	protected volatile boolean stable = true;
-	
+
 	@Autowired
 	protected ErrorDialog errorDialog;
-	
+
 	@Autowired
 	protected TableValueEntityResolver tableValueEntityResolver;
 
+	@Autowired
+	private ConstraintVialotionTranslator constraintVialotionTranslator;
+
 	/**
-	 * <p>Getter for the field <code>tableName</code>.</p>
+	 * <p>
+	 * Getter for the field <code>tableName</code>.
+	 * </p>
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
@@ -62,65 +70,82 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	}
 
 	/**
-	 * <p>rowChanged.</p>
+	 * <p>
+	 * rowChanged.
+	 * </p>
 	 *
-	 * @param row a int.
+	 * @param row
+	 *            a int.
 	 */
 	@SuppressWarnings("unchecked")
 	public void rowChanged(int row) {
 		Object[] values = this.getRowAt(row);
-		T updateAble = null; 
-		if(values[0] == null){
+		T updateAble = null;
+		if (values[0] == null) {
 			updateAble = ClassUtil.newInstance(entityClazz);
-		}else{
+		} else {
 			Long id = (Long) values[0];
 			updateAble = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
 		}
-		
-		try{
-			if(stable){
+
+		try {
+			if (stable) {
 				updateAble = mixin(values, updateAble);
 			}
 			if (ready) {
 				onRowChange(updateAble);
 			}
-		}catch(Throwable throwable){
+		} catch (Throwable throwable) {
 			stable = false;
 			onError(throwable);
-			
+
 			Long id = (Long) values[0];
 			updateAble = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
 			rowChanged(row, updateAble);
 			stable = true;
 		}
 	}
-	
+
 	/**
-	 * <p>rowChanged.</p>
+	 * <p>
+	 * rowChanged.
+	 * </p>
 	 *
-	 * @param row a int.
-	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @param row
+	 *            a int.
+	 * @param entity
+	 *            a {@link com.db2eshop.model.support.AbstractModel} object.
 	 */
 	@SuppressWarnings("unchecked")
-	public void rowChanged(int row, AbstractModel<?> entity){
+	public void rowChanged(int row, AbstractModel<?> entity) {
 		Object values[] = asTableData((T) entity);
-		for(int i = 0 ; i< columnNames.length; i++){
+		for (int i = 0; i < columnNames.length; i++) {
 			this.getModel().setValueAt(values[i], row, i);
 		}
-		if(stable){
+		if (stable) {
 			onRowChange((T) entity);
 		}
 	}
 
 	/**
-	 * <p>getRowAt.</p>
+	 * <p>
+	 * getRowAt.
+	 * </p>
 	 *
-	 * @param row a int.
+	 * @param row
+	 *            a int.
 	 * @return an array of {@link java.lang.Object} objects.
 	 */
 	public Object[] getRowAt(int row) {
 		Object[] result = new Object[columnNames.length];
 
+		/* 
+		 * TODO
+		 * ugly hack to prevent from IndexOutOfBoundsInception
+		 */
+		if(((DefaultTableModel) getModel()).getRowCount()==row){
+			--row;
+		}
 		for (int column = 0; column < columnNames.length; column++) {
 			Object columnValue = this.getModel().getValueAt(row, column);
 			result[column] = columnValue;
@@ -128,20 +153,23 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 
 		return result;
 	}
-	
+
 	/**
-	 * <p>getEntityAtRow.</p>
+	 * <p>
+	 * getEntityAtRow.
+	 * </p>
 	 *
-	 * @param row a int.
+	 * @param row
+	 *            a int.
 	 * @return a T object.
 	 */
 	@SuppressWarnings("unchecked")
 	public T getEntityAtRow(int row) {
 		Object[] values = getRowAt(row);
 		T entity = null;
-		if(values[0] == null){
+		if (values[0] == null) {
 			entity = ClassUtil.newInstance(entityClazz);
-		}else{
+		} else {
 			Long id = (Long) values[0];
 			entity = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
 		}
@@ -149,10 +177,14 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	}
 
 	/**
-	 * <p>mixin.</p>
+	 * <p>
+	 * mixin.
+	 * </p>
 	 *
-	 * @param values an array of {@link java.lang.Object} objects.
-	 * @param oldEntity a {@link com.db2eshop.model.support.AbstractModel} object.
+	 * @param values
+	 *            an array of {@link java.lang.Object} objects.
+	 * @param oldEntity
+	 *            a {@link com.db2eshop.model.support.AbstractModel} object.
 	 * @return a T object.
 	 */
 	@SuppressWarnings("unchecked")
@@ -160,7 +192,7 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		if (values.length != columnNames.length) {
 			throw new RuntimeException("ColumnNames lenght unqual value lenght!");
 		}
-		if(oldEntity == null){
+		if (oldEntity == null) {
 			log.error("Entity is null. Skip mixing in Properties.");
 			return (T) oldEntity;
 		}
@@ -184,73 +216,99 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 				columnNames = metaColumnNames.toArray(new String[metaColumnNames.size()]);
 				this.setModel(EntityUtil.asTableModel(entityClazz));
 				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) this.getModel());
-				sorter.setComparator(0, new Comparator<Long>(){
-					@Override
-					public int compare(Long arg0, Long arg1) {
-						if (arg0 == arg1){
-							return 0;
-						}
-						if(arg1>arg0){
-							return -1;
-						}
-						return 1;
-					}});
+				Class<?>[] columnTypes = ClassUtil.getTypesOfProperties(columnNames, this.entityClazz);
+				for (int i = 0; i < columnTypes.length; i++) {
+					if (java.lang.Number.class.isAssignableFrom(columnTypes[i])) {
+						sorter.setComparator(i, new Comparator<Long>() {
+							@Override
+							public int compare(Long arg0, Long arg1) {
+								if (arg0 == arg1) {
+									return 0;
+								}
+								if (arg1 > arg0) {
+									return -1;
+								}
+								return 1;
+							}
+						});
+					}
+				}
 				this.setRowSorter(sorter);
 			}
 		}
 		tableEntityModelListener = new TableEntityModelListener<T>(this);
 		this.getModel().addTableModelListener(tableEntityModelListener);
 	}
-	
+
 	/**
-	 * <p>addRow.</p>
+	 * <p>
+	 * addRow.
+	 * </p>
 	 *
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	@SuppressWarnings("unchecked")
-	public void addRow(AbstractModel<T> entity){
-		if(ready){
-			onRowAdd((T)entity);
+	public void addRow(AbstractModel<T> entity) {
+		if (ready) {
+			onRowAdd((T) entity);
 		}
-		((DefaultTableModel)getModel()).addRow(asTableData((T)entity));
+		((DefaultTableModel) getModel()).addRow(asTableData((T) entity));
 	}
-	
+
 	/**
-	 * <p>removeRow.</p>
+	 * <p>
+	 * removeRow.
+	 * </p>
 	 *
-	 * @param row a int.
+	 * @param row
+	 *            a int.
 	 */
 	@SuppressWarnings("unchecked")
-	public void removeRow(int row){
+	public void removeRow(int row) {
 		Object[] values = this.getRowAt(row);
-		T removeAble = null; 
-		if(values[0] == null){
+		T removeAble = null;
+		if (values[0] == null) {
 			removeAble = ClassUtil.newInstance(entityClazz);
-		}else{
+		} else {
 			Long id = (Long) values[0];
 			removeAble = (T) tableValueEntityResolver.getDao(entityClazz).findById(id);
 		}
-		
-		try{
+
+		try {
 			onRowRemove(removeAble);
-			((DefaultTableModel)getModel()).removeRow(row);
-		}catch(Exception e){
+			/*
+			 * TODO
+			 * ugly hack to prevent from IndexOutOfBoundsInception
+			 */
+			if(((DefaultTableModel) getModel()).getRowCount()==row){
+				--row;
+			}
+			((DefaultTableModel) getModel()).removeRow(row);
+		} catch (Exception e) {
 			onError(e);
 		}
 	}
+
 	/**
-	 * <p>removeRow.</p>
+	 * <p>
+	 * removeRow.
+	 * </p>
 	 *
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
-	public void removeRow(T entity){
+	public void removeRow(T entity) {
 		throw new NotImplementedException();
 	}
 
 	/**
-	 * <p>asTableData.</p>
+	 * <p>
+	 * asTableData.
+	 * </p>
 	 *
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 * @return an array of {@link java.lang.Object} objects.
 	 */
 	protected Object[] asTableData(T entity) {
@@ -268,13 +326,13 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 			try {
 				Object object = ClassUtil.getValueOf(field, entity, entityClass, entityClass.getDeclaredField(field).getType());
 				if (object != null && AbstractModel.class.isAssignableFrom(object.getClass())) {
-					if(object instanceof AbstractModel){
+					if (object instanceof AbstractModel) {
 						object = ((AbstractModel<?>) object).getId();
-					}else if(object instanceof String){
-						log.error("Target was entity but found String "+object);
+					} else if (object instanceof String) {
+						log.error("Target was entity but found String " + object);
 					}
-				} else if(object != null && object instanceof Date){
-					object = DateUtil.asString((Date)object);
+				} else if (object != null && object instanceof Date) {
+					object = DateUtil.asString((Date) object);
 				}
 				data[index] = object;
 			} catch (Exception e) {
@@ -299,48 +357,73 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	public boolean isCellEditable(int row, int column) {
 		return column != 0;
 	}
-	
+
 	/**
-	 * <p>onApplicationReady.</p>
+	 * <p>
+	 * onApplicationReady.
+	 * </p>
 	 */
 	public abstract void onApplicationReady();
 
 	/**
-	 * <p>onRowChange.</p>
+	 * <p>
+	 * onRowChange.
+	 * </p>
 	 *
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public abstract void onRowChange(T entity);
-	
+
 	/**
-	 * <p>onRowRemove.</p>
+	 * <p>
+	 * onRowRemove.
+	 * </p>
 	 *
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public abstract void onRowRemove(T entity);
-	
+
 	/**
-	 * <p>onRowAdd.</p>
+	 * <p>
+	 * onRowAdd.
+	 * </p>
 	 *
-	 * @param entity a T object.
+	 * @param entity
+	 *            a T object.
 	 */
 	public abstract void onRowAdd(T entity);
-	
-	
+
 	/**
-	 * <p>onError.</p>
+	 * <p>
+	 * onError.
+	 * </p>
 	 *
-	 * @param throwable a {@link java.lang.Throwable} object.
+	 * @param throwable
+	 *            a {@link java.lang.Throwable} object.
 	 */
 	public abstract void onError(Throwable throwable);
-	
+
 	/**
-	 * <p>Getter for the field <code>entityClazz</code>.</p>
+	 * <p>
+	 * Getter for the field <code>entityClazz</code>.
+	 * </p>
 	 *
 	 * @return a {@link java.lang.Class} object.
 	 */
-	public Class<T> getEntityClazz(){
+	public Class<T> getEntityClazz() {
 		return entityClazz;
+	}
+
+	/**
+	 * <p>onConstraintViolation.</p>
+	 *
+	 * @param throwable a {@link java.lang.Throwable} object.
+	 * @return a {@link java.lang.String} object.
+	 */
+	public String onConstraintViolation(Throwable throwable) {
+		return constraintVialotionTranslator.translate(throwable);
 	}
 
 }

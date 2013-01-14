@@ -11,6 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
@@ -33,6 +37,9 @@ public class ArticleType extends AbstractModel<ArticleType> implements Serializa
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(unique = true)
 	private String name;

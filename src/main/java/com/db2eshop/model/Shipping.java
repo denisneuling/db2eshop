@@ -11,6 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
@@ -34,18 +39,29 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(nullable = false, unique = true)
 	private String name;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String city;
 
+	@NotNull
+	@Min(0)
 	@UIBind(NumberInput.class)
 	@Column(nullable = false)
-	private Integer zipCode;
+	private Long zipCode;
 
+	@NotNull
+	@NotEmpty
+	@Length(max=255)
 	@UIBind(TextInput.class)
 	@Column(nullable = false)
 	private String telephone;
@@ -115,7 +131,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	 *
 	 * @return a {@link java.lang.Integer} object.
 	 */
-	public Integer getZipCode() {
+	public Long getZipCode() {
 		return zipCode;
 	}
 
@@ -124,7 +140,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	 *
 	 * @param zipCode a {@link java.lang.Integer} object.
 	 */
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(Long zipCode) {
 		this.zipCode = zipCode;
 	}
 

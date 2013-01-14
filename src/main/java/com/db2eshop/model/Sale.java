@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
@@ -34,23 +37,27 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
+	@NotNull
+	@Min(0)
 	@UIBind(NumberInput.class)
 	@Column(nullable = false)
-	private Integer count = 0;
+	private Long count = 0L;
 
 	@UIEmbedded
-	@ManyToOne(optional = false)
+	@ManyToOne
 	private Article article;
 
 	@UIEmbedded
-	@ManyToOne(optional = false)
+	@ManyToOne
 	private Customer customer;
 
 	@UIEmbedded
-	@ManyToOne(optional=true)
+	@ManyToOne
 	private Shipping shipping;
-	
-	@UIBind(DateInput.class)
+
+	@NotNull
+	@Past
+    @UIBind(DateInput.class)
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date date = new Date();
@@ -80,7 +87,7 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	 *
 	 * @return a {@link java.lang.Integer} object.
 	 */
-	public Integer getCount() {
+	public Long getCount() {
 		return count;
 	}
 
@@ -89,7 +96,7 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	 *
 	 * @param count a {@link java.lang.Integer} object.
 	 */
-	public void setCount(Integer count) {
+	public void setCount(Long count) {
 		this.count = count;
 	}
 
@@ -146,7 +153,7 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	public void setShipping(Shipping shipping) {
 		this.shipping = shipping;
 	}
-	
+
 	/**
 	 * <p>Getter for the field <code>date</code>.</p>
 	 *
@@ -170,7 +177,6 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + count;
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((shipping == null) ? 0 : shipping.hashCode());

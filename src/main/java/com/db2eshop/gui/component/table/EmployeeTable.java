@@ -70,6 +70,6 @@ public class EmployeeTable  extends GenericTable<Employee>{
 	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
-		errorDialog.showError(throwable);
+		errorDialog.showError(onConstraintViolation(throwable),throwable);
 	}
 }

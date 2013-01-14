@@ -69,10 +69,16 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		String searchKey;
 		if(selectedValue instanceof AbstractModel){
 			searchKey = ((AbstractModel)selectedValue).toString();
+//		}else if(selectedValue instanceof Null){
+//			searchKey = Null.getInstance().toString();
 		}else{
 			searchKey = (String)selectedValue;
 		}
-		return (AbstractModel<?>) hashedJListEntries.get(searchKey);
+		Object value = hashedJListEntries.get(searchKey);
+//		if(value instanceof Null){
+//			return null;
+//		}
+		return (AbstractModel<?>) value;
 	}
 
 	/** {@inheritDoc} */
@@ -80,7 +86,6 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	@SuppressWarnings("rawtypes")
 	public void setValue(Object object) {
 		if(object!=null){
-			log.info("Setting value of type " + object.getClass());
 			if (object instanceof AbstractModel) {
 				AbstractModel valueToSet = (AbstractModel)object;
 				hashedJListEntries.put(valueToSet.toString(), valueToSet);
@@ -96,6 +101,8 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 			}else{
 				log.error("Could not set value of type " + object.getClass());
 			}
+		}else{
+			
 		}
 	}
 
@@ -121,6 +128,24 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 		for(Object whatever : entities){
 			((DefaultListModel)jList.getModel()).addElement(whatever);
 		}
+	}
+
+	/**
+	 * <p>Getter for the field <code>jList</code>.</p>
+	 *
+	 * @return a {@link javax.swing.JList} object.
+	 */
+	public JList getjList() {
+		return jList;
+	}
+
+	/**
+	 * <p>Getter for the field <code>hashedJListEntries</code>.</p>
+	 *
+	 * @return a {@link java.util.Map} object.
+	 */
+	public Map<String, Object> getHashedJListEntries() {
+		return hashedJListEntries;
 	}
 }
 

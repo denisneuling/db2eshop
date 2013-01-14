@@ -27,9 +27,13 @@ public class Dates {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		
-		calendar.add(Calendar.YEAR, 0-random.nextInt(50)+18);
-		calendar.add(Calendar.MONTH, 0-random.nextInt(12));
-		calendar.add(Calendar.DAY_OF_MONTH, 0-random.nextInt(30));
+		int year = random.nextInt(50)+18;
+		int month = random.nextInt(12);
+		int day = random.nextInt(30);
+		
+		calendar.add(Calendar.YEAR, 0-(year<0?-year:year));
+		calendar.add(Calendar.MONTH, 0-(month<0?-month:month));
+		calendar.add(Calendar.DAY_OF_MONTH, 0-(day<0?-day:day));
 				
 		return calendar.getTime();
 	}

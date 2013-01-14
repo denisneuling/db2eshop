@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class NumberInput extends LabeledInput<Integer> {
+public class NumberInput extends LabeledInput<Long> {
 	private static final long serialVersionUID = -6723222187600862538L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
@@ -35,12 +35,12 @@ public class NumberInput extends LabeledInput<Integer> {
 
 	/** {@inheritDoc} */
 	@Override
-	public Integer getValue() {
+	public Long getValue() {
 		String text = jTextField.getText();
 		try {
-			return Integer.parseInt(text);
+			return Long.parseLong(text);
 		} catch (NumberFormatException nfe) {
-			throw new RuntimeException("Input was not numerous.");
+			throw new RuntimeException(label.getText() +": Input must be a number.");
 		}
 	}
 
@@ -48,8 +48,8 @@ public class NumberInput extends LabeledInput<Integer> {
 	@Override
 	public void setValue(Object object) {
 		if (object != null) {
-			if (object instanceof Integer) {
-				jTextField.setText(((Integer) object).toString());
+			if(object instanceof Long) {
+				jTextField.setText(((Long) object).toString());
 			} else {
 				log.error("Could not set value of type " + object.getClass());
 			}

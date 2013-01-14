@@ -79,6 +79,10 @@ public class ClassUtil {
 	 * @param reference a {@link java.lang.Object} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param valueType a {@link java.lang.Class} object.
 	 * @param <T> a T object.
 	 * @return a T object.
@@ -105,6 +109,7 @@ public class ClassUtil {
 	 * @param valueType a {@link java.lang.Class} object.
 	 * @param <T> a T object.
 	 * @return a T object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param reference a {@link java.lang.Object} object.
 	 */
 	public static <T> T getValueOf(String fieldName, Object reference, Class<?> referenceClazz, Class<T> valueType) {
@@ -168,5 +173,27 @@ public class ClassUtil {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	/**
+	 * <p>getTypesOfProperties.</p>
+	 *
+	 * @param fieldNames an array of {@link java.lang.String} objects.
+	 * @param parentClazz a {@link java.lang.Class} object.
+	 * @return an array of {@link java.lang.Class} objects.
+	 */
+	public static Class<?>[] getTypesOfProperties(String[] fieldNames, Class<?> parentClazz){
+		if(fieldNames==null || parentClazz==null){
+			return new Class<?>[0];
+		}
+		Class<?>[] types = new Class<?>[fieldNames.length];
+		for(int i = 0; i < fieldNames.length; i++){
+			try {
+				types[i] = parentClazz.getDeclaredField(fieldNames[i]).getType();
+			} catch (Exception e) {
+				types[i] = Object.class;
+			} 
+		}
+		return types;
 	}
 }

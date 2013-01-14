@@ -15,7 +15,7 @@ import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.util.ClassUtil;
-import com.db2eshop.util.ctx.TableValueEntityResolver;
+import com.db2eshop.util.orm.TableValueEntityResolver;
 
 /**
  * <p>AddDialog class.</p>
@@ -24,7 +24,7 @@ import com.db2eshop.util.ctx.TableValueEntityResolver;
  * 
  */
 @Component
-public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
+public class AddDialog extends ORMActionDialog implements InitializingBean{
 	private static final long serialVersionUID = 3423718231846257527L;
 
 	@Value("${gui.dialog.add.title}")
@@ -103,7 +103,7 @@ public class AddDialog extends ConfirmCancelDialog implements InitializingBean{
 	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
-		errorDialog.showError(throwable);
+		errorDialog.showError(onConstraintViolation(throwable),throwable);
 	}
 	
 	/** {@inheritDoc} */

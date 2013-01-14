@@ -14,7 +14,7 @@ import com.db2eshop.governance.UIBinder;
 import com.db2eshop.gui.component.io.LabeledInput;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
-import com.db2eshop.util.ctx.TableValueEntityResolver;
+import com.db2eshop.util.orm.TableValueEntityResolver;
 
 /**
  * <p>EditDialog class.</p>
@@ -23,7 +23,7 @@ import com.db2eshop.util.ctx.TableValueEntityResolver;
  * 
  */
 @Component
-public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
+public class EditDialog extends ORMActionDialog implements InitializingBean{
 	private static final long serialVersionUID = -2281946458815013162L;
 
 	@Value("${gui.dialog.edit.title}")
@@ -74,6 +74,19 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 		Container container = this.getContentPane();
 		container.setLayout(new MigLayout("fill"));
 		components = uiBinder.create(model);
+		
+		/*
+		 * TODO
+		 * find workaround, this is a ugly hack
+		 */
+//		for (LabeledInput<?> labeledInput : components.values()) {
+//			if(labeledInput instanceof EmbeddedEntityInput){
+//				((EmbeddedEntityInput)labeledInput).getHashedJListEntries().put(Null.getInstance().toString(), Null.getInstance());
+//				JList jList = ((EmbeddedEntityInput)labeledInput).getjList();
+//				((DefaultListModel)jList.getModel()).addElement(Null.getInstance());
+//			}
+//		}
+		
 		for (LabeledInput<?> labeledInput : components.values()) {
 			container.add(labeledInput, "wrap");
 		}
@@ -114,7 +127,7 @@ public class EditDialog extends ConfirmCancelDialog implements InitializingBean{
 	/** {@inheritDoc} */
 	@Override
 	public void onError(Throwable throwable) {
-		errorDialog.showError(throwable);
+		errorDialog.showError(onConstraintViolation(throwable),throwable);
 	}
 
 }
