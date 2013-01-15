@@ -69,16 +69,11 @@ public class TableValueEntityResolver implements InitializingBean {
 	/**
 	 * <p>setValue.</p>
 	 *
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
 	 * @param target a T object.
 	 * @param <T> a T object.
-	 * @return a T object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
-	 * @param propertyName a {@link java.lang.String} object.
 	 * @param propertyName a {@link java.lang.String} object.
 	 * @param property a {@link java.lang.Object} object.
+	 * @return a T object.
 	 */
 	public <T> T setValue(String propertyName, Object property, T target) {
 		Field field;
@@ -109,6 +104,9 @@ public class TableValueEntityResolver implements InitializingBean {
 	public Object box(Object property, Class<?> to) {
 		if(property==null){
 			return property;
+		}
+		if (property instanceof String && Double.class.isAssignableFrom(to)) {
+			return new Double((String) property);
 		}
 		if (property instanceof String && Long.class.isAssignableFrom(to)) {
 			return new Long((String) property);

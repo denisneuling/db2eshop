@@ -25,7 +25,7 @@ import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
 import com.db2eshop.gui.component.io.DateInput;
 import com.db2eshop.gui.component.io.IdInput;
-import com.db2eshop.gui.component.io.NumberInput;
+import com.db2eshop.gui.component.io.LongInput;
 import com.db2eshop.gui.component.io.TextInput;
 import com.db2eshop.model.support.AbstractModel;
 
@@ -88,7 +88,7 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 
 	@NotNull
 	@Min(0)
-	@UIBind(NumberInput.class)
+	@UIBind(LongInput.class)
 	@Column
 	private Long zipCode;
 

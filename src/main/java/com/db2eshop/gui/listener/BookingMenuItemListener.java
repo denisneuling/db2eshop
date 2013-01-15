@@ -7,29 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.db2eshop.gui.MainFrame;
+import com.db2eshop.gui.dialog.BookingDialog;
 
-/**
- * <p>QuitMenuItemListener class.</p>
- *
- * @author Denis Neuling (denisneuling@gmail.com)
- * 
- */
 @Component
-public class QuitMenuItemListener extends BaseMenuItemListener {
+public class BookingMenuItemListener extends BaseMenuItemListener {
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
 	private MainFrame mainFrame;
+	
+	@Autowired
+	private BookingDialog bookingDialog;
 	
 	/** {@inheritDoc} */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		log.debug(e);
 		
-		mainFrame.setVisible(false);
-		mainFrame.dispose();
-		
-		// seems to be bit buggy if we call this from an embedded window...
-		mainFrame.die();
+		bookingDialog.setVisible(true);
 	}
 }

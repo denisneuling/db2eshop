@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.db2eshop.gui.MainFrame;
+import com.db2eshop.gui.listener.BookingMenuItemListener;
 import com.db2eshop.gui.listener.QuitMenuItemListener;
+import com.db2eshop.gui.listener.TurnoverMenuItemListener;
 
 /**
  * <p>MenuPanel class.</p>
@@ -29,8 +31,18 @@ public class MenuPanel extends JMenuBar implements InitializingBean {
 	@Autowired
 	private QuitMenuItemListener quitMenuItemListener;
 	
-	private JMenu jMenu;
-	private JMenuItem quitItem;
+	@Autowired
+	private TurnoverMenuItemListener turnoverMenuItemListener;
+	
+	@Autowired
+	private BookingMenuItemListener bookingMenuItemListener;
+	
+	private JMenu jMenuFile;
+	private JMenuItem fileQuitItem;
+	
+	private JMenu jMenuFinances;
+	private JMenuItem financesBookingItem;
+	private JMenuItem financesTurnoverItem;
 	
 	/**
 	 * <p>Constructor for MenuPanel.</p>
@@ -43,13 +55,25 @@ public class MenuPanel extends JMenuBar implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		this.removeAll();
 		
-		jMenu = new JMenu("File");
+		jMenuFile = new JMenu("File");
 		
-		quitItem = new JMenuItem("Exit");
-		quitItem.addActionListener(quitMenuItemListener);
+		fileQuitItem = new JMenuItem("Exit");
+		fileQuitItem.addActionListener(quitMenuItemListener);
 		
-		jMenu.add(quitItem);
-		this.add(jMenu);
+		jMenuFile.add(fileQuitItem);
+		this.add(jMenuFile);
+		
+		jMenuFinances = new JMenu("Finances");
+		
+		financesBookingItem = new JMenuItem("Booking");
+		financesBookingItem.addActionListener(bookingMenuItemListener);
+		jMenuFinances.add(financesBookingItem);
+		
+		financesTurnoverItem = new JMenuItem("Turnover");
+		financesTurnoverItem.addActionListener(turnoverMenuItemListener);
+		jMenuFinances.add(financesTurnoverItem);
+		
+		this.add(jMenuFinances);
 		
 		this.setVisible(true);
 	}

@@ -102,7 +102,7 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 				log.error("Could not set value of type " + object.getClass());
 			}
 		}else{
-			
+			log.debug("Empty value detected");
 		}
 	}
 
@@ -118,15 +118,17 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	 */
 	public void updateList() {
 		List<?> entities = dao.findAll();
-		for(Object whatever : entities){
-			hashedJListEntries.put(whatever.toString(), whatever);
-		}
-		AbstractModel<?> selectedOne = getValue();
-		if(selectedOne!=null){
-			entities.remove(selectedOne);
-		}
-		for(Object whatever : entities){
-			((DefaultListModel)jList.getModel()).addElement(whatever);
+		if(!entities.isEmpty()){
+			for(Object whatever : entities){
+				hashedJListEntries.put(whatever.toString(), whatever);
+			}
+			AbstractModel<?> selectedOne = getValue();
+			if(selectedOne!=null){
+				entities.remove(selectedOne);
+			}
+			for(Object whatever : entities){
+				((DefaultListModel)jList.getModel()).addElement(whatever);
+			}
 		}
 	}
 

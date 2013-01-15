@@ -78,11 +78,6 @@ public class ClassUtil {
 	 * @param field a {@link java.lang.reflect.Field} object.
 	 * @param reference a {@link java.lang.Object} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
-	 * @param referenceClazz a {@link java.lang.Class} object.
-	 * @param referenceClazz a {@link java.lang.Class} object.
-	 * @param referenceClazz a {@link java.lang.Class} object.
-	 * @param referenceClazz a {@link java.lang.Class} object.
-	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param valueType a {@link java.lang.Class} object.
 	 * @param <T> a T object.
 	 * @return a T object.
@@ -109,8 +104,6 @@ public class ClassUtil {
 	 * @param valueType a {@link java.lang.Class} object.
 	 * @param <T> a T object.
 	 * @return a T object.
-	 * @param referenceClazz a {@link java.lang.Class} object.
-	 * @param reference a {@link java.lang.Object} object.
 	 */
 	public static <T> T getValueOf(String fieldName, Object reference, Class<?> referenceClazz, Class<T> valueType) {
 		try {

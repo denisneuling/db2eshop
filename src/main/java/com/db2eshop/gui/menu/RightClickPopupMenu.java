@@ -1,5 +1,6 @@
 package com.db2eshop.gui.menu;
 
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -141,7 +142,8 @@ public class RightClickPopupMenu extends JPopupMenu implements InitializingBean,
 	 * @param point a {@link java.awt.Point} object.
 	 */
 	public void relocate(Point point){
-		Point mainFrameLocation = mainFrame.getLocation();
-		this.setLocation((int)(mainFrameLocation.getX() + point.getX()) + 40, (int)(mainFrameLocation.getY() + point.getY()) + 70);
+//		Point mainFrameLocation = mainFrame.getLocation();
+		setLocation(MouseInfo.getPointerInfo().getLocation());
+//		this.setLocation((int)(mainFrameLocation.getX() + point.getX()) + 40, (int)(mainFrameLocation.getY() + point.getY()) + 70);
 	}
 }

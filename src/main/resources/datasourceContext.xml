@@ -48,6 +48,8 @@
 				<value>com.db2eshop.model.Sale</value>
 				<value>com.db2eshop.model.Shipping</value>
 				<value>com.db2eshop.model.Supplier</value>
+				<value>com.db2eshop.model.Booking</value>
+				<value>com.db2eshop.model.Turnover</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -59,6 +61,7 @@
 				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use.query.cache}</prop>
 				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use.second.level.cache}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.hbm2ddl.import_files">${hibernate.hbm2ddl.import_files}</prop>
 				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
 				<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
 				<prop key="connection.autocommit">${connection.autocommit}</prop>

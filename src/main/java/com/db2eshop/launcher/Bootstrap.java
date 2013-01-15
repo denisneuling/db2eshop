@@ -71,12 +71,12 @@ public class Bootstrap implements InitializingBean {
 	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		log.warn("============================== Initializing Dataset ====================================");
 		initializeDataSet();
-		log.warn("=========================== Initializing Dataset done ==================================");
 	}
 
+	@SuppressWarnings("unused")
 	private void initializeDataSet() {
+		log.warn("============================== Initializing Dataset ====================================");
 		initializeArticleTypes();
 		initializeArticles();
 		initializeCustomers();
@@ -85,6 +85,7 @@ public class Bootstrap implements InitializingBean {
 		initializeShippings();
 		initializeImports();
 		initializeSales();
+		log.warn("=========================== Initializing Dataset done ==================================");
 	}
 
 	private void initializeArticleTypes() {

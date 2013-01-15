@@ -19,7 +19,7 @@ import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
 import com.db2eshop.gui.component.io.DateInput;
 import com.db2eshop.gui.component.io.IdInput;
-import com.db2eshop.gui.component.io.NumberInput;
+import com.db2eshop.gui.component.io.LongInput;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -39,7 +39,7 @@ public class Sale extends AbstractModel<Sale> implements Serializable {
 
 	@NotNull
 	@Min(0)
-	@UIBind(NumberInput.class)
+	@UIBind(LongInput.class)
 	@Column(nullable = false)
 	private Long count = 0L;
 

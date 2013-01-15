@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -20,6 +21,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
 import com.db2eshop.annotations.bindings.UIHide;
+import com.db2eshop.gui.component.io.DoubleInput;
 import com.db2eshop.gui.component.io.IdInput;
 import com.db2eshop.gui.component.io.TextArea;
 import com.db2eshop.gui.component.io.TextInput;
@@ -52,6 +54,18 @@ public class Article extends AbstractModel<Article> implements Serializable {
 	@UIBind(TextArea.class)
 	@Column(columnDefinition = "TEXT")
 	private String description;
+	
+	@NotNull
+	@Min(0)
+	@UIBind(DoubleInput.class)
+	@Column(nullable = false)
+	private Double retailPrice = 0D;
+	
+	@NotNull
+	@Min(0)
+	@UIBind(DoubleInput.class)
+	@Column(nullable = false)
+	private Double purchasePrice = 0D;
 
 	@UIEmbedded
 	@ManyToOne
@@ -173,6 +187,42 @@ public class Article extends AbstractModel<Article> implements Serializable {
 	 */
 	public void setImports(List<Import> imports) {
 		this.imports = imports;
+	}
+	
+	/**
+	 * <p>Getter for the field <code>retailPrice</code>.</p>
+	 *
+	 * @return a {@link java.lang.Double} object.
+	 */
+	public Double getRetailPrice() {
+		return retailPrice;
+	}
+
+	/**
+	 * <p>Setter for the field <code>retailPrice</code>.</p>
+	 *
+	 * @param retailPrice a {@link java.lang.Double} object.
+	 */
+	public void setRetailPrice(Double retailPrice) {
+		this.retailPrice = retailPrice;
+	}
+
+	/**
+	 * <p>Getter for the field <code>purchasePrice</code>.</p>
+	 *
+	 * @return a {@link java.lang.Double} object.
+	 */
+	public Double getPurchasePrice() {
+		return purchasePrice;
+	}
+
+	/**
+	 * <p>Setter for the field <code>purchasePrice</code>.</p>
+	 *
+	 * @param purchasePrice a {@link java.lang.Double} object.
+	 */
+	public void setPurchasePrice(Double purchasePrice) {
+		this.purchasePrice = purchasePrice;
 	}
 
 	/** {@inheritDoc} */
