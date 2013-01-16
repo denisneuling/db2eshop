@@ -9,27 +9,28 @@ import net.miginfocom.swing.MigLayout;
 
 import org.apache.log4j.Logger;
 
+import com.db2eshop.model.Booking.Type;
+
 /**
- * <p>IdInput class.</p>
+ * <p>BookingTypeInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class IdInput extends LabeledInput<Long> {
-	private static final long serialVersionUID = -8517052445051136182L;
+public class BookingTypeForm extends LabeledForm<Type> {
+	private static final long serialVersionUID = -315477593380755590L;
+
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	private JTextField jTextField = new JTextField(30);
-	private Long id;
 
 	/**
-	 * <p>Constructor for IdInput.</p>
+	 * <p>Constructor for BookingTypeInput.</p>
 	 */
-	public IdInput() {
-		setEditable(false);
+	public BookingTypeForm() {
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 
-		jTextField.setMaximumSize(new Dimension(inputWidth, 10));
+		jTextField.setMinimumSize(new Dimension(inputWidth, 10));
 		jTextField.setBorder(BorderFactory.createEmptyBorder());
 		this.add(label);
 		this.add(jTextField, "growx,push");
@@ -37,17 +38,24 @@ public class IdInput extends LabeledInput<Long> {
 
 	/** {@inheritDoc} */
 	@Override
-	public Long getValue() {
-		return id;
+	public Type getValue() {
+		String text = jTextField.getText();
+		if (Type.IMPORT.toString().equalsIgnoreCase(text)) {
+			return Type.IMPORT;
+		} else if (Type.SALE.toString().equalsIgnoreCase(text)) {
+			return Type.SALE;
+		} else if (Type.SKONTO.toString().equalsIgnoreCase(text)) {
+			return Type.SKONTO;
+		}
+		return null;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void setValue(Object object) {
 		if (object != null) {
-			if (object instanceof Long) {
-				id = (Long) object;
-				jTextField.setText(((Long) object).toString());
+			if (object instanceof Type) {
+				jTextField.setText(((Type) object).toString());
 			} else {
 				log.error("Could not set value of type " + object.getClass());
 			}
@@ -59,5 +67,4 @@ public class IdInput extends LabeledInput<Long> {
 	public void setEditable(boolean editable) {
 		jTextField.setEditable(false);
 	}
-
 }

@@ -7,8 +7,7 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ import com.db2eshop.persistence.exception.ValidationException;
 @Component
 @SuppressWarnings({ "unchecked" })
 public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateDaoSupport implements GenericDaoCrudOperations<T>, GenericDaoOperations<T> {
-	protected final Log log = LogFactory.getLog(getClass());
+	protected final Logger log = Logger.getLogger(getClass());
 
 	@Autowired
 	(required = false)
@@ -130,26 +129,6 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		log.debug("Loading all Rows of " + this.clazz.getName());
 
 		return this.getHibernateTemplate().find("from " + this.clazz.getName());
-		// org.hibernate.Query q = this.getSession().createQuery("from " +
-		// this.clazz.getName());
-		// List<T> entities = q.list();
-		// return entities;
-		// return this.getHibernateTemplate().loadAll(this.clazz);
-
-		// List<T> returnEntities = new LinkedList<T>();
-		// for(T e : entities){
-		// retucrnEntities.add(this.getHibernateTemplate().get(clazz,
-		// e.getId()));
-		// }
-
-		// for(T returnEntity : returnEntities){
-		// System.out.println(returnEntity);
-		// }
-
-		// return returnEntities;
-		// return this.getHibernateTemplate().find("from " +
-		// this.clazz.getName());
-		// return this.getHibernateTemplate().loadAll(this.clazz);
 	}
 
 	/** {@inheritDoc} */
@@ -307,10 +286,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 
 		this.validate(entity);
 		Serializable id = this.getHibernateTemplate().save(entity);
-		/*
-		 * refreshing all save actions might be evil
-		 */
-		// this.refresh(entity);
+		entity.setId((Long) id);
 		return id;
 	}
 
@@ -339,14 +315,8 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 		}
 	}
 
-	/*
-	 * Attention! THIS is not tested.
-	 * 
-	 * @param t
-	 * 
-	 * @return
-	 */
 	/**
+	 * Attention! THIS is not tested.
 	 * <p>
 	 * saveAndFlush.
 	 * </p>

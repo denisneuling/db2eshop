@@ -17,9 +17,9 @@ import javax.validation.constraints.Past;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
-import com.db2eshop.gui.component.io.DateInput;
-import com.db2eshop.gui.component.io.IdInput;
-import com.db2eshop.gui.component.io.LongInput;
+import com.db2eshop.gui.component.io.DateForm;
+import com.db2eshop.gui.component.io.IdForm;
+import com.db2eshop.gui.component.io.LongForm;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -32,20 +32,20 @@ import com.db2eshop.model.support.AbstractModel;
 public class Import extends AbstractModel<Import> implements Serializable {
 	private static final long serialVersionUID = -8663449394006905708L;
 
-	@UIBind(IdInput.class)
+	@UIBind(IdForm.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
 	@NotNull
 	@Min(0)
-	@UIBind(LongInput.class)
+	@UIBind(LongForm.class)
 	@Column(nullable = false)
 	private Long count = 0L;
 
 	@NotNull
 	@Past
-	@UIBind(DateInput.class)
+	@UIBind(DateForm.class)
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date date = new Date();

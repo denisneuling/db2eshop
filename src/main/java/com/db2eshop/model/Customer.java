@@ -23,10 +23,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
-import com.db2eshop.gui.component.io.DateInput;
-import com.db2eshop.gui.component.io.IdInput;
-import com.db2eshop.gui.component.io.LongInput;
-import com.db2eshop.gui.component.io.TextInput;
+import com.db2eshop.gui.component.io.DateForm;
+import com.db2eshop.gui.component.io.IdForm;
+import com.db2eshop.gui.component.io.LongForm;
+import com.db2eshop.gui.component.io.TextForm;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -39,7 +39,7 @@ import com.db2eshop.model.support.AbstractModel;
 public class Customer extends AbstractModel<Customer> implements Serializable {
 	private static final long serialVersionUID = 2121359969444535875L;
 
-	@UIBind(IdInput.class)
+	@UIBind(IdForm.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
@@ -47,27 +47,27 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String surName;
 
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(nullable=false)
 	private String telephone;
 
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String preName;
 
 	@NotNull
 	@Past
-	@UIBind(DateInput.class)
+	@UIBind(DateForm.class)
 	@Temporal(TemporalType.DATE)
 	@Column(nullable=false)
 	private Date birthday;
@@ -75,20 +75,20 @@ public class Customer extends AbstractModel<Customer> implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String street;
 
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String city;
 
 	@NotNull
 	@Min(0)
-	@UIBind(LongInput.class)
+	@UIBind(LongForm.class)
 	@Column
 	private Long zipCode;
 

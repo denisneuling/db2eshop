@@ -10,24 +10,22 @@ import net.miginfocom.swing.MigLayout;
 import org.apache.log4j.Logger;
 
 /**
- * <p>DoubleInput class.</p>
+ * <p>TextInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class DoubleInput extends LabeledInput<Double> {
-	private static final long serialVersionUID = -315477593380755590L;
-
+public class TextForm extends LabeledForm<String> {
+	private static final long serialVersionUID = 7628321355750318743L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
-	private JTextField jTextField = new JTextField(30);
+	private JTextField jTextField = new JTextField();
 
 	/**
-	 * <p>Constructor for DoubleInput.</p>
+	 * <p>Constructor for TextInput.</p>
 	 */
-	public DoubleInput() {
+	public TextForm() {
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
-
 		jTextField.setMinimumSize(new Dimension(inputWidth, 10));
 		jTextField.setBorder(BorderFactory.createEmptyBorder());
 		this.add(label);
@@ -36,21 +34,17 @@ public class DoubleInput extends LabeledInput<Double> {
 
 	/** {@inheritDoc} */
 	@Override
-	public Double getValue() {
+	public String getValue() {
 		String text = jTextField.getText();
-		try {
-			return Double.parseDouble(text);
-		} catch (NumberFormatException nfe) {
-			throw new RuntimeException(label.getText() +": Input must be a number.");
-		}
+		return text;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void setValue(Object object) {
 		if (object != null) {
-			if(object instanceof Double) {
-				jTextField.setText(((Double) object).toString());
+			if (object instanceof String) {
+				jTextField.setText((object).toString());
 			} else {
 				log.error("Could not set value of type " + object.getClass());
 			}
@@ -62,4 +56,5 @@ public class DoubleInput extends LabeledInput<Double> {
 	public void setEditable(boolean editable) {
 		jTextField.setEditable(false);
 	}
+
 }

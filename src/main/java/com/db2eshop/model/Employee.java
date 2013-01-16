@@ -18,8 +18,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIHide;
-import com.db2eshop.gui.component.io.IdInput;
-import com.db2eshop.gui.component.io.TextInput;
+import com.db2eshop.gui.component.io.IdForm;
+import com.db2eshop.gui.component.io.TextForm;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -32,7 +32,7 @@ import com.db2eshop.model.support.AbstractModel;
 public class Employee extends AbstractModel<Employee> implements Serializable {
 	private static final long serialVersionUID = 4080090521960388810L;
 
-	@UIBind(IdInput.class)
+	@UIBind(IdForm.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
@@ -40,14 +40,14 @@ public class Employee extends AbstractModel<Employee> implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String surName;
 
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String preName;
 

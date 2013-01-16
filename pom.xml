@@ -231,11 +231,12 @@
 			<version>1.5.3</version>
 		</dependency>
 
-		<!-- standalone support -->
+		<!-- conversion issues? -->
 		<!-- <dependency> -->
-		<!-- <groupId>org.apache.cxf</groupId> -->
-		<!-- <artifactId>cxf-rt-frontend-jaxws</artifactId> -->
-		<!-- <version>2.7.1</version> -->
+		<!-- <groupId>mysql</groupId> -->
+		<!-- <artifactId>mysql-connector-java</artifactId> -->
+		<!-- <version>5.1.6</version> -->
 		<!-- </dependency> -->
+
 	</dependencies>
 </project>

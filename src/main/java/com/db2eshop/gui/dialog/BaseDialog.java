@@ -45,6 +45,16 @@ public abstract class BaseDialog extends JDialog implements WindowListener, Acti
 			relocate();
 		}
 		super.setVisible(visible);
+		if(visible){
+			postShow();
+		}
+	}
+	
+	/**
+	 * <p>postShow.</p>
+	 */
+	protected void postShow(){
+		// anything to do?
 	}
 	
 	/** {@inheritDoc} */

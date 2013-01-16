@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.db2eshop.gui.component.io.LabeledInput;
+import com.db2eshop.gui.component.io.LabeledForm;
 
 /**
  * <p>UIBind class.</p>
@@ -17,5 +17,5 @@ import com.db2eshop.gui.component.io.LabeledInput;
 @Target(ElementType.FIELD)
 public @interface UIBind {
 
-	Class<? extends LabeledInput<?>> value();
+	Class<? extends LabeledForm<?>> value();
 }

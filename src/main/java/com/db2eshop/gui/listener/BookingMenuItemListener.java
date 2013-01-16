@@ -10,6 +10,12 @@ import com.db2eshop.gui.MainFrame;
 import com.db2eshop.gui.dialog.BookingDialog;
 
 @Component
+/**
+ * <p>BookingMenuItemListener class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class BookingMenuItemListener extends BaseMenuItemListener {
 	protected Logger log = Logger.getLogger(this.getClass());
 

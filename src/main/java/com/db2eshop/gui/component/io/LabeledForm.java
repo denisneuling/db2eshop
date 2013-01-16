@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public abstract class LabeledInput<T> extends JPanel{
+public abstract class LabeledForm<T> extends JPanel{
 	private static final long serialVersionUID = -6759994950632289431L;
 
 	protected int inputWidth = 400;

@@ -13,12 +13,12 @@
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
-		<property name="driverClass" value="org.postgresql.Driver" />
+		<property name="driverClass" value="${datasource.driverclass}" />
 
 		<property name="jdbcUrl"
-			value="jdbc:postgresql://${pg.host}:${pg.port}/${pg.database}?autoReconnect=true" />
-		<property name="user" value="${pg.user}" />
-		<property name="password" value="${pg.password}" />
+			value="jdbc:${db.ms}://${db.host}:${db.port}/${db.database}?autoReconnect=true" />
+		<property name="user" value="${db.user}" />
+		<property name="password" value="${db.password}" />
 
 		<property name="minPoolSize" value="${dataSource.minPoolSize}" />
 		<property name="maxPoolSize" value="${dataSource.maxPoolSize}" />
@@ -37,7 +37,6 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- <property name="packagesToScan" value="com.db2eshop.models" /> -->
 		<property name="annotatedClasses">
 			<list>
 				<value>com.db2eshop.model.Article</value>
@@ -54,7 +53,7 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<!-- <prop key="hibernate.bytecode.provider">cglib</prop> -->
+				<prop key="hibernate.bytecode.provider">cglib</prop>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.show_sql">${hibernate.show.sql}</prop>
 				<prop key="hibernate.format_sql">${hibernate.format.sql}</prop>

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
 import com.db2eshop.annotations.bindings.UIHide;
-import com.db2eshop.gui.component.io.EmbeddedEntityInput;
-import com.db2eshop.gui.component.io.LabeledInput;
+import com.db2eshop.gui.component.io.EntityForm;
+import com.db2eshop.gui.component.io.LabeledForm;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.persistence.support.AbstractDao;
 import com.db2eshop.util.ClassUtil;
@@ -39,9 +39,9 @@ public class UIBinder {
 	 * @return a {@link java.util.Map} object.
 	 */
 	@SuppressWarnings("unchecked")
-	public Map<String, LabeledInput<?>> create(AbstractModel<?> entity) {
+	public Map<String, LabeledForm<?>> create(AbstractModel<?> entity) {
 		Class<? extends AbstractModel<?>> entityClazz = (Class<? extends AbstractModel<?>>) entity.getClass();
-		Map<String, LabeledInput<?>> ui = create(entityClazz);
+		Map<String, LabeledForm<?>> ui = create(entityClazz);
 		return mixin(ui, entity);
 	}
 
@@ -51,8 +51,8 @@ public class UIBinder {
 	 * @param entityClazz a {@link java.lang.Class} object.
 	 * @return a {@link java.util.Map} object.
 	 */
-	public Map<String, LabeledInput<?>> create(Class<? extends AbstractModel<?>> entityClazz) {
-		Map<String, LabeledInput<?>> ui = new HashMap<String, LabeledInput<?>>();
+	public Map<String, LabeledForm<?>> create(Class<? extends AbstractModel<?>> entityClazz) {
+		Map<String, LabeledForm<?>> ui = new HashMap<String, LabeledForm<?>>();
 
 		Field[] fields = entityClazz.getDeclaredFields();
 		for (Field field : fields) {
@@ -63,10 +63,10 @@ public class UIBinder {
 			UIBind uiBind = field.getAnnotation(UIBind.class);
 			UIEmbedded uiEmbedded = field.getAnnotation(UIEmbedded.class);
 			if (uiBind != null && uiEmbedded == null) {
-				Class<? extends LabeledInput<?>> inputClazz = uiBind.value();
+				Class<? extends LabeledForm<?>> inputClazz = uiBind.value();
 				if (inputClazz != null) {
 					try {
-						LabeledInput<?> input = ClassUtil.newInstance(inputClazz);
+						LabeledForm<?> input = ClassUtil.newInstance(inputClazz);
 						input.setLabel(StringUtil.nominilize(fieldName));
 						ui.put(fieldName, input);
 					} catch (RuntimeException e) {
@@ -81,7 +81,7 @@ public class UIBinder {
 					log.error("Property " + entityClazz.getName() + "#" + fieldName + " is forced to be embedded entity but not assignable to AbstractModel. Skipping.");
 				}else{
 					AbstractDao<?> daoToBeSet = tableValueEntityResolver.getDao(clazz);
-					EmbeddedEntityInput input = new EmbeddedEntityInput(daoToBeSet);
+					EntityForm input = new EntityForm(daoToBeSet);
 					input.setLabel(StringUtil.nominilize(fieldName));
 					ui.put(fieldName, input);
 				}
@@ -103,7 +103,7 @@ public class UIBinder {
 	 * @param entity a {@link com.db2eshop.model.support.AbstractModel} object.
 	 * @return a {@link java.util.Map} object.
 	 */
-	public Map<String, LabeledInput<?>> mixin(Map<String, LabeledInput<?>> ui, AbstractModel<?> entity) {
+	public Map<String, LabeledForm<?>> mixin(Map<String, LabeledForm<?>> ui, AbstractModel<?> entity) {
 		AbstractDao<?> dao = tableValueEntityResolver.getDao(entity.getClass());
 		dao.getHibernateTemplate().refresh(entity);
 		

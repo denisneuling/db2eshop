@@ -10,6 +10,12 @@ import com.db2eshop.gui.MainFrame;
 import com.db2eshop.gui.dialog.TurnoverDialog;
 
 @Component
+/**
+ * <p>TurnoverMenuItemListener class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 public class TurnoverMenuItemListener extends BaseMenuItemListener {
 	protected Logger log = Logger.getLogger(this.getClass());
 

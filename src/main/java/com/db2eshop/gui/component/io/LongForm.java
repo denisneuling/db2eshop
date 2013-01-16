@@ -9,25 +9,22 @@ import net.miginfocom.swing.MigLayout;
 
 import org.apache.log4j.Logger;
 
-import com.db2eshop.model.Booking.Type;
-
 /**
- * <p>BookingTypeInput class.</p>
+ * <p>NumberInput class.</p>
  *
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class BookingTypeInput extends LabeledInput<Type> {
-	private static final long serialVersionUID = -315477593380755590L;
-
+public class LongForm extends LabeledForm<Long> {
+	private static final long serialVersionUID = -6723222187600862538L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
 	private JTextField jTextField = new JTextField(30);
 
 	/**
-	 * <p>Constructor for BookingTypeInput.</p>
+	 * <p>Constructor for NumberInput.</p>
 	 */
-	public BookingTypeInput() {
+	public LongForm() {
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 
 		jTextField.setMinimumSize(new Dimension(inputWidth, 10));
@@ -38,24 +35,21 @@ public class BookingTypeInput extends LabeledInput<Type> {
 
 	/** {@inheritDoc} */
 	@Override
-	public Type getValue() {
+	public Long getValue() {
 		String text = jTextField.getText();
-		if (Type.IMPORT.toString().equalsIgnoreCase(text)) {
-			return Type.IMPORT;
-		} else if (Type.SALE.toString().equalsIgnoreCase(text)) {
-			return Type.SALE;
-		} else if (Type.SKONTO.toString().equalsIgnoreCase(text)) {
-			return Type.SKONTO;
+		try {
+			return Long.parseLong(text);
+		} catch (NumberFormatException nfe) {
+			throw new RuntimeException(label.getText() +": Input must be a number.");
 		}
-		return null;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void setValue(Object object) {
 		if (object != null) {
-			if (object instanceof Type) {
-				jTextField.setText(((Type) object).toString());
+			if(object instanceof Long) {
+				jTextField.setText(((Long) object).toString());
 			} else {
 				log.error("Could not set value of type " + object.getClass());
 			}
@@ -67,4 +61,5 @@ public class BookingTypeInput extends LabeledInput<Type> {
 	public void setEditable(boolean editable) {
 		jTextField.setEditable(false);
 	}
+
 }

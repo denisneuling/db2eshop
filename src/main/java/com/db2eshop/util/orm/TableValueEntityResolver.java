@@ -11,21 +11,25 @@ import org.springframework.stereotype.Component;
 
 import com.db2eshop.model.Article;
 import com.db2eshop.model.ArticleType;
+import com.db2eshop.model.Booking;
 import com.db2eshop.model.Customer;
 import com.db2eshop.model.Employee;
 import com.db2eshop.model.Import;
 import com.db2eshop.model.Sale;
 import com.db2eshop.model.Shipping;
 import com.db2eshop.model.Supplier;
+import com.db2eshop.model.Turnover;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.persistence.ArticleDao;
 import com.db2eshop.persistence.ArticleTypeDao;
+import com.db2eshop.persistence.BookingDao;
 import com.db2eshop.persistence.CustomerDao;
 import com.db2eshop.persistence.EmployeeDao;
 import com.db2eshop.persistence.ImportDao;
 import com.db2eshop.persistence.SaleDao;
 import com.db2eshop.persistence.ShippingDao;
 import com.db2eshop.persistence.SupplierDao;
+import com.db2eshop.persistence.TurnoverDao;
 import com.db2eshop.persistence.support.AbstractDao;
 import com.db2eshop.util.ClassUtil;
 import com.db2eshop.util.DateUtil;
@@ -63,6 +67,12 @@ public class TableValueEntityResolver implements InitializingBean {
 	
 	@Autowired
 	private SupplierDao supplierDao;
+	
+	@Autowired
+	private TurnoverDao turnoverDao;
+	
+	@Autowired
+	private BookingDao bookingDao;
 
 	private volatile HashMap<Class<?>, AbstractDao<?>> entityDao;
 
@@ -192,5 +202,7 @@ public class TableValueEntityResolver implements InitializingBean {
 		entityDao.put(Sale.class, saleDao);
 		entityDao.put(Shipping.class, shippingDao);
 		entityDao.put(Supplier.class, supplierDao);
+		entityDao.put(Booking.class, bookingDao);
+		entityDao.put(Turnover.class, turnoverDao);
 	}
 }

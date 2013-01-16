@@ -21,10 +21,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.db2eshop.annotations.bindings.UIBind;
 import com.db2eshop.annotations.bindings.UIEmbedded;
 import com.db2eshop.annotations.bindings.UIHide;
-import com.db2eshop.gui.component.io.DoubleInput;
-import com.db2eshop.gui.component.io.IdInput;
-import com.db2eshop.gui.component.io.TextArea;
-import com.db2eshop.gui.component.io.TextInput;
+import com.db2eshop.gui.component.io.DoubleForm;
+import com.db2eshop.gui.component.io.IdForm;
+import com.db2eshop.gui.component.io.TextAreaForm;
+import com.db2eshop.gui.component.io.TextForm;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -37,7 +37,7 @@ import com.db2eshop.model.support.AbstractModel;
 public class Article extends AbstractModel<Article> implements Serializable {
 	private static final long serialVersionUID = -3958701112789778500L;
 
-	@UIBind(IdInput.class)
+	@UIBind(IdForm.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
@@ -45,25 +45,25 @@ public class Article extends AbstractModel<Article> implements Serializable {
 	@NotNull
 	@NotEmpty
 	@Length(max=255)
-	@UIBind(TextInput.class)
+	@UIBind(TextForm.class)
 	@Column(unique = true)
 	private String name;
 
 	@NotNull
 	@NotEmpty
-	@UIBind(TextArea.class)
+	@UIBind(TextAreaForm.class)
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	
 	@NotNull
 	@Min(0)
-	@UIBind(DoubleInput.class)
+	@UIBind(DoubleForm.class)
 	@Column(nullable = false)
 	private Double retailPrice = 0D;
 	
 	@NotNull
 	@Min(0)
-	@UIBind(DoubleInput.class)
+	@UIBind(DoubleForm.class)
 	@Column(nullable = false)
 	private Double purchasePrice = 0D;
 

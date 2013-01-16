@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.db2eshop.governance.UIBinder;
-import com.db2eshop.gui.component.io.LabeledInput;
+import com.db2eshop.gui.component.io.LabeledForm;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.util.orm.TableValueEntityResolver;
@@ -41,7 +41,7 @@ public class EditDialog extends ORMActionDialog implements InitializingBean{
 	private volatile GenericTable<?> table;
 	private volatile Integer row;
 	private volatile AbstractModel<?> model;
-	private volatile Map<String, LabeledInput<?>> components;
+	private volatile Map<String, LabeledForm<?>> components;
 	
 	/**
 	 * <p>Constructor for EditDialog.</p>
@@ -87,7 +87,7 @@ public class EditDialog extends ORMActionDialog implements InitializingBean{
 //			}
 //		}
 		
-		for (LabeledInput<?> labeledInput : components.values()) {
+		for (LabeledForm<?> labeledInput : components.values()) {
 			container.add(labeledInput, "wrap");
 		}
 		
@@ -98,7 +98,7 @@ public class EditDialog extends ORMActionDialog implements InitializingBean{
 	@Override
 	public void onConfirm() {
 		for(String property : components.keySet()){
-			LabeledInput<?> labeledInput = components.get(property);
+			LabeledForm<?> labeledInput = components.get(property);
 			Object currentValue = labeledInput.getValue();
 			model = tableValueEntityResolver.setValue(property, currentValue, model);
 		}

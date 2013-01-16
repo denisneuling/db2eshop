@@ -19,7 +19,7 @@ import com.db2eshop.util.DateUtil;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class DateInput extends LabeledInput<Date>{
+public class DateForm extends LabeledForm<Date>{
 	private static final long serialVersionUID = 2680814138439027839L;
 	protected Logger log = Logger.getLogger(this.getClass());
 
@@ -28,7 +28,7 @@ public class DateInput extends LabeledInput<Date>{
 	/**
 	 * <p>Constructor for DateInput.</p>
 	 */
-	public DateInput(){
+	public DateForm(){
 		setLayout(new MigLayout("wrap 2", "[100px!,right][grow,fill]"));
 		
 		this.add(label);

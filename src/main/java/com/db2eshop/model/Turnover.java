@@ -12,9 +12,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.db2eshop.annotations.bindings.UIBind;
-import com.db2eshop.gui.component.io.DateInput;
-import com.db2eshop.gui.component.io.DoubleInput;
-import com.db2eshop.gui.component.io.IdInput;
+import com.db2eshop.gui.component.io.DateForm;
+import com.db2eshop.gui.component.io.DoubleForm;
+import com.db2eshop.gui.component.io.IdForm;
 import com.db2eshop.model.support.AbstractModel;
 
 @Entity
@@ -27,19 +27,19 @@ import com.db2eshop.model.support.AbstractModel;
 public class Turnover extends AbstractModel<Turnover> {
 	private static final long serialVersionUID = 6139702053298999338L;
 
-	@UIBind(IdInput.class)
+	@UIBind(IdForm.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
 	@NotNull
-	@UIBind(DateInput.class)
+	@UIBind(DateForm.class)
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date date = new Date();
 	
 	@NotNull
-	@UIBind(DoubleInput.class)
+	@UIBind(DoubleForm.class)
 	@Column(nullable = false)	
 	private Double turnover = 0D;
 
@@ -96,6 +96,8 @@ public class Turnover extends AbstractModel<Turnover> {
 	public void setTurnover(Double turnover) {
 		this.turnover = turnover;
 	}
+	
+	
 
 	/** {@inheritDoc} */
 	@Override

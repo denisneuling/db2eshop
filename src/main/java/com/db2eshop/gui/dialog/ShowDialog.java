@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.db2eshop.governance.UIBinder;
-import com.db2eshop.gui.component.io.LabeledInput;
+import com.db2eshop.gui.component.io.LabeledForm;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 
@@ -64,8 +64,8 @@ public class ShowDialog extends ConfirmDialog implements InitializingBean {
 		this.getContentPane().removeAll();
 		Container container = this.getContentPane();
 		container.setLayout(new MigLayout("filly"));
-		Map<String, LabeledInput<?>> components = uiBinder.create(model);
-		for (LabeledInput<?> labeledInput : components.values()) {
+		Map<String, LabeledForm<?>> components = uiBinder.create(model);
+		for (LabeledForm<?> labeledInput : components.values()) {
 			labeledInput.setEditable(false);
 			container.add(labeledInput, "wrap");
 		}

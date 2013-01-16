@@ -24,7 +24,7 @@ import com.db2eshop.persistence.support.AbstractDao;
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
-public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
+public class EntityForm extends LabeledForm<AbstractModel<?>> {
 	private static final long serialVersionUID = -3059177943483630930L;
 	protected Logger log = Logger.getLogger(this.getClass());
 	
@@ -37,7 +37,7 @@ public class EmbeddedEntityInput extends LabeledInput<AbstractModel<?>> {
 	 *
 	 * @param dao a {@link com.db2eshop.persistence.support.AbstractDao} object.
 	 */
-	public EmbeddedEntityInput(AbstractDao<?> dao){
+	public EntityForm(AbstractDao<?> dao){
 		this.dao = dao;
 		
 		jList = new JList();

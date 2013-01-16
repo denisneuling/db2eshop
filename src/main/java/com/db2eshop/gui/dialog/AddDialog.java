@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.db2eshop.governance.UIBinder;
-import com.db2eshop.gui.component.io.LabeledInput;
+import com.db2eshop.gui.component.io.LabeledForm;
 import com.db2eshop.gui.component.table.api.GenericTable;
 import com.db2eshop.model.support.AbstractModel;
 import com.db2eshop.util.ClassUtil;
@@ -40,7 +40,7 @@ public class AddDialog extends ORMActionDialog implements InitializingBean{
 	private TableValueEntityResolver tableValueEntityResolver;
 	
 	private volatile GenericTable<?> table;
-	private volatile Map<String, LabeledInput<?>> components;
+	private volatile Map<String, LabeledForm<?>> components;
 	
 	/**
 	 * <p>Constructor for AddDialog.</p>
@@ -69,7 +69,7 @@ public class AddDialog extends ORMActionDialog implements InitializingBean{
 		Container container = this.getContentPane();
 		container.setLayout(new MigLayout("fill"));
 		components = uiBinder.create(table.getEntityClazz());
-		for (LabeledInput<?> labeledInput : components.values()) {
+		for (LabeledForm<?> labeledInput : components.values()) {
 			container.add(labeledInput, "wrap");
 		}
 	}
@@ -80,7 +80,7 @@ public class AddDialog extends ORMActionDialog implements InitializingBean{
 	public void onConfirm() {
 		AbstractModel entity = ClassUtil.newInstance(table.getEntityClazz());
 		for(String property : components.keySet()){
-			LabeledInput<?> labeledInput = components.get(property);
+			LabeledForm<?> labeledInput = components.get(property);
 			Object currentValue = labeledInput.getValue();
 			
 			entity = tableValueEntityResolver.setValue(property, currentValue, entity);

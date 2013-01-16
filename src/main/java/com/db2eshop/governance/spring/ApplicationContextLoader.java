@@ -1,5 +1,7 @@
 package com.db2eshop.governance.spring;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 
  */
 public class ApplicationContextLoader {
+	protected Logger log = Logger.getLogger(getClass());
 
 	/**
 	 * Constant
@@ -38,7 +41,15 @@ public class ApplicationContextLoader {
 	}
 
 	private ApplicationContextLoader() {
-		applicationContext = new ClassPathXmlApplicationContext(classpathConfigurationLocation);
+		try{
+			applicationContext = new ClassPathXmlApplicationContext(classpathConfigurationLocation);
+		}catch(BeanCreationException beanCreationException){
+			onApplicationInitializationError(beanCreationException);
+		}
+	}
+	
+	protected void onApplicationInitializationError(BeanCreationException beanCreationException){
+		throw beanCreationException;
 	}
 
 	/**

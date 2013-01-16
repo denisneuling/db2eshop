@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 import org.apache.log4j.Logger;
 
-import com.db2eshop.gui.component.io.EmbeddedEntityInput;
+import com.db2eshop.gui.component.io.EntityForm;
 import com.db2eshop.gui.component.listener.BaseMouseListener;
 
 /**
@@ -18,13 +18,13 @@ public class FillUpJListMouseListener extends BaseMouseListener implements Mouse
 	protected Logger log = Logger.getLogger(this.getClass());
 	
 	private boolean updated = false;
-	private EmbeddedEntityInput embeddedEntityInput;
+	private EntityForm embeddedEntityInput;
 	/**
 	 * <p>Constructor for FillUpJListMouseListener.</p>
 	 *
-	 * @param embeddedEntityInput a {@link com.db2eshop.gui.component.io.EmbeddedEntityInput} object.
+	 * @param embeddedEntityInput a {@link com.db2eshop.gui.component.io.EntityForm} object.
 	 */
-	public FillUpJListMouseListener(EmbeddedEntityInput embeddedEntityInput){
+	public FillUpJListMouseListener(EntityForm embeddedEntityInput){
 		this.embeddedEntityInput = embeddedEntityInput;
 	}
 	
