@@ -36,7 +36,6 @@ public class EntityUtil {
 		Map<String, Annotation[]> entityMeta = new HashMap<String, Annotation[]>();
 		if (entity != null) {
 			Field[] fields = entity.getDeclaredFields();
-
 			for (Field field : fields) {
 				Annotation[] annotations = field.getAnnotations();
 				if (field.getAnnotation(UIHide.class) == null) {

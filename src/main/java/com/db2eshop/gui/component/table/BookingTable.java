@@ -38,11 +38,11 @@ public class BookingTable extends GenericTable<Booking>{
 	 * <p>setup.</p>
 	 */
 	public void setup(){
+		this.ready = false;
 		List<Booking> bookings = bookingService.loadEntireTable();
 		for(Booking booking : bookings){
 			addRow(booking);
 		}
-		this.ready = true;
 	}
 	
 	/**
@@ -50,24 +50,32 @@ public class BookingTable extends GenericTable<Booking>{
 	 */
 	public void destroy(){
 		this.ready = false;
-		((DefaultTableModel)this.getModel()).setRowCount(0);
+		DefaultTableModel tableModel = ((DefaultTableModel)this.getModel());
+		for(int i = tableModel.getRowCount()-1; i >=0 ; i--){
+			try{
+				tableModel.removeRow(i);
+			}catch(Exception e){ 
+				// fuck it
+			}
+		}
+//		((DefaultTableModel)this.getModel()).setRowCount(0);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public void onRowChange(Booking entity) {
-		bookingService.update(entity);
+//		bookingService.update(entity);
 	}
 	/** {@inheritDoc} */
 	@Override
 	public void onRowRemove(Booking entity) {
-		bookingService.delete(entity);
+//		bookingService.delete(entity);
 	}
 	
 	/** {@inheritDoc} */
 	@Override
 	public void onRowAdd(Booking entity) {
-		bookingService.save(entity);
+//		bookingService.save(entity);
 	}
 	
 	/** {@inheritDoc} */

@@ -1,7 +1,10 @@
 package com.db2eshop.gui.component.table.api;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import javax.swing.JTable;
@@ -81,7 +84,7 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 	public void rowChanged(int row) {
 		Object[] values = this.getRowAt(row);
 		T updateAble = null;
-		if (values[0] == null) {
+		if (values[0] == null || !(values[0] instanceof Long)) {
 			updateAble = ClassUtil.newInstance(entityClazz);
 		} else {
 			Long id = (Long) values[0];
@@ -212,7 +215,17 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 			entityClazz = (Class<T>) UIForUtil.retrieveUIFor(this);
 			if (entityClazz != null) {
 				tableName = entityClazz.getSimpleName();
-				Set<String> metaColumnNames = EntityUtil.getRowMeta(entityClazz).keySet();
+				Set<String> metaColumnNamesSet = EntityUtil.getRowMeta(entityClazz).keySet();
+				List<String> metaColumnNames = new LinkedList<String>(metaColumnNamesSet);
+				Collections.sort(metaColumnNames, new Comparator<String>() {
+					@Override
+					public int compare(String o1, String o2) {
+						if(o1!=null && o1.equalsIgnoreCase("id")){
+							return -1;
+						}
+						return 0;
+					}
+				});
 				columnNames = metaColumnNames.toArray(new String[metaColumnNames.size()]);
 				this.setModel(EntityUtil.asTableModel(entityClazz));
 				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>((DefaultTableModel) this.getModel());
