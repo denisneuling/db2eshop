@@ -48,6 +48,11 @@ public class ApplicationContextLoader {
 		}
 	}
 	
+	/**
+	 * <p>onApplicationInitializationError.</p>
+	 *
+	 * @param beanCreationException a {@link org.springframework.beans.factory.BeanCreationException} object.
+	 */
 	protected void onApplicationInitializationError(BeanCreationException beanCreationException){
 		throw beanCreationException;
 	}

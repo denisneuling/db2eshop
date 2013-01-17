@@ -77,6 +77,7 @@ public class TableValueEntityResolver implements InitializingBean {
 	 * @param target a T object.
 	 * @param <T> a T object.
 	 * @param propertyName a {@link java.lang.String} object.
+	 * @param propertyName a {@link java.lang.String} object.
 	 * @param property a {@link java.lang.Object} object.
 	 * @return a T object.
 	 */
@@ -163,8 +164,6 @@ public class TableValueEntityResolver implements InitializingBean {
 		for(String field : fields){
 			try {
 				Object object = ClassUtil.getValueOf(field, entity, entityClass, entityClass.getDeclaredField(field).getType());
-//				if(object!=null && AbstractModel.class.isAssignableFrom(object.getClass())){
-//				}
 				data[index] = object;
 			} catch (Exception e) {
 				log.error("Field "+field+" could not been found",e);
@@ -175,15 +174,6 @@ public class TableValueEntityResolver implements InitializingBean {
 		return data;
 	}
 	
-//	public AbstractModel<?> getFullEntity(AbstractModel<?> entity){
-//		Object loaded = getDao(entity.getClass()).findById(entity.getId());
-//		if(loaded==null){
-//			return entity;
-//		}else {
-//			entity.getdec
-//		}
-//	}
-//	
 	/**
 	 * <p>getDao.</p>
 	 *

@@ -18,12 +18,23 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+/**
+ * <p>BootSplash class.</p>
+ *
+ * @author Denis Neuling (denisneuling@gmail.com)
+ * 
+ */
 @SuppressWarnings("rawtypes")
 public class BootSplash implements ApplicationListener, BeanPostProcessor {
 	private SplashScreen splashScreen;
 
 	private static BootSplash INSTANCE;
 
+	/**
+	 * <p>getInstance.</p>
+	 *
+	 * @return a {@link com.db2eshop.gui.splash.BootSplash} object.
+	 */
 	public static BootSplash getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new BootSplash();
@@ -35,6 +46,11 @@ public class BootSplash implements ApplicationListener, BeanPostProcessor {
 		splashScreen = new SplashScreen();
 	}
 	
+	/**
+	 * <p>Getter for the field <code>splashScreen</code>.</p>
+	 *
+	 * @return a {@link com.db2eshop.gui.splash.SplashScreen} object.
+	 */
 	public static SplashScreen getSplashScreen(){
 		return getInstance().splashScreen;
 	}
@@ -73,6 +89,9 @@ class SplashScreen extends JWindow {
 	private JLabel head;
 	private JLabel label;
 
+	/**
+	 * <p>Constructor for SplashScreen.</p>
+	 */
 	public SplashScreen() {
 		JPanel content = new JPanel();
 		content.setLayout(new MigLayout("fill"));
@@ -106,6 +125,11 @@ class SplashScreen extends JWindow {
 		setVisible(true);
 	}
 
+	/**
+	 * <p>setMessage.</p>
+	 *
+	 * @param message a {@link java.lang.String} object.
+	 */
 	public void setMessage(String message) {
 		label.setText("<html><body><i>"+message+"</i></body></html>");
 	}

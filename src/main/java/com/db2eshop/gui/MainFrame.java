@@ -24,7 +24,7 @@ import com.db2eshop.gui.menu.MenuPanel;
  * <p>
  * MainFrame class.
  * </p>
- * 
+ *
  * @author Denis Neuling (denisneuling@gmail.com)
  * 
  */
