@@ -1,3 +1,18 @@
+/*
+ * Copyright 2012 Denis Neuling, Dennis Wieding, Mateusz Wozniak
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.db2eshop.launcher;
 
 import java.util.LinkedList;
@@ -71,19 +86,20 @@ public class DatasetBootstrap implements InitializingBean {
 	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
-//		initializeDataSet();
+		if (System.getProperty("datagen") != null) {
+			initializeDataSet();
+		}
 	}
 
-	@SuppressWarnings("unused")
 	private void initializeDataSet() {
 		log.warn("============================== Initializing Dataset ====================================");
-		initializeArticleTypes();
-		initializeArticles();
-		initializeCustomers();
-		initializeSuppliers();
-		initializeEmployees();
-		initializeShippings();
-		initializeImports();
+//		initializeArticleTypes();
+//		initializeArticles();
+//		initializeCustomers();
+//		initializeSuppliers();
+//		initializeEmployees();
+//		initializeShippings();
+//		initializeImports();
 		initializeSales();
 		log.warn("=========================== Initializing Dataset done ==================================");
 	}
@@ -91,28 +107,48 @@ public class DatasetBootstrap implements InitializingBean {
 	private void initializeArticleTypes() {
 		ArticleType a = new ArticleType();
 		a.setName("Food");
-		articleTypeDao.save(a);
+		try {
+			articleTypeDao.save(a);
+		} catch (Throwable throwable) {
+			log.warn(throwable.getMessage());
+		}
 
 		ArticleType c = new ArticleType();
 		c.setName("Drink");
-		articleTypeDao.save(c);
+		try {
+			articleTypeDao.save(c);
+		} catch (Throwable throwable) {
+			log.warn(throwable.getMessage());
+		}
 
 		ArticleType b = new ArticleType();
 		b.setName("Goodie");
-		articleTypeDao.save(b);
+		try {
+			articleTypeDao.save(b);
+		} catch (Throwable throwable) {
+			log.warn(throwable.getMessage());
+		}
 	}
 
 	private void initializeArticles() {
 		int size = articleTypeDao.findAll().size();
 
 		if (size > 0) {
-			for (int i = 0; i < 60; i++) {
+			for (int i = 0; i < 50; i++) {
 				Article article = new Article();
 				article.setName(Products.product());
-				String desc = LoremIpsum.phrase();
-				article.setDescription((desc.length() > 255 ? desc.substring(0, 253) + "." : desc));
-				article.setArticleType(articleTypeDao.findById(Long.parseLong((LoremIpsum.random.nextInt(size - 1) + 1) + "")));
+				double price = LoremIpsum.random.nextDouble();
+				if (price < 0) {
+					price *= -1;
+				}
 				try {
+					price *= 10;
+					price = (double) Math.round(price * 100) / 100;
+					article.setRetailPrice(price);
+					article.setPurchasePrice((double) Math.round((double) (price + 2D) * 100) / 100);
+					String desc = LoremIpsum.phrase();
+					article.setDescription((desc.length() > 255 ? desc.substring(0, 253) + "." : desc));
+					article.setArticleType(articleTypeDao.findById(Long.parseLong((LoremIpsum.random.nextInt(size - 1) + 1) + "")));
 					articleDao.save(article);
 				} catch (Throwable throwable) {
 					log.warn(throwable.getMessage());
@@ -123,7 +159,7 @@ public class DatasetBootstrap implements InitializingBean {
 
 	private void initializeCustomers() {
 		List<Customer> customers = new LinkedList<Customer>();
-		for (int i = 0; i < 40; i++) {
+		for (int i = 0; i < 10; i++) {
 			Customer customer = new Customer();
 			customer.setBirthday(Dates.date());
 			customer.setCity(Cities.city());
@@ -143,7 +179,7 @@ public class DatasetBootstrap implements InitializingBean {
 	}
 
 	private void initializeSuppliers() {
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 10; i++) {
 			Supplier supplier = new Supplier();
 			supplier.setName(DeliveryService.name());
 			supplier.setTelephone(Cities.zipCode() + " " + Cities.zipCode());
@@ -159,7 +195,7 @@ public class DatasetBootstrap implements InitializingBean {
 
 	private void initializeEmployees() {
 
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 10; i++) {
 			Employee employee = new Employee();
 			employee.setPreName(Persons.preName());
 			employee.setSurName(Persons.surName());
@@ -172,7 +208,7 @@ public class DatasetBootstrap implements InitializingBean {
 	}
 
 	private void initializeShippings() {
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 10; i++) {
 			Shipping shipping = new Shipping();
 			shipping.setName(DeliveryService.name());
 			shipping.setTelephone(Cities.zipCode() + " " + Cities.zipCode());
@@ -192,19 +228,19 @@ public class DatasetBootstrap implements InitializingBean {
 		List<Employee> employees = employeeDao.findAll();
 		List<Supplier> suppliers = supplierDao.findAll();
 
-		for(int i = 0 ; i < 150 ; i ++){
-			Article article = articles.get(LoremIpsum.random.nextInt(articles.size()-1)+1);
-			Employee employee = employees.get(LoremIpsum.random.nextInt(employees.size()-1)+1);
-			Supplier supplier = suppliers.get(LoremIpsum.random.nextInt(suppliers.size()-1)+1);
+		for (int i = 0; i < 30; i++) {
+			try {
+				Article article = articles.get(LoremIpsum.random.nextInt(articles.size() - 1) + 1);
+				Employee employee = employees.get(LoremIpsum.random.nextInt(employees.size() - 1) + 1);
+				Supplier supplier = suppliers.get(LoremIpsum.random.nextInt(suppliers.size() - 1) + 1);
 
-			Import currentImport = new Import();
-			currentImport.setArticle(article);
-			currentImport.setCount(new Long(LoremIpsum.random.nextInt(10)+1));
-			currentImport.setDate(Dates.date());
-			currentImport.setEmployee(employee);
-			currentImport.setSupplier(supplier);
+				Import currentImport = new Import();
+				currentImport.setArticle(article);
+				currentImport.setCount(new Long(LoremIpsum.random.nextInt(10) + 20));
+				currentImport.setDate(Dates.date());
+				currentImport.setEmployee(employee);
+				currentImport.setSupplier(supplier);
 
-			try{
 				importDao.save(currentImport);
 			} catch (Throwable throwable) {
 				log.warn(throwable.getMessage());
@@ -217,19 +253,19 @@ public class DatasetBootstrap implements InitializingBean {
 		List<Customer> customers = customerDao.findAll();
 		List<Shipping> shippings = shippingDao.findAll();
 
-		for(int i = 0 ; i < 135 ; i ++){
-			Article article = articles.get(LoremIpsum.random.nextInt(articles.size()-1)+1);
-			Customer customer = customers.get(LoremIpsum.random.nextInt(customers.size()-1)+1);
-			Shipping shipping = shippings.get(LoremIpsum.random.nextInt(shippings.size()-1)+1);
+		for (int i = 0; i < 30; i++) {
 
-			Sale sale = new Sale();
-			sale.setArticle(article);
-			sale.setCount(new Long(LoremIpsum.random.nextInt(10)+1));
-			sale.setDate(Dates.date());
-			sale.setCustomer(customer);
-			sale.setShipping(shipping);
+			try {
+				Article article = articles.get(LoremIpsum.random.nextInt(articles.size() - 1) + 1);
+				Customer customer = customers.get(LoremIpsum.random.nextInt(customers.size() - 1) + 1);
+				Shipping shipping = shippings.get(LoremIpsum.random.nextInt(shippings.size() - 1) + 1);
 
-			try{
+				Sale sale = new Sale();
+				sale.setArticle(article);
+				sale.setCount(new Long(LoremIpsum.random.nextInt(10) + 1));
+				sale.setDate(Dates.date());
+				sale.setCustomer(customer);
+				sale.setShipping(shipping);
 				saleDao.save(sale);
 			} catch (Throwable throwable) {
 				log.warn(throwable.getMessage());

@@ -11,33 +11,52 @@
                                                 http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
                                                 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
+	<!-- 
+		Show bootsplash on startup
+	 -->
 	<bean id="bootSplash" class="com.db2eshop.gui.splash.BootSplash" factory-method="getInstance" />
-	
-	<bean id="applicationContextObserver"
-		class="com.db2eshop.governance.spring.ApplicationContextObserver"
-		factory-method="getInstance" />
-	
-	<import resource="propertiesContext.xml" />
 
+	<!-- 
+		Dispatch events to observing pojos
+	 -->	
+	<bean id="applicationContextObserver" class="com.db2eshop.governance.spring.ApplicationContextObserver" factory-method="getInstance" />
+	
+	<!-- 
+		Read out property files, e.g. database credentials, configuration etc.
+	 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:config/gui.properties</value>
+				<value>classpath*:config/datasource.properties</value>
+				
+				<!-- 
+					Override default properties by user profile
+				 -->
+				<value>classpath*:config/datasource.${user.name}.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+	</bean>
+
+	<!-- 
+		Enable aspectj support to wrap whole pojos or single functions (aop stuff)
+	 -->
 	<aop:aspectj-autoproxy />
 
-
+	<!-- 
+		Setup persistence mw, database connection pooling
+	 -->
 	<import resource="datasourceContext.xml" />
 
+	<!-- 
+		Enable annotation configuration in addition to xml application cotext configuration
+	 -->
 	<context:annotation-config />
+	
+	<!-- 
+		Scan the whole project for annotated beans
+	 -->
 	<context:component-scan base-package="com.db2eshop.*" />
 	<context:spring-configured />
-
-	<!-- <bean id="validator" -->
-	<!-- class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" 
-		/> -->
-	<!-- <bean id="txManager" -->
-	<!-- class="org.springframework.orm.hibernate3.HibernateTransactionManager"> -->
-	<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
-	<!-- </bean> -->
-
-	<!-- <tx:annotation-driven /> -->
-	<!-- <tx:annotation-driven proxy-target-class="false" /> -->
-	<!-- <aop:aspectj-autoproxy /> -->
-
 </beans>

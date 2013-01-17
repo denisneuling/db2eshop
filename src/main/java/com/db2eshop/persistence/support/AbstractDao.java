@@ -1,3 +1,18 @@
+/*
+ * Copyright 2012 Denis Neuling, Dennis Wieding, Mateusz Wozniak
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.db2eshop.persistence.support;
 
 import java.io.Serializable;
@@ -16,8 +31,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+import com.db2eshop.exception.ValidationException;
 import com.db2eshop.model.support.AbstractModel;
-import com.db2eshop.persistence.exception.ValidationException;
 
 /**
  * <p>
@@ -32,8 +47,7 @@ import com.db2eshop.persistence.exception.ValidationException;
 public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateDaoSupport implements GenericDaoCrudOperations<T>, GenericDaoOperations<T> {
 	protected final Logger log = Logger.getLogger(getClass());
 
-	@Autowired
-	(required = false)
+	@Autowired(required = false)
 	protected LocalValidatorFactoryBean validator;
 
 	protected Class<T> clazz;
@@ -62,13 +76,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * delete.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
 	 */
+	@Override
 	public void delete(T entity) {
 		log.debug("Deleting " + entity.getClass());
 
@@ -76,10 +90,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * deleteAll.
 	 * </p>
 	 */
+	@Override
 	public void deleteAll() {
 		log.debug("Deleting all of " + this.clazz.getName());
 
@@ -87,19 +104,21 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * evict.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
 	 */
+	@Override
 	public void evict(T entity) {
 		this.getHibernateTemplate().evict(entity);
 	}
 
 	/**
-	 * <p>getCurrentSession.</p>
+	 * <p>
+	 * getCurrentSession.
+	 * </p>
 	 *
 	 * @return a {@link org.hibernate.Session} object.
 	 */
@@ -108,7 +127,9 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
-	 * <p>findAllIds.</p>
+	 * <p>
+	 * findAllIds.
+	 * </p>
 	 *
 	 * @return a {@link java.util.List} object.
 	 */
@@ -119,12 +140,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * findAll.
 	 * </p>
-	 *
-	 * @return a {@link java.util.List} object.
 	 */
+	@Override
 	public List<T> findAll() {
 		log.debug("Loading all Rows of " + this.clazz.getName());
 
@@ -132,6 +154,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public List<T> findBy(String field, Object value) {
 		log.debug("Finding by " + field + " = " + value.toString() + " of " + this.clazz.getName());
 
@@ -139,6 +162,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public List<T> findBy(String field1, String field2, Object value1, Object value2) {
 		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getName());
 
@@ -146,6 +170,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public List<T> findBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
 		log.debug("Finding by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getName());
 
@@ -154,15 +179,17 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public T findById(Serializable id) {
 		log.debug("Loading " + this.clazz.getName() + " by ID");
-		if(id == null){
+		if (id == null) {
 			return null;
 		}
 		return ((T) this.getHibernateTemplate().get(this.clazz.getName(), id));
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public T findUniqueBy(String field, Object value) {
 		log.debug("Finding unique by " + field + " = " + value.toString() + " of " + this.clazz.getName());
 
@@ -180,6 +207,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public T findUniqueBy(String field1, String field2, Object value1, Object value2) {
 		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " of " + this.clazz.getName());
 
@@ -197,6 +225,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public T findUniqueBy(String field1, String field2, String field3, Object value1, Object value2, Object value3) {
 		log.debug("Finding unique by " + field1 + " = " + value1.toString() + " and " + field2 + " = " + value2.toString() + " and " + field3 + " = " + value3.toString() + "of " + this.clazz.getName());
 
@@ -214,10 +243,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * flush.
 	 * </p>
 	 */
+	@Override
 	public void flush() {
 		log.debug("Flushing Hibernate Session");
 
@@ -225,62 +257,61 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * merge.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
-	 * @return a T object.
 	 */
+	@Override
 	public T merge(T entity) {
 		return this.getHibernateTemplate().merge(entity);
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * persist.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
 	 */
+	@Override
 	public void persist(T entity) {
 		this.getHibernateTemplate().persist(entity);
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * refresh.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
 	 */
+	@Override
 	public void refresh(T entity) {
 		this.getHibernateTemplate().refresh(entity);
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * rowCount.
 	 * </p>
-	 *
-	 * @return a int.
 	 */
+	@Override
 	public int rowCount() {
 		return this.findAll().size();
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * save.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
-	 * @return a {@link java.io.Serializable} object.
 	 */
+	@Override
 	public Serializable save(T entity) {
 		log.debug("Saving " + entity.getClass());
 
@@ -291,6 +322,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void saveAll(Collection<T> ts) {
 		log.debug("Saving Collection of " + this.clazz.getName());
 
@@ -300,15 +332,15 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * saveAll.
 	 * </p>
-	 *
-	 * @param entities
-	 *            a T object.
 	 */
+	@Override
 	public void saveAll(T... entities) {
-		log.debug("Saving Collection of untyped Entities");
+		log.debug("Saving Collection of Entities");
 
 		for (T entity : entities) {
 			this.save(entity);
@@ -333,13 +365,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * saveOrUpdate.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
 	 */
+	@Override
 	public void saveOrUpdate(T entity) {
 		log.debug("Saving or updating " + entity.getClass());
 
@@ -349,23 +381,24 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void saveOrUpdateAll(Collection<T> ts) {
 		log.debug("Saving or updating collection");
 
 		for (T entity : ts) {
-			// this.validate(entity);
+			this.validate(entity);
 			this.getHibernateTemplate().saveOrUpdate(entity);
 		}
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * saveOrUpdateAll.
 	 * </p>
-	 *
-	 * @param ts
-	 *            a T object.
 	 */
+	@Override
 	public void saveOrUpdateAll(T... ts) {
 		log.debug("Saving or updating collection");
 
@@ -376,6 +409,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void setReadOnly(T t, boolean readOnly) {
 		log.debug((readOnly ? "S" : "Uns") + "etting " + this.clazz.getName() + " readonly");
 
@@ -383,13 +417,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * update.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
 	 */
+	@Override
 	public void update(T entity) {
 		log.debug("Updating " + entity.getClass());
 
@@ -399,6 +433,7 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void updateAll(Collection<T> entities) {
 		log.debug("Saving Collection of " + this.clazz.getName());
 
@@ -409,13 +444,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * updateAll.
 	 * </p>
-	 *
-	 * @param entities
-	 *            a T object.
 	 */
+	@Override
 	public void updateAll(T... entities) {
 		log.debug("Saving Collection of " + this.clazz.getName());
 
@@ -426,13 +461,13 @@ public abstract class AbstractDao<T extends AbstractModel<T>> extends HibernateD
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * <p>
 	 * validate.
 	 * </p>
-	 *
-	 * @param entity
-	 *            a T object.
 	 */
+	@Override
 	public void validate(T entity) {
 		log.debug("Validating " + entity.getClass());
 		if (validator != null) {

@@ -1,3 +1,18 @@
+/*
+ * Copyright 2012 Denis Neuling, Dennis Wieding, Mateusz Wozniak
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.db2eshop.model;
 
 import java.io.Serializable;
@@ -36,19 +51,19 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 
 	@UIBind(IdForm.class)
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
 	@NotEmpty
-	@Length(max=255)
+	@Length(max = 255)
 	@UIBind(TextForm.class)
 	@Column(nullable = false, unique = true)
 	private String name;
 
 	@NotNull
 	@NotEmpty
-	@Length(max=255)
+	@Length(max = 255)
 	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String city;
@@ -61,7 +76,7 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 
 	@NotNull
 	@NotEmpty
-	@Length(max=255)
+	@Length(max = 255)
 	@UIBind(TextForm.class)
 	@Column(nullable = false)
 	private String telephone;
@@ -91,7 +106,9 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	}
 
 	/**
-	 * <p>Getter for the field <code>name</code>.</p>
+	 * <p>
+	 * Getter for the field <code>name</code>.
+	 * </p>
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
@@ -100,16 +117,21 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	}
 
 	/**
-	 * <p>Setter for the field <code>name</code>.</p>
+	 * <p>
+	 * Setter for the field <code>name</code>.
+	 * </p>
 	 *
-	 * @param name a {@link java.lang.String} object.
+	 * @param name
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * <p>Getter for the field <code>city</code>.</p>
+	 * <p>
+	 * Getter for the field <code>city</code>.
+	 * </p>
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
@@ -118,16 +140,21 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	}
 
 	/**
-	 * <p>Setter for the field <code>city</code>.</p>
+	 * <p>
+	 * Setter for the field <code>city</code>.
+	 * </p>
 	 *
-	 * @param city a {@link java.lang.String} object.
+	 * @param city
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
 	/**
-	 * <p>Getter for the field <code>zipCode</code>.</p>
+	 * <p>
+	 * Getter for the field <code>zipCode</code>.
+	 * </p>
 	 *
 	 * @return a {@link java.lang.Integer} object.
 	 */
@@ -136,16 +163,21 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	}
 
 	/**
-	 * <p>Setter for the field <code>zipCode</code>.</p>
+	 * <p>
+	 * Setter for the field <code>zipCode</code>.
+	 * </p>
 	 *
-	 * @param zipCode a {@link java.lang.Integer} object.
+	 * @param zipCode
+	 *            a {@link java.lang.Integer} object.
 	 */
 	public void setZipCode(Long zipCode) {
 		this.zipCode = zipCode;
 	}
 
 	/**
-	 * <p>Getter for the field <code>telephone</code>.</p>
+	 * <p>
+	 * Getter for the field <code>telephone</code>.
+	 * </p>
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
@@ -154,16 +186,21 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	}
 
 	/**
-	 * <p>Setter for the field <code>telephone</code>.</p>
+	 * <p>
+	 * Setter for the field <code>telephone</code>.
+	 * </p>
 	 *
-	 * @param telephone a {@link java.lang.String} object.
+	 * @param telephone
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
 	/**
-	 * <p>Getter for the field <code>sales</code>.</p>
+	 * <p>
+	 * Getter for the field <code>sales</code>.
+	 * </p>
 	 *
 	 * @return a {@link java.util.List} object.
 	 */
@@ -172,9 +209,12 @@ public class Shipping extends AbstractModel<Shipping> implements Serializable {
 	}
 
 	/**
-	 * <p>Setter for the field <code>sales</code>.</p>
+	 * <p>
+	 * Setter for the field <code>sales</code>.
+	 * </p>
 	 *
-	 * @param sales a {@link java.util.List} object.
+	 * @param sales
+	 *            a {@link java.util.List} object.
 	 */
 	public void setSales(List<Sale> sales) {
 		this.sales = sales;

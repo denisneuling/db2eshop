@@ -1,4 +1,18 @@
-
+/*
+ * Copyright 2012 Denis Neuling, Dennis Wieding, Mateusz Wozniak
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.db2eshop.util;
 
 import java.lang.annotation.Annotation;
@@ -79,6 +93,7 @@ public class ClassUtil {
 	 * @param field a {@link java.lang.reflect.Field} object.
 	 * @param reference a {@link java.lang.Object} object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
+	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param valueType a {@link java.lang.Class} object.
 	 * @param <T> a T object.
 	 * @return a T object.
@@ -101,12 +116,11 @@ public class ClassUtil {
 	 * <p>getValueOf.</p>
 	 *
 	 * @param fieldName a {@link java.lang.String} object.
-	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param valueType a {@link java.lang.Class} object.
 	 * @param <T> a T object.
-	 * @return a T object.
 	 * @param referenceClazz a {@link java.lang.Class} object.
 	 * @param reference a {@link java.lang.Object} object.
+	 * @return a T object.
 	 */
 	public static <T> T getValueOf(String fieldName, Object reference, Class<?> referenceClazz, Class<T> valueType) {
 		try {
