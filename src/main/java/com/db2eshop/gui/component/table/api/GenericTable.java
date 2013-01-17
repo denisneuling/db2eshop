@@ -195,6 +195,7 @@ public abstract class GenericTable<T extends AbstractModel<T>> extends JTable im
 		if (values.length != columnNames.length) {
 			throw new RuntimeException("ColumnNames lenght unqual value lenght!");
 		}
+		
 		if (oldEntity == null) {
 			log.error("Entity is null. Skip mixing in Properties.");
 			return (T) oldEntity;

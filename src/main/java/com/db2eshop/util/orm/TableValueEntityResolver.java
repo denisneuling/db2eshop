@@ -132,6 +132,8 @@ public class TableValueEntityResolver implements InitializingBean {
 				id = new Long((String) property);
 			}else if(property instanceof AbstractModel){
 				id = ((AbstractModel)property).getId();
+			}else if(property instanceof Long){
+				id = (Long)property;
 			}
 			AbstractModel<?> model = entityDao.get(to).findById(id);
 			return model;
@@ -173,6 +175,15 @@ public class TableValueEntityResolver implements InitializingBean {
 		return data;
 	}
 	
+//	public AbstractModel<?> getFullEntity(AbstractModel<?> entity){
+//		Object loaded = getDao(entity.getClass()).findById(entity.getId());
+//		if(loaded==null){
+//			return entity;
+//		}else {
+//			entity.getdec
+//		}
+//	}
+//	
 	/**
 	 * <p>getDao.</p>
 	 *
