@@ -48,7 +48,6 @@
 				<value>com.db2eshop.model.Shipping</value>
 				<value>com.db2eshop.model.Supplier</value>
 				<value>com.db2eshop.model.Booking</value>
-				<value>com.db2eshop.model.Turnover</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

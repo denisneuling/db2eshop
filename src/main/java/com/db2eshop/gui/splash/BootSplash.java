@@ -1,6 +1,5 @@
 package com.db2eshop.gui.splash;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -21,7 +20,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 
 @SuppressWarnings("rawtypes")
 public class BootSplash implements ApplicationListener, BeanPostProcessor {
-	private static SplashScreen splashScreen;
+	private SplashScreen splashScreen;
 
 	private static BootSplash INSTANCE;
 
@@ -35,11 +34,21 @@ public class BootSplash implements ApplicationListener, BeanPostProcessor {
 	private BootSplash() {
 		splashScreen = new SplashScreen();
 	}
+	
+	public static SplashScreen getSplashScreen(){
+		return getInstance().splashScreen;
+	}
 
 	/** {@inheritDoc} */
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		splashScreen.setMessage("Initializing " + bean.getClass().getSimpleName());
+		splashScreen.setMessage("Initialized " + bean.getClass().getSimpleName());
+		
+		// ugly hack 
+		// to dispose the splashscreen even if the context is loading the config processor not fast enough
+		if("AnnotationBeanConfigurerAspect".equals(bean.getClass().getSimpleName())){
+			splashScreen.dispose();
+		}
 		return bean;
 	}
 
@@ -68,7 +77,7 @@ class SplashScreen extends JWindow {
 		JPanel content = new JPanel();
 		content.setLayout(new MigLayout("fill"));
 		
-		head = new JLabel("<html><body>Denis Neuling<br>Dennis Wieding<br>Mateusz Wozniak</body></html>");
+		head = new JLabel("<html><body><h2>Projektarbeit HTW Berlin DB2</h2><br>Denis Neuling (denisneuling@gmail.com)<br>Dennis Wieding (e-dennis@gmx.net)<br>Mateusz Wozniak (asro@live.de)</body></html>");
 		head.setMinimumSize(new Dimension(60, 20));
 		head.setBackground(new Color(0, 0, 0, 0));
 		head.setFont(new Font(head.getFont().getName(), Font.BOLD, 9));
@@ -98,6 +107,6 @@ class SplashScreen extends JWindow {
 	}
 
 	public void setMessage(String message) {
-		label.setText(message);
+		label.setText("<html><body><i>"+message+"</i></body></html>");
 	}
 }

@@ -41,7 +41,7 @@ import com.db2eshop.util.common.Streets;
  * 
  */
 @Component
-public class Bootstrap implements InitializingBean {
+public class DatasetBootstrap implements InitializingBean {
 	protected Logger log = Logger.getLogger(getClass());
 
 	@Autowired
@@ -71,7 +71,7 @@ public class Bootstrap implements InitializingBean {
 	/** {@inheritDoc} */
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		initializeDataSet();
+//		initializeDataSet();
 	}
 
 	@SuppressWarnings("unused")
